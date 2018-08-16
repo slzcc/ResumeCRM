@@ -1,0 +1,63 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load IamTracking_tags %}
+
+{% block css %}
+    <!-- Table Responsive css -->
+    <link href="/static/plugins/minton/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css" rel="stylesheet" type="text/css" media="screen">
+
+    <style>
+    </style>
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">我追踪的简历</h4>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/resume/related/tracking/list">我追踪的简历</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+
+            <div class="table-rep-plugin">
+                <div class="table-responsive" data-pattern="priority-columns">
+                    <table id="tech-companies-1" class="table  table-striped">
+                        {% SetIamTrackingTable data %}
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    
+</script>
+<!-- responsive-table-->
+<script src="/static/plugins/minton/plugins/RWD-Table-Patterns/dist/js/rwd-table.min.js" type="text/javascript"></script>
+
+<script>
+    $(function() {
+        $('.table-responsive').responsiveTable({
+            addDisplayAllBtn: 'btn btn-secondary'
+        });
+    });
+</script>
+{% endblock %}

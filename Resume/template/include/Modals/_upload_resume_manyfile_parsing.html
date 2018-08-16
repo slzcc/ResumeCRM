@@ -1,0 +1,123 @@
+<!-- sample modal content -->
+<div id="btnUpload" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="CenterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="CenterModalLabel">上传简历</h4>
+            </div>
+            <div class="modal-body">
+
+                <!-- body -->
+                <div class="row">
+                    <div class="col-md-12 portlets">
+                        <h2 class="m-t-0 header-title">请选择简历来源</h4>
+                        <p class="text-muted m-b-10 font-14">
+                            请选择简历的来源，如果需要的选项没有在列表中，请通知管理员进行来源填充.
+                        </p>
+                        {% if not ele %}
+                        <div class="alert alert-danger">
+                            <strong>警告!</strong> 还没有一条 <code>简历来源</code> 请添加一条记录后在上传简历，否则可能出现兼容问题!
+                        </div>
+                        {% endif %}
+                        <div class="m-b-30">
+                            <div class="col-lg-12">
+                                <select id="resume_source" name="resume_source" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                    {{ ele }}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 portlets">
+                        <!-- Your awesome content goes here -->
+                        <h2 class="m-t-0 header-title">请打开需要更新的简历</h4>
+                        <p class="text-muted m-b-10 font-14">
+                            支持的格式为 <code>PDF</code>、<code>DOC</code>、<code>DOCX</code>、<code>TXT</code>.
+                        </p>
+                        <p class="text-muted m-b-10 font-14">
+                            默认上传简历支持上传 <code>10</code> 份简历，修改简历只支持上传 <code>1</code> 份简历,请勿超过。
+                        </p>
+                        <p class="text-muted m-b-30 font-14">
+                            请不要上传与简历无关的文件可能会造成您的损失！
+                        </p>
+                        <div id="actions" class="row">
+
+                            <div class="col-lg-7">
+                                <!-- 控制总体的三个按钮 -->
+                                <span class="btn btn-success fileinput-button">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    <span>Add files...</span>
+                                </span>
+                                <button type="submit" class="btn btn-primary start">
+                                    <i class="glyphicon glyphicon-upload"></i>
+                                    <span>Start upload</span>
+                                </button>
+                                <button type="reset" class="btn btn-warning cancel">
+                                    <i class="glyphicon glyphicon-ban-circle"></i>
+                                    <span>Cancel upload</span>
+                                </button>
+                            </div>
+
+                            <div class="col-lg-5">
+                                <!-- 总体的进度 -->
+                                <span class="fileupload-process">
+                                    <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                        <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                    </div>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        
+                        <div class="table table-striped files" id="previews">
+
+                            <div id="template" class="file-row">
+                                <div>
+                                    <span class="preview"><img data-dz-thumbnail /></span>
+                                </div>
+                                <div>
+                                    <p class="name" data-dz-name ></p>
+                                    <strong class="error text-danger" data-dz-errormessage></strong>
+                                </div>
+                                <div>
+
+                                    <p class="size" data-dz-size></p>
+                                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                        <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                    </div>
+
+                                </div>
+                                <div>
+
+                                    <button class="btn btn-primary start">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                      <span>Start</span>
+                                    </button>
+
+                                    <button data-dz-remove class="btn btn-warning cancel">
+                                        <i class="glyphicon glyphicon-ban-circle"></i>
+                                        <span>Cancel</span>
+                                    </button>
+
+                                    <button data-dz-remove class="btn btn-danger delete">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                        <span>Delete</span>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                {# <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button> #}
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

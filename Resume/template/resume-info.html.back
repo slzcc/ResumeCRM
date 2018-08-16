@@ -1,0 +1,600 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load staticfiles %}
+{% load authentication_tags %}
+{% block css %}
+    <!-- DataTables -->
+    <link href="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Responsive datatable examples -->
+    <link href="/static/plugins/minton/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <style>
+        #textarea {
+            height: 200px;
+        }
+        .inbox-widget .inbox-item {
+            border: 1px solid transparent;
+        }
+        
+        .custom-right-bar {
+          background: #f5f5f5 !important;
+          z-index: 99 !important;
+        }
+
+        .custom-side-menu {
+          bottom: 0;
+          top: 0;
+          z-index: 2;
+        }
+        .custom-side-menu.left {
+          background: #ffffff;
+          position: absolute;
+          top: 155px;
+        }
+        body.fixed-left .custom-side-menu.left {
+          bottom: 50px;
+          height: 100%;
+          margin-bottom: -70px;
+          margin-top: 0;
+          padding-bottom: 70px;
+          position: fixed;
+        }
+
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+          background-color: #f5f5f5;
+          border-color: #485561 #485561 #485561;
+        }
+
+        .custom-card-box {
+          padding: 20px;
+          -webkit-border-radius: 5px;
+          border-radius: 5px;
+          -moz-border-radius: 5px;
+          background-clip: padding-box;
+          margin-bottom: 20px;
+        }
+    </style>
+    <!-- Dropzone css -->
+    <link href="/static/plugins/minton/plugins/dropzone/dropzone.css" rel="stylesheet">
+    <link href="/static/css/dropzone_custom_update_file.css" rel="stylesheet" type="text/css">
+    
+
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">候选人信息</h4>
+            <ol class="breadcrumb float-right">
+                <li class="breadcrumb-item"><a href="/resume/candidate/{{obj.id}}/change">{{obj.username}}</a></li>
+                <li class="breadcrumb-item"><a href="/resume/list">侯选人列表</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block conent %}
+    {% include 'include/_resume_detailed_information.html' %}
+    {% include 'include/Modals/_upload_resume_onefile_parsing.html' %}
+
+    <table class="table">
+        <thead><tr></tr></thead>
+        <tbody>
+            <tr>
+                <td>
+                    {# <button style="display: none;" class="btn btn-primary waves-effect waves-light m-l-5" id="btnSave">保存</button> #}
+                    {# <button style="display: none;" class="btn btn-secondary waves-effect m-l-5" id="btnCancel">取消</button> #}
+                    {# <button class="btn btn-info waves-effect disabled m-l-5" id="btnEdit">编辑</button> #}
+                    {# <button class="btn btn-danger waves-effect disabled m-l-5" id="btnDelete">删除</button> #}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<div id="ViewsJS" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="full-width-modalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="full-width-modalLabel">附件内容</h4>
+            </div>
+            <div class="modal-body">
+                <iframe id="iframe_viewerjs" name="zh_filename" src="" width="100%" height="780px" allowfullscreen="" webkitallowfullscreen=""></iframe>
+            </div>
+            <div class="modal-footer">
+                {# <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button> #}
+                {# <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button> #}
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/static/plugins/minton/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Dropzone js -->
+<script src="/static/plugins/minton/plugins/dropzone/dropzone.js"></script>
+<script src="/static/js/dropzone_custom_update_onefile.js"></script>
+
+<script>
+    current_resume_info_id = "{{ uid }}"
+    update_file_type = "zh_filename"
+
+    $(function () {
+        btnDelete();
+        bindEdit();
+        bindCancel();
+        GetResumeAPI();
+        SetTextBoxDisable();
+        SetTextareaID();
+        SetSaveAlert();
+        SetFileType();
+        SetBoxEditEnable();
+        PageTop();
+        ExportWorkDocument();
+    });
+
+    //  置顶
+    function PageTop(){
+        $("#btnPageTop").click(function(){
+            document.documentElement.scrollTop = 0;
+        })
+    }
+
+    // 导出 Word 文件
+    function ExportWorkDocument(){
+        $("#btnExportWord").click(function(){
+            $.ajax({
+                url: '/documents/export/word/'+ '{{ uid }}',
+                type: "GET",
+                success:function (arg) {
+                    window.location="/documents/download/word?file="+arg.file_path+"&token=" + arg.token; 
+                }
+            })
+        })
+    }
+
+    // 设置上传文件的类型，后续决定是否解析
+    function SetFileType(){
+        $('#zh_filename').click(function () {
+            update_file_type = "zh_filename";
+        });
+        $('#en_filename').click(function () {
+            update_file_type = "en_filename";
+        });
+    }
+    function SetTextareaID() {
+        $('#infoModal').find('textarea').each(function () {
+             $(this).attr("id", "textarea");
+         });
+    }
+
+    // 初始化页面时，把可编辑元素都赋予禁止编辑状态
+    function SetTextBoxDisable() {
+         $('#infoModal').find('input, select, textarea').each(function () {
+            $(this).attr("disabled", "true");
+         });
+         $("#comments").removeAttr("disabled");
+    }
+
+    // 初始化页面时，把部分元素添加属性，后续检测是对这类元素列为可编辑状态
+    function SetBoxEditEnable(){
+         $("#user-info").find('input, select').each(function () {
+            $(this).attr("edit-enable", "true");
+         });
+    }
+
+    // 点击保存时，把所需数据汇总
+    function bindSave() {
+
+        $('#btnSave').click(function () {
+            var postData = {};
+            $('#infoModal').find('input, select').each(function () {
+                var v = $(this).val();
+                var k = $(this).attr('name');
+                var origin = $(this).attr("origin-data");
+
+                if ($(this).attr("id") == "edit-text") {
+                    if (v == "") {
+                        return
+                    }
+
+                    if ($(this).attr("type") == "radio") {
+                        if ($(this).prop("checked")) {
+                            if ($(this).attr("value") != origin) {
+                                postData[k] = v;
+                            }
+                        }
+                    }else if (v != origin) {
+                        postData[k] = v;
+                    }
+                }
+            });
+        });
+    }
+    function bindEdit() {
+
+        $('#btnEdit').click(function () {
+            $('#btnSave').show();
+            $('#btnCancel').show();
+            $(this).hide();
+            $(this).attr("edit-enable", "true");
+            $('#infoModal').find('input, select').each(function () {
+                if($(this).attr("edit-enable") == "true"){
+                    $(this).removeAttr("disabled");
+                    $(this).attr("id", "edit-text");
+                }
+
+            });
+            $('#infoModal').find('textarea').each(function () {
+                if($(this).attr("edit-enable") == "true"){
+                    $(this).removeAttr("disabled");
+                    $(this).attr("id", "edit-text");
+                }
+            });
+
+        });
+    }
+    function cancelEdit() {
+
+        $('#btnSave').hide();
+        $('#btnCancel').hide();
+        $('#btnEdit').show();
+        $('#infoModal').find('input, select').each(function () {
+            $(this).removeAttr("disabled");
+        });
+    }
+    function bindCancel() {
+
+        $('#btnCancel').click(function () {
+            window.location.reload()
+        });
+    }
+    function GetResumeAPI() {
+        $.ajax({
+            url: "/api/resume/candidate/{{ uid }}",
+            dataType: 'JSON',
+            type: "GET",
+            success: function (arg) {
+                var rel = null;
+                $.each(arg, function (k,v) {
+                    $("#infoModal").find("input").each(function () {
+
+                        if($(this).attr("name") == k){
+                            if($(this).attr("type") == "radio"){
+                                if($(this).attr("value") == 'true'){
+                                    if(v){
+                                        $(this).prop("checked", true);
+                                    }
+                                }
+                                else {
+                                    if(!v) {
+                                        $(this).prop("checked", true);
+                                    }
+                                }
+                                $(this).attr("origin-data", v);
+                            }else {
+                                if(typeof v == "object"){
+                                    
+                                    if(!jQuery.isEmptyObject(v)) {
+                                        $(this).val(v[0]["name"]);
+                                        $(this).attr("origin-data", v[0]["name"]);
+                                        $(this).attr("new-data", v[0]["name"]);
+                                    }
+                                }else{
+                                    $(this).val(v);
+                                    $(this).attr("origin-data", v);
+                                    $(this).attr("new-data", v);
+                                }
+                            }
+                        }
+                    });
+                    $("#infoModal").find("textarea").each(function () {
+                    // $("#infoModal").find("p").each(function () {
+                        if($(this).attr("name") == k){
+                            if(!jQuery.isEmptyObject(v[0])) {
+                                // $(this).text(v[0]["describe"]);
+                                $(this).val(v[0]["describe"]);
+                                {#$(this).attr("origin-data", v[0]["describe"]);#}
+                                {#$(this).attr("new-data", v[0]["describe"]);#}
+                            }
+                        }
+                    });
+
+                    // 过滤 a 标签，只要目的是提供下载
+                    $("#infoModal").find("a").each(function () {
+                        if($(this).attr("name") == k){
+                            if(!jQuery.isEmptyObject(v[0])) {
+                                var filePash = v[0]["name"];
+                                var fileName = filePash.split("/")[filePash.split("/").length - 1];
+                                $(this).attr("href", "/documents/download/resume/source?file=" + filePash + "&uid="+{{ uid }});
+                                $(this).attr("download", fileName);
+
+                            }
+                        }
+                    });
+
+                    // 评论
+                    if(k == "user_comments"){
+                        $.each(v,function (j,l){
+                            var getURL = '/api/user/info/' + l["user_id"]
+                            $.ajax({
+                                url: getURL,
+                                type: 'POST',
+                                success: function(arg){
+                                    $('<div class="inbox-item"><div class="inbox-item-img"><img src="' + '/static/' + arg["head_portrait"] + '" class="rounded-circle" alt=""></div><p class="inbox-item-author">' + arg["name"] + '</p><p class="inbox-item-text">'+ l["describe"] + '</p><p class="inbox-item-date">' + l["create_time"] + '</p></div><hr>').appendTo('.inbox-widget')
+                                } 
+                            })
+                            
+
+                        })
+                    }
+                });
+            }
+        });
+
+    }
+    function SetSaveAlert() {
+        //Parameter
+        $('#btnSave').click(function () {
+            var postData = {};
+            $('#infoModal').find('input, select').each(function () {
+                var v = $(this).val();
+                var k = $(this).attr('name');
+                var origin = $(this).attr("origin-data");
+
+                if ($(this).attr("id") == "edit-text") {
+                    if (v == "") {
+                        return
+                    }
+
+                    if ($(this).attr("type") == "radio") {
+                        if ($(this).prop("checked")) {
+                            if ($(this).attr("value") != origin) {
+                                postData[k] = v;
+
+                            }
+                        }
+                    }else if (v != origin) {
+                        postData[k] = v;
+                    }
+                }
+            });
+            $('#infoModal').find('textarea').each(function () {
+                if($(this).attr("edit-enable") == "true"){
+                    var v = $(this).val();
+                    var n = $(this).attr('name');
+                    postData[n] = v;
+                }
+            });
+            if (!jQuery.isEmptyObject(postData)){
+                swal({
+                    title: '你确定要保存？',
+                    text: "点击确定后会进行修改！",
+                    type: 'warning', // warning
+                    showCancelButton: true,
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    confirmButtonClass: 'btn btn-success mt-2 slzcc',
+                    cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                    buttonsStyling: false
+                }).then(function () {
+                    swal({
+                        title: '已保存',
+                        text: "你的数据已提交成功!",
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }, function (dismiss) {
+                    if (dismiss === 'cancel') {
+                        swal({
+                            title: '已取消',
+                            text: "成功取消操作!",
+                            type: 'error',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                });
+                $('.slzcc').click(function () {
+                    EditData(postData);
+                })
+            }else {
+                $.Notification.autoHideNotify('info', 'top right', '无效的保存','无效的操作，没有需要保存的数据，请查看后再次保存!')
+            }
+        });
+    }
+
+    // 删除当前简历
+    function btnDelete() {
+        $("#btnDelete").click(function () {
+            //Warning Message
+            swal({
+                title: '确定删除?',
+                text: "确定删除此信息?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-confirm mt-2 slzccDelete',
+                cancelButtonClass: 'btn btn-cancel ml-2 mt-2',
+                confirmButtonText: '确定',
+                cancelButtonText: '取消'
+            }).then(function () {
+                swal({
+                    title: '删除 !',
+                    text: "已经删除此信息",
+                    type: 'success',
+                    confirmButtonClass: 'btn btn-confirm mt-2'
+                    }
+                )
+            });
+            $('.slzccDelete').click(function () {
+                $.ajax({
+                    url: "/resume/candidate/delete/{{ uid }}",
+                    type: "POST",
+                    dataType: "JSON",
+                    success: function (arg) {
+                        window.location.href="/resume/list";
+                    }
+                })
+            });
+
+
+        });
+
+    }
+    function EditData(postData) {
+        if(postData){
+            $.ajax({
+                url: "/edit-{{ uid }}-resume.html",
+                dataType: "JSON",
+                type: "POST",
+                data: postData,
+                success: function (arg) {
+                    if (arg.status_code != "200"){
+                        swal({
+                            title: '错误',
+                            text: "数据删除失败!",
+                            type: 'error',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }else{
+                        swal({
+                            title: '已删除',
+                            text: "数据删除成功!",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        }).then(function () {
+                            window.location("/resume/list");
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+
+</script>
+
+<script>
+
+    // 评论
+    !function($) {
+        "use strict";
+
+        var ChatApp = function() {
+            this.$body = $("body"),
+            this.$chatInput = $('.chat-input'),
+            this.$chatList = $('.inbox-widget'),
+            this.$chatSendBtn = $('.chat-send .btn')
+        };
+
+        //saves chat entry - You should send ajax call to server in order to save chat enrty
+        ChatApp.prototype.save = function() {
+            var chatText = this.$chatInput.val();
+            // var chatTime = moment().format("YYYY MMMM Do h:mm:ss");
+            var chatTime = moment().format('YYYY-MM-DD h:mm:ss');
+            if (chatText == "") {
+                sweetAlert("Oops...", "You forgot to enter your chat message", "error");
+                this.$chatInput.focus();
+            } else {
+                $('<div class="inbox-item"><div class="inbox-item-img"><img src="{% static request.user.head_portrait %}" class="rounded-circle" alt=""></div><p class="inbox-item-author">{{ request.user.name }}</p><p class="inbox-item-text">'+ chatText + '</p><p class="inbox-item-date">' + chatTime + '</p></div><hr>').appendTo('.inbox-widget');
+                this.$chatInput.val('');
+                this.$chatInput.focus();
+                var data = {};
+                data["user_id"] = "{{ request.user.id }}";
+                data["resume_id"] = "{{ uid }}";
+                // data["username"] = "{{ request.user.user }}";
+                data["describe"] = chatText;
+                data["create_time"] = chatTime;
+                SaveResumeCommands(data);
+            }
+        },
+        ChatApp.prototype.init = function () {
+            var $this = this;
+            //binding keypress event on chat input box - on enter we are adding the chat into chat list - 
+            $this.$chatInput.keypress(function (ev) {
+                var p = ev.which;
+                if (p == 13) {
+                    $this.save();
+                    return false;
+                }
+            });
+
+
+            //binding send button click
+            $this.$chatSendBtn.click(function (ev) {
+               $this.save();
+               return false;
+            });
+        },
+        //init ChatApp
+        $.ChatApp = new ChatApp, $.ChatApp.Constructor = ChatApp
+        
+    }(window.jQuery),
+
+    //initializing main application module
+    function($) {
+        "use strict";
+        $.ChatApp.init();
+    }(window.jQuery);
+
+    function SaveResumeCommands(postData){
+        $.ajax({
+            url: '/resume/candidate/commands/save',
+            data: postData,
+            type: 'POST',
+            dataType: 'JSON',
+            success: function(arg){
+                console.log(arg)
+            }
+        })
+    }
+</script>
+<script>
+    
+    // 生成 PDF
+    $("#btnViewsJS").click(function(){
+        var attachmentName = document.getElementById("attachmentName").value;
+
+        var getData = {'attachmentName': attachmentName};
+        swal({
+            title: '正在加载中 PDF',
+            // type: 'info',
+            html: '如果你不需要加载 PDF，则可以取消.</br>'+
+            '</br>'+
+            '<img src="/static/system/5-121204194109.gif" size="100px" style=""> ',
+            showCloseButton: true,
+            showCancelButton: false,
+            // confirmButtonClass: 'btn btn-cancel ml-2 mt-2',
+            confirmButtonClass: 'btn btn-danger mt-2 btn-pdf',
+            cancelButtonClass: 'btn btn-cancel ml-2 mt-2',
+            // confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+            cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+            confirmButtonText: '取消!',
+            allowOutsideClick: false
+        })
+
+        $.ajax({
+            url: "/source/checkPDF",
+            type: 'GET',
+            data: getData,
+            dataType: "JSON",
+            success: function(arg){
+                
+                // console.log(arg.pdfFileName);
+                $("#iframe_viewerjs").attr("src", "/ViewerJS/index.html/#" + arg.targetFileUrl);
+                $(".btn-pdf").click();
+                var documentName = decodeURI($("div #documentName").text())
+                $("div #documentName").text(documentName)
+            }
+        })
+    });
+
+</script>
+{% endblock %}

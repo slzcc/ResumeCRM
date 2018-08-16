@@ -1,0 +1,61 @@
+{% load authentication_tags %}
+
+<div id="sidebar-menu">
+    <ul>
+        <li class="menu-title">ResumeCRM</li>
+        <li class="active">
+            <a href="/dashboard" class="waves-effect waves-primary active"><i class="ti-home"></i><span> Dashboard </span></a>
+        </li>
+
+        <li class="has_sub">
+            <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-infinite"></i> <span> 简历管理 </span>
+                <span class="menu-arrow"></span></a>
+            <ul class="list-unstyled">
+                {% MenuButtonAuthentication request "resume_list" as RETURN %}{% if RETURN %}
+                <li><a href="/resume/list">候选人列表</a></li>{% endif %}
+                {% MenuButtonAuthentication request "resume_list" as RETURN %}{% if RETURN %}
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><span>我的选项</span>  <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="/resume/related/tracking/list" class=""><span>我追踪的简历</span></a></li>
+                        <li><a href="/resume/related/upload/list" class=""><span>我上传的简历</span></a></li>
+                        <li><a href="/resume/related/download/list" class=""><span>我下载的简历</span></a></li>
+                        <li><a href="/resume/related/subscribe/list" class=""><span>我收藏的简历</span></a></li>
+                    </ul>
+                </li>{% endif %}
+                {% MenuButtonAuthentication request "resume_source_list_manage" as RETURN %}{% if RETURN %}
+                <li><a href="/resume/source/list">简历来源</a></li>{% endif %}
+                {% MenuButtonAuthentication request "resume_source_list_manage" as RETURN %}{% if RETURN %}
+                <li><a href="/resume/template/list">简历模板</a></li>{% endif %}
+            </ul>
+        </li>
+
+        <li class="has_sub">
+            <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-paint-bucket"></i> <span> 系统管理 </span>
+                <span class="menu-arrow"></span></a>
+            <ul class="list-unstyled">
+                {% MenuButtonAuthentication request "system_general_list_manage" as RETURN %}{% if RETURN %}
+                <li><a href="/system/general/list">全局设置</a></li>{% endif %}
+                {% MenuButtonAuthentication request "system_user_list_manage" as RETURN %}{% if RETURN %}
+                <li><a href="/system/user/list">用户管理</a></li>{% endif %}
+                {% MenuButtonAuthentication request "system_role_list_manage" as RETURN %}{% if RETURN %}
+                <li><a href="/system/role/list">角色管理</a></li>{% endif %}
+                 <li><a href="/system/audit/list">审计管理</a></li>
+                {% MenuButtonAuthentication request "system_email_list_manage" as RETURN %}{% if RETURN %}
+                <li><a href="/system/email/list">邮件服务管理</a></li>{% endif %}
+            </ul>
+        </li>        
+        <li class="has_sub">
+            <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-spray"></i> <span> 权限管理 </span>
+                <span class="menu-arrow"></span></a>
+            <ul class="list-unstyled">
+                {% MenuButtonAuthentication request "permission_link_manage" as RETURN %}{% if RETURN %}
+                <li><a href="/permission/link">权限分配</a></li>{% endif %}
+                {% MenuButtonAuthentication request "permission_list_manage" as RETURN %}{% if RETURN %}
+                <li><a href="/permission/list">权限列表</a></li>{% endif %}
+            </ul>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>

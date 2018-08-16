@@ -1,0 +1,311 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load generaladmin_tags %}
+
+{% block css %}
+    <style>
+
+    </style>
+    <link href="/static/plugins/minton/plugins/summernote/summernote-bs4.css" rel="stylesheet" />
+
+    <link href="/static/plugins/minton/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+    <link href="/static/plugins/minton/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/css/style.css" rel="stylesheet" type="text/css">
+
+    <script src="/static/plugins/minton/js/modernizr.min.js"></script>
+
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h1 class="page-title">SMTP Server 管理</h1>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/system/email/{{obj.id}}/change">{{ obj.name }}</a></li>
+                    <li class="breadcrumb-item"><a href="/system/email/list">SMTP 管理</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+
+<div id="SandTestEmail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="full-width-modalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-full">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="ShutDown" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="full-width-modalLabel">Email Test</h4>
+            </div>
+            <div class="modal-body" id="SandEmailBody">
+                    <div class="form-group">
+                        <input id="send-to" name="send-to" type="email" class="form-control" placeholder="To">
+                    </div>
+                    <div class="form-group">
+                        <input id="send-subject" name="send-subject" type="text" class="form-control" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <div id="send-data" name="send-data" class="summernote">
+                            <table class="table table-bordered body-wrap" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; background-color: #f6f6f6; margin: 0;" bgcolor="#f6f6f6">
+                              <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                <td style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0;" valign="top"></td>
+                                    <td class="container" width="600" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto;" valign="top">
+                                        <div class="content" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;">
+                                            <table class="main" width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; background-color: #fff; margin: 0; border: 1px solid #e9e9e9;" bgcolor="#fff">
+                                      <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                        <td class="alert alert-warning" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 16px; vertical-align: top; color: #fff; font-weight: 500; text-align: center; border-radius: 3px 3px 0 0; background-color: #2f353f; margin: 0; padding: 20px;" align="center" bgcolor="#2f353f" valign="top">
+                                                        Test: 测试邮件通知.
+                                                    </td>
+                                                </tr>
+                                      <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                        <td class="content-wrap" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 20px;" valign="top">
+                                                        <table width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                            <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                              <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                                                    如收到此邮件请勿 
+                                                <strong style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">回复</strong> 关闭即可.
+                                                                </td>
+                                                            </tr>
+                                            
+                                          </table>
+                                        </td>
+                                                </tr>
+                                    </table>
+                                    
+                                    </td>
+                                    <td style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0;" valign="top"></td>
+                                </tr>
+                            </table>
+                            
+
+                        </div>
+                    </div>
+
+                    <div class="btn-toolbar form-group m-b-0">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-floppy-o"></i></button>
+                            <button type="button" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-trash-o"></i></button>
+                            <button id="SendEmail" class="btn btn-danger waves-effect waves-light"> <span>Send</span> <i class="fa fa-send m-l-10"></i> </button>
+                        </div>
+                    </div>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-box">
+
+            <h4 class="m-t-0 header-title">Email 管理</h4>
+            <p class="text-muted m-b-30 font-13">
+                {# 请选择需要操作的 <code>权限</code>, 进行 <code>搜索</code> 或者 <code>查看</code> 等操作. #}
+            </p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-box">
+                        <form class="" action="#" novalidate="" method="post">
+                            <div class="form-group">
+                                <label>Name</label>
+                                {{ from_obj.name }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>发件人地址</label>
+                                {{ from_obj.form_address }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>发件人名称</label>
+                                {{ from_obj.form_name }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>SMTP 服务器地址</label>
+                                {{ from_obj.smtp_server }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>SMTP 服务器端口</label>
+                                {{ from_obj.smtp_port }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>用户名</label>
+                                {{ from_obj.smtp_username }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>密码</label>
+                                {{ from_obj.smtp_password }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>是否开启 SSL</label>
+                                {{ from_obj.smtp_ssl }}
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <div class="form-group mx-sm-3 text-right">
+                                    <button class="btn btn-primary waves-effect waves-light"> <span>Save Info</span></button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="form-group col-md-12">
+                            <div class="form-group mx-sm-3 text-right">
+                                <button id="btnDeleteSMTP" class="btn btn-danger"><i class="fa fa-times"></i> <span>Delete</span></button>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="form-group mx-sm-3 text-right">
+                                <button  class="btn btn-secondary waves-effect waves-light" data-toggle="modal" data-target="#SandTestEmail"> <span>Test Email
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+<!-- Summer note -->
+<script src="/static/plugins/minton/plugins/summernote/summernote-bs4.min.js"></script>
+
+
+<script>
+    jQuery(document).ready(function () {
+
+        $('.summernote').summernote({
+            height: 250,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: false                 // set focus to editable area after initializing summernote
+        });
+    });
+    $(function () {
+        SetSendData();
+            
+    });
+
+    function SetSendData(){
+        $("#SendEmail").click(function(){
+            postData = {}
+            var BodyData = $(".note-editable")[0]
+
+            $("#SandEmailBody").find('#send-to, #send-bcc, #send-cc, #send-subject').each(function(){
+                var na = $(this).attr("name");
+                var vl = $(this).val();
+                postData[na] = vl;
+            })
+            postData["content"] = JSON.stringify(BodyData.innerHTML);
+            $.ajax({
+                url: '/system/email/send/interface/'+ {{obj.id}},
+                data: postData,
+                dataType: 'JSON',
+                type: 'POST',
+                success: function(arg){
+                    // window.location.reload();
+                    $("#ShutDown").click();
+                    swal({
+                        title: '已发送',
+                        text: "数据发送成功!",
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    });
+                }
+
+            });
+        });
+    }
+
+
+    
+</script>
+<script>
+    $(function(){
+        bindDeleteEmail();
+    });
+    function bindDeleteEmail(){
+
+        $("#btnDeleteSMTP").click(function(){
+            var postData = {};
+            var DELETEDATA = "EmailList"
+            postData[DELETEDATA] = ["{{ obj.id }}"];
+            
+            
+            if (!jQuery.isEmptyObject(postData[DELETEDATA])){
+                swal({
+                    title: '你确定要删除？',
+                    text: "点击确定后会进行删除！",
+                    type: 'question', // warning
+                    showCancelButton: true,
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    confirmButtonClass: 'btn btn-success mt-2 delete-resume-source',
+                    cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                    buttonsStyling: false
+                }).then(function () {
+                    
+                }, function (dismiss) {
+                    if (dismiss === 'cancel') {
+                        swal({
+                            title: '已取消',
+                            text: "成功取消删除操作!",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                });
+                $('.delete-resume-source').click(function () {
+                    postData[DELETEDATA] = JSON.stringify(postData[DELETEDATA])
+                    DeleteData(postData);
+                })
+            }else {
+                $.Notification.autoHideNotify('error', 'top right', '无效的删除','无效的操作，没有需要删除的数据，请查看后再次删除!')
+            }
+            
+        })
+    }
+    function DeleteData(postData){
+        $.ajax({
+            url: '/system/email/delete',
+            data: postData,
+            type: 'POST',
+            dataType: "JSON",
+            success: function(arg){
+                if (arg.status_code != "200"){
+                    swal({
+                        title: '错误',
+                        text: "数据删除失败!",
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }else{
+                    swal({
+                        title: '已删除',
+                        text: "数据删除成功!",
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    }).then(function () {
+                        window.location.href="/system/email/list";
+                    });
+                    
+                }
+            }
+        })
+    }
+</script>
+{% endblock %}

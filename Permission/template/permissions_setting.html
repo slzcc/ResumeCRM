@@ -1,0 +1,244 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load generaladmin_tags %}
+
+{% block css %}
+    <style>
+    </style>
+    <!-- Table Responsive css -->
+    <link href="/static/plugins/minton/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css" rel="stylesheet" type="text/css" media="screen">
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h1 class="page-title">权限功能</h1>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/permission/{{obj_instance.codename}}/setting">{{obj_instance.codename}}</a></li>
+                    <li class="breadcrumb-item"><a href="/permission/link">权限分配</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">修改权限功能</h4>
+                                
+            <p class="text-muted m-b-1 font-30">
+                修改 <code> {{ obj.instance.permissions.codename }} </code> 的权限:
+            </p>
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="form-group mx-sm-3 text-right">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-box">
+                        <form role="form" novalidate="" method="post">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-4 col-form-label">Name<span class="text-danger">*</span></label>
+                                <div class="col-7">
+                                    {{ obj.name }}
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label for="hori-pass1" class="col-4 col-form-label">Url<span class="text-danger">*</span></label>
+                                <div class="col-7">
+                                    {{ obj.url }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="hori-pass1" class="col-4 col-form-label">Parameter<span class="text-danger">*</span></label>
+                                <div class="col-7">
+                                    {{ obj.per_method }}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="webSite" class="col-4 col-form-label">argument_list</label>
+                                <div class="col-7">
+                                    {{ obj.argument_list }}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="webSite" class="col-4 col-form-label">描述</label>
+                                <div class="col-7">
+                                    {{ obj.describe }}
+                                </div>
+                            </div>
+                            <div class="form-group row" style="display: none;">
+                                <label for="inputEmail3" class="col-4 col-form-label">Permissions<span class="text-danger">*</span></label>
+                                <div class="col-7">
+                                    {{ obj.permissions }}
+                                </div>
+                            </div>
+                            
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="form-group mx-sm-3 text-right">
+                                    <button type="submit" class="btn btn-primary"> <span>Save</span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+<!-- responsive-table-->
+<script src="/static/plugins/minton/plugins/RWD-Table-Patterns/dist/js/rwd-table.min.js" type="text/javascript"></script>
+<script>
+    $(function() {
+        $('.table-responsive').responsiveTable({
+            addDisplayAllBtn: 'btn btn-secondary'
+        });
+    });
+</script>
+<script>
+    var status_code = "{{ status_code }}"
+    if (status_code == "402") {
+        sweetAlert("错误的注册", "请重新注册，填写正确的信息!", "error");
+        $("#btnAddUser").click()
+    }
+
+    function SelectAllObjs(ele) {
+
+        if ($(ele).prop('checked')){
+            $('input[row-select]').prop('checked',true)
+
+        }else {
+            $('input[row-select]').prop('checked',false)
+        }
+
+    }
+
+
+    function ActionCheck(ele){
+        var selected_action = $("select[name='action']").val();
+        var selected_objs = $("input[row-select]").filter(":checked");
+        console.log($("select[name='action']").val())
+        if (!selected_action){
+            alert("no action selected!");
+            return false
+        }
+        if (selected_objs.length == 0 ){
+            alert("no object selected!");
+            return false
+        }else {
+            //生成一个标签,放到form里
+
+            var selected_ids = [];
+            $.each(selected_objs,function () {
+                console.log($(this) );
+                selected_ids.push($(this).val())
+            });
+            console.log(selected_ids);
+            var input_ele = "<input type='hidden' name='selected_ids' value=" + JSON.stringify(selected_ids) + ">";
+
+            $(ele).append(input_ele);
+        }
+
+    }
+
+
+</script>
+<script>
+$(function(){
+        bindDeletePermission();
+    });
+    function bindDeletePermission(){
+
+        $("#btnDeletePermissionFunc").click(function(){
+            var postData = {};
+            var DELETEDATA = "PermissionList"
+            postData[DELETEDATA] = ["{{ obj.id }}"];
+            
+            
+            if (!jQuery.isEmptyObject(postData[DELETEDATA])){
+                swal({
+                    title: '你确定要删除？',
+                    text: "点击确定后会进行删除！",
+                    type: 'question', // warning
+                    showCancelButton: true,
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    confirmButtonClass: 'btn btn-success mt-2 delete-resume-source',
+                    cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                    buttonsStyling: false
+                }).then(function () {
+                    
+                }, function (dismiss) {
+                    if (dismiss === 'cancel') {
+                        swal({
+                            title: '已取消',
+                            text: "成功取消删除操作!",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                });
+                $('.delete-resume-source').click(function () {
+                    postData[DELETEDATA] = JSON.stringify(postData[DELETEDATA])
+                    DeleteData(postData);
+                })
+            }else {
+                $.Notification.autoHideNotify('error', 'top right', '无效的删除','无效的操作，没有需要删除的数据，请查看后再次删除!')
+            }
+            
+        })
+    }
+    function DeleteData(postData){
+        $.ajax({
+            url: '/permission/delete',
+            data: postData,
+            type: 'POST',
+            dataType: "JSON",
+            success: function(arg){
+                if (arg.status_code != "200"){
+                    swal({
+                        title: '错误',
+                        text: "数据删除失败!",
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }else{
+                    swal({
+                        title: '已删除',
+                        text: "数据删除成功!",
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    }).then(function () {
+                        window.location.href="/system/role/list";
+                    });
+                    
+                }
+            }
+        })
+    }
+</script>
+{% endblock %}

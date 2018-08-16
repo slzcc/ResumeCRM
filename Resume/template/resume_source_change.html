@@ -1,0 +1,149 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load generaladmin_tags %}
+
+{% block css %}
+    <style>
+    </style>
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">{{obj.name}}</h4>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/resume/source/{{obj.id}}/change">{{obj.name}}</a></li>
+                    <li class="breadcrumb-item"><a href="/resume/source/list">简历来源</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">编辑简历来源</h4>
+            <p class="text-muted m-b-30 font-14">
+                编辑简历来源 <code>{{ obj.name }}</code> .
+            </p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-box">
+                        <form class="" action="#" novalidate="" method="post">
+
+
+                            <div class="form-group">
+                                <label>Name: </label>
+                                {{ form_obj.name }}
+                                <span style="color: red">{{ form_obj.errors.name }}</span>
+                            </div>
+
+                           
+
+                            <div class="form-group col-md-12">
+                                <div class="form-group mx-sm-3 text-right">
+                                    <button class="btn btn-primary waves-effect waves-light"> <span>Save Info</span></button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="form-group col-md-12">
+                            <div class="form-group mx-sm-3 text-right">
+                                <button id="btnDeleteResumeSource" class="btn btn-danger"><i class="fa fa-times"></i> <span>Delete</span></button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+    </div><!-- end col -->
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+    $(function() {
+        bindDeleteResumeSource();
+
+    });
+   function bindDeleteResumeSource(){
+
+        $("#btnDeleteResumeSource").click(function(){
+            var postData = {};
+            var DELETEDATA = "ResumeSourceList"
+            postData[DELETEDATA] = ["{{ obj.id}}"];
+            
+            
+            if (!jQuery.isEmptyObject(postData[DELETEDATA])){
+                swal({
+                    title: '你确定要删除？',
+                    text: "点击确定后会进行删除！",
+                    type: 'question', // warning
+                    showCancelButton: true,
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    confirmButtonClass: 'btn btn-success mt-2 delete-resume-source',
+                    cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                    buttonsStyling: false
+                }).then(function () {
+                    
+                }, function (dismiss) {
+                    if (dismiss === 'cancel') {
+                        swal({
+                            title: '已取消',
+                            text: "成功取消删除操作!",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                });
+                $('.delete-resume-source').click(function () {
+                    postData[DELETEDATA] = JSON.stringify(postData[DELETEDATA])
+                    DeleteData(postData);
+                })
+            }else {
+                $.Notification.autoHideNotify('error', 'top right', '无效的删除','无效的操作，没有需要删除的数据，请查看后再次删除!')
+            }
+            
+        })
+    }
+    function DeleteData(postData){
+        $.ajax({
+            url: '/resume/source/delete',
+            data: postData,
+            type: 'POST',
+            dataType: "JSON",
+            success: function(arg){
+                if (arg.status_code != "200"){
+                    swal({
+                        title: '错误',
+                        text: "数据删除失败!",
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }else{
+                    swal({
+                        title: '已删除',
+                        text: "数据删除成功!",
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    }).then(function () {
+                        window.location.href="/resume/source/list";
+                    });
+                    
+                }
+            }
+        })
+    }
+</script>
+{% endblock %}

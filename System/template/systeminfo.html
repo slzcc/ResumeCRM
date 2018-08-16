@@ -1,0 +1,86 @@
+{% extends 'base_templates/_page_layout.html' %}
+
+{% block css %}
+    <style>
+    </style>
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">系统信息</h4>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="#">系统信息</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">查看系统信息</h4>
+            <p class="text-muted font-14 m-b-20">
+                下列信息中含有 <code>&lt;ResumeCRM&gt;</code> 和 <code>&lt;系统&gt;</code> 信息.
+            </p>
+
+            <table width="90%" cellspacing="0" class="grid" id="system-info">
+                <tbody><tr>
+                    <th colspan="2" width="90%">ResumeCRM</th>
+                </tr>
+                    <tr>
+                    <td width="35%"><strong>系统日期</strong></td><td>2018年7月2日 星期一</td>
+                </tr>
+                    <tr bgcolor="#f9f9f9">
+                    <td width="35%"><strong>系统时间</strong></td><td>9:51:32</td>
+                </tr>
+                    <tr>
+                    <td width="35%"><strong>系统安装日期</strong></td><td>Monday, May 23, 2016</td>
+                </tr>
+                    <tr bgcolor="#f9f9f9">
+                    <td width="35%"><strong>正常运行时间</strong></td><td>3 days, 17 hours, 53 minutes, 48 seconds</td>
+                </tr>
+                    <tr>
+                    <td width="35%"><strong>Confluence版本</strong></td><td>6.0.4</td>
+                </tr>
+                    <tr bgcolor="#f9f9f9">
+                    <td width="35%"><strong>构件编号</strong></td><td>7102</td>
+                </tr>
+                    <tr>
+                    <td width="35%"><strong>服务器主页URL</strong></td><td>https://wiki.shileizcc.com</td>
+                </tr>
+                    <tr bgcolor="#f9f9f9">
+                    <td width="35%"><strong>Confluence主目录</strong></td><td>/var/atlassian/application-data</td>
+                </tr>
+                    <tr>
+                    <td width="35%"><strong>服务器ID</strong></td><td>BNPW-5EJU-ER3H-GTRC</td>
+                </tr>
+                    <tr bgcolor="#f9f9f9">
+                    <td width="35%"><strong>技术支持授权号</strong></td><td>SEN-L1234567</td>
+                </tr>
+                    <tr>
+                    <td width="35%"><strong>每日 XML 备份</strong></td><td> 允许 </td>
+                </tr>
+            </tbody></table>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    
+</script>
+{% endblock %}

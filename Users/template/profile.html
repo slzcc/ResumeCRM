@@ -1,0 +1,397 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load staticfiles %}
+{% load authentication_tags %}
+
+{% block css %}
+<style>
+    .selected_button_img {
+        border: 3px solid; 
+        border-color: #3C78B5;
+    }
+</style>
+{% endblock %}
+{% block title %}
+
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Profile</h4>
+            <ol class="breadcrumb float-right">
+                <li class="breadcrumb-item"><a href="#">{{  request.user.name  }}</a></li>
+                <li class="breadcrumb-item active"><a href="/user/profile">Profile</a></li>
+                <li class="breadcrumb-item active">User</li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block conent %}
+<!-- sample modal content -->
+<div id="aEditPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="CenterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form role="form" action="/user/update/password/{{ request.user.id }}" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <label class="modal-title" id="CenterModalLabel">修改密码</label>
+                </div>
+                <div class="modal-body">
+
+                    <p class="text-muted m-b-30 font-14">
+                        修改 <code>{{ form_userPassword_obj.instance }}</code> 密码.
+                    </p>
+                    <div class="form-group">
+                        <label for="Password">密码</label>
+                        {{ form_userPassword_obj.password1 }}
+                        <span style="color: red">{{ form_userPassword_obj.errors.password1 }}</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="RePassword">确认密码</label>
+                        {{ form_userPassword_obj.password2 }}
+                        <span style="color: red">{{ form_userPassword_obj.errors.password2 }}</span>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">确定</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+<div class="row">
+    <div class="col-xl-3 col-lg-4">
+        <div class="text-center card-box">
+            <div class="member-card">
+                
+
+
+                <!-- sample modal content -->
+                <div id="UpdateUserImg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="CenterModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="CenterModalLabel">选择需要更换的头像</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card-box">
+                                            {# <form role="form" action="/user/updata/head-portrait" method="post" > #}
+                                                <div class="form-row button-list" id="btnHeadPortrait">
+                                                    {% for item in imgList %}
+                                                            
+                                                            {% if request.user.head_portrait == item %}
+                                                                <button class="btn btn-icon waves-effect m-b-1 col-md-2" >
+                                                                
+                                                                    <img src="{% static item %}" class="rounded-circle img-thumbnail selected_button_img" alt="profile-image">
+                                                                </button>
+                                                                {#                                                            <button class="btn btn-icon waves-effect waves-light btn-danger m-b-2" style="position: absolute;"> <i class="fa fa-remove"></i> </button>#}
+
+                                                            {% else %}
+                                                                <button class="btn btn-icon waves-effect m-b-1 col-md-2" >
+                                                                    <img src="{% static item %}" class="rounded-circle img-thumbnail" alt="profile-image">
+                                                                </button>
+                                                            {% endif %}
+
+                                                            
+                                                    {% endfor %}
+                                                </div>
+                                            {# </form> #}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary waves-effect" id="CloseUpdateUserImg" data-dismiss="modal">Close</button>
+                                {# <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button> #}
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+                <div class="thumb-xl member-thumb m-b-10 center-block">
+                    {# <img src="{% static request.user.head_portrait %}" class="rounded-circle img-thumbnail" alt="profile-image"> #}
+                    {# <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#CenterModal">Center Modal</button> #}
+                    <input id="UserImg" name="imgbtn" type="image" src="{% static request.user.head_portrait %}" class="rounded-circle img-thumbnail" alt="profile-image" data-toggle="modal" data-target="#UpdateUserImg">
+
+                </div>
+
+                <div class="">
+                    <h5 class="m-b-5">{{  request.user.name  }}</h5>
+                    <p class="text-muted"></p>
+                </div>
+
+                <button type="button" class="btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light">Follow</button>
+                <button type="button" class="btn btn-danger btn-sm w-sm waves-effect m-t-10 waves-light">Message</button>
+
+
+                <div class="text-left m-t-40">
+                    <p class="text-muted font-13"><strong>用户名 :</strong> <span class="m-l-15">{{  request.user.name  }}</span></p>
+
+                    <p class="text-muted font-13"><strong>电话 :</strong><span class="m-l-15">{{  request.user.phone  }}</span></p>
+
+                    <p class="text-muted font-13"><strong>邮箱 :</strong> <span class="m-l-15">{{  request.user.email  }}</span></p>
+
+                    <p class="text-muted font-13"><strong>国籍 :</strong> <span class="m-l-15">{{  request.user.location  }}</span></p>
+                </div>
+
+                <ul class="social-links list-inline m-t-30">
+                    <li class="list-inline-item">
+                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div> <!-- end card-box -->
+
+{#        <div class="card-box">#}
+{#            <h4 class="m-t-0 m-b-20 header-title">Skills</h4>#}
+{##}
+{#            <div class="p-b-10">#}
+{#                <p>HTML5</p>#}
+{#                <div class="progress progress-sm">#}
+{#                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <p>PHP</p>#}
+{#                <div class="progress progress-sm">#}
+{#                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <p>Wordpress</p>#}
+{#                <div class="progress progress-sm mb-0">#}
+{#                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+    </div> <!-- end col -->
+
+
+    <div class="col-lg-8 col-xl-9">
+        <div class="">
+            <div class="card-box">
+                <ul class="nav nav-tabs tabs-bordered">
+                    <li class="nav-item">
+                        <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link">
+                            ABOUT ME
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                            GALLERY
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
+                            SETTINGS
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="home">
+                        <p class="m-b-5">Hi I'm Johnathn Deo,has been the industry's standard dummy text ever
+                            since the 1500s, when an unknown printer took a galley of type.
+                            Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                            In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+                            Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
+                            dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+                            tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
+                            ac, enim.</p>
+
+                        <div class="m-t-30">
+                            <h5>Experience</h5>
+
+                            <div class=" p-t-10">
+                                <h6 class="text-primary m-b-5">Lead designer / Developer</h6>
+                                <p class="">websitename.com</p>
+                                <p><b>2010-2015</b></p>
+
+                                <p class="text-muted font-13 m-b-0">Lorem Ipsum is simply dummy text
+                                    of the printing and typesetting industry. Lorem Ipsum has
+                                    been the industry's standard dummy text ever since the
+                                    1500s, when an unknown printer took a galley of type and
+                                    scrambled it to make a type specimen book.
+                                </p>
+                            </div>
+
+                            <hr>
+
+                            <div class="">
+                                <h6 class="text-primary m-b-5">Senior Graphic Designer</h6>
+                                <p class="">coderthemes.com</p>
+                                <p><b>2007-2009</b></p>
+
+                                <p class="text-muted font-13">Lorem Ipsum is simply dummy text
+                                    of the printing and typesetting industry. Lorem Ipsum has
+                                    been the industry's standard dummy text ever since the
+                                    1500s, when an unknown printer took a galley of type and
+                                    scrambled it to make a type specimen book.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="profile">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="gal-detail thumb">
+                                    <a href="#" class="image-popup" title="Screenshot-2">
+                                        <img src="/static/plugins/minton/images/gallery/1.jpg" class="thumb-img" alt="work-thumbnail">
+                                    </a>
+                                    <h4 class="text-center">Gallary Image</h4>
+                                    <div class="ga-border"></div>
+                                    <p class="text-muted text-center"><small>Photography</small></p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="gal-detail thumb">
+                                    <a href="#" class="image-popup" title="Screenshot-2">
+                                        <img src="/static/plugins/minton/images/gallery/2.jpg" class="thumb-img" alt="work-thumbnail">
+                                    </a>
+                                    <h4 class="text-center">Gallary Image</h4>
+                                    <div class="ga-border"></div>
+                                    <p class="text-muted text-center"><small>Photography</small></p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="gal-detail thumb">
+                                    <a href="#" class="image-popup" title="Screenshot-2">
+                                        <img src="/static/plugins/minton/images/gallery/3.jpg" class="thumb-img" alt="work-thumbnail">
+                                    </a>
+                                    <h4 class="text-center">Gallary Image</h4>
+                                    <div class="ga-border"></div>
+                                    <p class="text-muted text-center"><small>Photography</small></p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="gal-detail thumb">
+                                    <a href="#" class="image-popup" title="Screenshot-2">
+                                        <img src="/static/plugins/minton/images/gallery/4.jpg" class="thumb-img" alt="work-thumbnail">
+                                    </a>
+                                    <h4 class="text-center">Gallary Image</h4>
+                                    <div class="ga-border"></div>
+                                    <p class="text-muted text-center"><small>Photography</small></p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="gal-detail thumb">
+                                    <a href="#" class="image-popup" title="Screenshot-2">
+                                        <img src="/static/plugins/minton/images/gallery/5.jpg" class="thumb-img" alt="work-thumbnail">
+                                    </a>
+                                    <h4 class="text-center">Gallary Image</h4>
+                                    <div class="ga-border"></div>
+                                    <p class="text-muted text-center"><small>Photography</small></p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="gal-detail thumb">
+                                    <a href="#" class="image-popup" title="Screenshot-2">
+                                        <img src="/static/plugins/minton/images/gallery/6.jpg" class="thumb-img" alt="work-thumbnail">
+                                    </a>
+                                    <h4 class="text-center">Gallary Image</h4>
+                                    <div class="ga-border"></div>
+                                    <p class="text-muted text-center"><small>Photography</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="settings">
+                        <form role="form" method="post">
+                            <div class="form-group">
+                                <label for="Email">邮箱</label>
+                                {% MenuButtonAuthentication request "user_profile_set_password" as RETURN %}{% if RETURN %}
+                                <a class="pull-right" href="#" data-toggle="modal" data-target="#aEditPassword">修改密码</a>{% endif %}
+                                {{ form_userInfo_obj.email }}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Username">名称</label>
+                                {{ form_userInfo_obj.name }}
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="Phone">电话</label>
+                                {{ form_userInfo_obj.phone }}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Location">国籍</label>
+                                {{ form_userInfo_obj.location }}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="AboutMe">关于我</label>
+                                {{ form_userInfo_obj.describe }}
+                            </div>
+                            <button class="btn btn-primary waves-effect waves-light w-md" type="submit">保存</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end col -->
+</div>
+<!-- end row -->
+{% endblock %}
+
+{% block js %}
+    <!-- Modal-Effect -->
+    <script src="/static/plugins/minton/plugins/custombox/dist/custombox.min.js"></script>
+    <script src="/static/plugins/minton/plugins/custombox/dist/legacy.min.js"></script>
+    <script >
+    $(function () {
+        bindHeadPortrait();
+        
+    });
+    function bindHeadPortrait(){
+        data = {}
+        $("#btnHeadPortrait button").click(function (){
+            var img = $(this).find("img").attr("src");
+            data["head_portrait"] = img
+            $.ajax({
+                url: '/user/update/head-portrait',
+                data: data,
+                dataType: "JSON",
+                type: 'POST',
+                success: function(){
+                    
+                }
+            })
+            $("#CloseUpdateUserImg").click();
+            $("#UserImg").attr("src", img);
+            $("#HeadUserImg").attr("src", img);
+            $('#btnHeadPortrait').find('button').each(function () {
+                 $(this).find("img").removeClass("selected_button_img");
+            });
+            $(this).find("img").addClass("selected_button_img");
+            // window.location.reload();
+        })
+    }
+    </script>
+{% endblock %}

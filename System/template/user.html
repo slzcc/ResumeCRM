@@ -1,0 +1,335 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load web_tags %}
+
+{% block css %}
+    <!-- DataTables -->
+    <link href="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Responsive datatable examples -->
+    <link href="/static/plugins/minton/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <style>
+    </style>
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h1 class="page-title">用户管理</h1>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/system/user/list">用户管理</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+
+<div id="AddUser" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">创建新用户</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">
+                                    Email
+                                    <span class="text-danger">*</span>
+                                </label>
+                                {{ obj.email }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.email }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">
+                                    Password
+                                    <span class="text-danger">*</span>
+                                </label>
+                                {{ obj.password1 }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.password1 }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">
+                                    Re-Password
+                                    <span class="text-danger">*</span>
+                                </label>
+                                {{ obj.password2 }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.password2 }}</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Name</label>
+                                {{ obj.name }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.name }}</span>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-2" class="control-label">location</label>
+                                {{ obj.location }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.location }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">Phone</label>
+                                {{ obj.phone }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.phone }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group no-margin">
+                                <label for="field-7" class="control-label">Personal Introduction</label>
+                                {{ obj.describe }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.describe }}</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">角色管理</h4>
+            <p class="text-muted m-b-30 font-13">
+                请选择需要操作的 <code>用户</code>, 进行 <code>搜索</code> 或者 <code>查看</code> 等操作.
+            </p>
+            
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-group mx-sm-3 text-right">
+                            <button id="btnDeleteUser" class="btn btn-danger"><i class="fa fa-times"></i> <span>Delete User</span></button>
+                            <button id="btnAddRole" class="btn btn-primary" data-toggle="modal" data-target="#AddUser"><i class="fa fa-plus m-r-5"></i> <span>Add User</span></button>
+                        </div>
+                    </div>
+                </div>
+
+            
+            <table id="user-tables" class="table table-bordered">
+                <thead>
+                <tr>
+                    <th data-toggle="true" class="footable-visible footable-first-column footable-sortable">
+                        <input type="checkbox" onclick="SelectAllObjs(this)">
+                    </th>
+                    <th>电子邮箱</th>
+                    <th>用户名称</th>
+                    <th>联系电话</th>
+                    <th>所属角色</th>
+                    <th>是管理员</th>
+                    <th>活跃用户</th>
+
+                </tr>
+                </thead>
+
+
+                <tbody>
+                    {% SetSystemUserTbody AllUserProfileList %}
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/static/plugins/minton/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(function() {
+        bindDeleteUser();
+
+    });
+    var status_code = "{{ status_code }}"
+    if (status_code == "402") {
+        sweetAlert("错误的注册", "请重新注册，填写正确的信息!", "error");
+        $("#btnAddUser").click()
+    }
+
+    function SelectAllObjs(ele) {
+
+        if ($(ele).prop('checked')){
+            $('input[row-select]').prop('checked',true)
+
+        }else {
+            $('input[row-select]').prop('checked',false)
+        }
+
+    }
+
+
+    function ActionCheck(ele){
+        var selected_action = $("select[name='action']").val();
+        var selected_objs = $("input[row-select]").filter(":checked");
+        // console.log($("select[name='action']").val())
+        if (!selected_action){
+            alert("no action selected!");
+            return false
+        }
+        if (selected_objs.length == 0 ){
+            alert("no object selected!");
+            return false
+        }else {
+            //生成一个标签,放到form里
+
+            var selected_ids = [];
+            $.each(selected_objs,function () {
+                console.log($(this) );
+                selected_ids.push($(this).val())
+            });
+            console.log(selected_ids);
+            var input_ele = "<input type='hidden' name='selected_ids' value=" + JSON.stringify(selected_ids) + ">";
+
+            $(ele).append(input_ele);
+        }
+        //return false
+
+    }
+
+    function bindDeleteUser(){
+
+        $("#btnDeleteUser").click(function(){
+            var postData = {};
+            postData["UserList"] = [];
+            $("#user-tables").find('input[type="checkbox"]').each(function(){
+                if ($(this).prop('checked') && $(this).attr("row-select")){
+                    postData["UserList"].push($(this).val())
+                }
+            })
+            
+            if (!jQuery.isEmptyObject(postData["UserList"])){
+                swal({
+                    title: '你确定要删除？',
+                    text: "点击确定后会进行删除！",
+                    type: 'question', // warning
+                    showCancelButton: true,
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    confirmButtonClass: 'btn btn-success mt-2 delete-user',
+                    cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                    buttonsStyling: false
+                }).then(function () {
+                    
+                }, function (dismiss) {
+                    if (dismiss === 'cancel') {
+                        swal({
+                            title: '已取消',
+                            text: "成功取消删除操作!",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                });
+                $('.delete-user').click(function () {
+                    postData["UserList"] = JSON.stringify(postData["UserList"])
+                    DeleteData(postData);
+                })
+            }else {
+                $.Notification.autoHideNotify('error', 'top right', '无效的删除','无效的操作，没有需要删除的数据，请查看后再次删除!')
+            }
+            
+        })
+    }
+    function DeleteData(postData){
+        $.ajax({
+            url: '/system/user/delete',
+            data: postData,
+            type: 'POST',
+            dataType: "JSON",
+            success: function(arg){
+                if (arg.status_code != "200"){
+                    swal({
+                        title: '错误',
+                        text: "数据删除失败!",
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }else{
+                    swal({
+                        title: '已删除',
+                        text: "数据删除成功!",
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    }).then(function () {
+                        window.location.reload();
+                    });
+                    
+                }
+            }
+        })
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // Default Datatable
+        $('#user-tables').DataTable({
+            lengthChange: false,
+        });
+
+        //Buttons examples
+        var table = $('#datatable-buttons').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf']
+        });
+
+        // Key Tables
+
+        // $('#key-table').DataTable({
+            // keys: true
+        // });
+
+        // Responsive Datatable
+        // $('#responsive-datatable').DataTable();
+
+        // Multi Selection Datatable
+        // $('#selection-datatable').DataTable({
+            // select: {
+                // style: 'multi'
+            // }
+        // });
+
+        table.buttons().container()
+            .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+    } );
+
+</script>
+{% endblock %}

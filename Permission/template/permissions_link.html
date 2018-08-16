@@ -1,0 +1,128 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load web_tags %}
+
+{% block css %}
+    <style>
+    </style>
+    <!-- Table Responsive css -->
+    <link href="/static/plugins/minton/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css" rel="stylesheet" type="text/css" media="screen">
+
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h1 class="page-title">权限管理</h1>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/permission/link">权限分配</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">角色权限</h4>
+            <p class="text-muted m-b-30 font-13">
+                请选择需要操作的 <code>角色</code>, 进行 <code>修改</code> 权限操作.
+            </p>
+            
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        {% if isGroup == "True" %}
+                            <div class="alert alert-warning">
+                                <strong>警告!</strong> 还没有一个 Role，请为 System 添加一个 Role 为其他 User 添加所需的权限!
+                            </div>
+                        {% endif %}
+                    </div>
+                    {# <div class="form-group col-md-6"> #}
+                        {# <div class="form-group mx-sm-3 text-right"> #}
+                        {# </div> #}
+                    {# </div> #}
+                    
+                </div>
+            
+            <form class="" method="post">
+                <table id="permissions-tables" class="table table-striped table-bordered toggle-circle m-b-0 default footable-loaded footable" data-page-size="7">
+                    {% SetPermissionLinkTable data %}
+                    
+                </table>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-group mx-sm-3 text-right">
+                            <button type="submit" class="btn btn-warning"> <i class="fa fa-rocket m-r-5"></i> <span>Save</span> </button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block js %}
+<!-- responsive-table-->
+<script src="/static/plugins/minton/plugins/RWD-Table-Patterns/dist/js/rwd-table.min.js" type="text/javascript"></script>
+
+<script>
+
+    function SelectAllObjs(ele) {
+
+        if ($(ele).prop('checked')){
+            $('input[row-select]').prop('checked',true)
+
+        }else {
+            $('input[row-select]').prop('checked',false)
+        }
+
+    }
+
+
+    function ActionCheck(ele){
+        var selected_action = $("select[name='action']").val();
+        var selected_objs = $("input[row-select]").filter(":checked");
+        console.log($("select[name='action']").val())
+        if (!selected_action){
+            alert("no action selected!");
+            return false
+        }
+        if (selected_objs.length == 0 ){
+            alert("no object selected!");
+            return false
+        }else {
+            //生成一个标签,放到form里
+
+            var selected_ids = [];
+            $.each(selected_objs,function () {
+                console.log($(this) );
+                selected_ids.push($(this).val())
+            });
+            console.log(selected_ids);
+            var input_ele = "<input type='hidden' name='selected_ids' value=" + JSON.stringify(selected_ids) + ">";
+
+            $(ele).append(input_ele);
+        }
+
+    }
+
+
+</script>
+
+{% endblock %}

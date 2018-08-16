@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="/static/plugins/minton/images/favicon.ico">
+
+        <title>ResumeCRM - @Shileizcc.com </title>
+
+        <link href="/static/plugins/minton/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+        <link href="/static/plugins/minton/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/plugins/minton/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="/static/plugins/minton/css/style.css" rel="stylesheet" type="text/css">
+
+        <script src="/static/plugins/minton/js/modernizr.min.js"></script>
+
+    </head>
+    <body>
+
+        {# {{ obj.instance }} #}
+        <div class="wrapper-page">
+
+            <div class="text-center">
+                <a href="/resume.html" class="logo-lg"><i class="mdi mdi-radar"></i> <span>ResumeCRM</span> </a>
+                
+            </div>
+            
+            <form class="form-horizontal m-t-20" action="" method="post">
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-email"></i></span>
+                            </div>
+                            {{ obj.email }}
+                        </div>
+                        <span style="color: red">{{ obj.errors.email }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-account"></i></span>
+                            </div>
+                            {{ obj.name }}
+                        </div>
+                        <span style="color: red">{{ obj.errors.name }}</span>
+                    </div>
+                </div>
+
+                 <div class="form-group row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-phone"></i></span>
+                            </div>
+                            {{ obj.phone }}
+                        </div>
+                        <span style="color: red">{{ obj.errors.phone }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-key"></i></span>
+                            </div>
+                            {# <input class="form-control" name="password1" type="password" required="" placeholder="Password"> #}
+                            {{ obj.password1 }}
+                        </div>
+                        <span style="color: red">{{ obj.errors.password1 }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mdi mdi-key-change"></i></span>
+                            </div>
+                            {# <input class="form-control" name="password2" type="password" required="" placeholder="Password Confirmation"> #}
+                            {{ obj.password2 }}
+                        </div>
+                        <span style="color: red">{{ obj.errors.password2 }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="checkbox checkbox-primary">
+                            <input id="checkbox-signup" type="checkbox" checked="checked">
+                            <label for="checkbox-signup">
+                                I accept <a href="#">Terms and Conditions</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-right m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary btn-custom waves-effect waves-light w-md" type="submit">Register</button>
+                    </div>
+                </div>
+
+                <div class="form-group row m-t-30">
+                    <div class="col-12 text-center">
+                        <a href="/user/login.html" class="text-muted">Already have account?</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- Plugins  -->
+        <script src="/static/plugins/minton/js/jquery.min.js"></script>
+        <script src="/static/plugins/minton/js/popper.min.js"></script><!-- Popper for Bootstrap -->
+        <script src="/static/plugins/minton/js/bootstrap.min.js"></script>
+        <script src="/static/plugins/minton/js/detect.js"></script>
+        <script src="/static/plugins/minton/js/fastclick.js"></script>
+        <script src="/static/plugins/minton/js/jquery.slimscroll.js"></script>
+        <script src="/static/plugins/minton/js/jquery.blockUI.js"></script>
+        <script src="/static/plugins/minton/js/waves.js"></script>
+        <script src="/static/plugins/minton/js/wow.min.js"></script>
+        <script src="/static/plugins/minton/js/jquery.nicescroll.js"></script>
+        <script src="/static/plugins/minton/js/jquery.scrollTo.min.js"></script>
+        <script src="/static/plugins/minton/plugins/switchery/switchery.min.js"></script>
+
+        <!-- Custom main Js -->
+        <script src="/static/plugins/minton/js/jquery.core.js"></script>
+        <script src="/static/plugins/minton/js/jquery.app.js"></script>
+
+    </body>
+</html>

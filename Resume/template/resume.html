@@ -1,0 +1,829 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load authentication_tags %}
+
+{% block css %}
+
+    <style>
+        #solrSearch::-webkit-input-placeholder{
+            color: #24748c;
+        }
+        #solrSearch::-moz-placeholder{   /* Mozilla Firefox 19+ */
+            color: #24748c;
+        }
+        #solrSearch:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+            color: #24748c;
+        }
+        #solrSearch:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+            color: #24748c;
+        }
+        #solrSearch {
+            border:1px solid; 
+            border-color: #00b19d; 
+            color: #0a0903; 
+            /*width:320px;*/
+        }
+
+    </style>
+    <link href="/static/css/dropzone_custom_update_file.css" rel="stylesheet" type="text/css">
+    <!-- Dropzone css -->
+    <link href="/static/plugins/minton/plugins/dropzone/dropzone.css" rel="stylesheet">
+
+{% endblock %}
+{% block title %}
+
+    <!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">候选人列表</h4>
+            <ol class="breadcrumb float-right">
+                <li class="breadcrumb-item"><a href="/resume/list">侯选人列表</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block conent %}
+{% include 'include/Modals/_upload_resume_manyfile_parsing.html' %}
+
+<div class="row" id="valueSearch">
+    <div class="col-12">
+        {% MenuButtonAuthentication request "resume_list_search" as RETURN %}{% if RETURN %}
+        <div class="card-box" >
+            <div class="form-group row">
+                <div class="col-md-6 input-group">
+                    {% MenuButtonAuthentication request "resume_list_search" as RETURN %}{% if RETURN %}
+                    <input style="" id="solrSearch" type="text" name="solrSearch" placeholder="输入需要搜索的内容..." class="form-control">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark waves-effect waves-light" type="button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">高级筛选</button>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    {% MenuButtonAuthentication request "resume_list_search" as RETURN %}{% if RETURN %}
+                    <button id="btnSearch" type="button" class="btn btn-info btn-custom w-md waves-effect waves-light">
+                        <i class="ion-android-search"></i>
+                        <span> 搜索</span>
+                    </button>
+                    {% endif %}
+                    {% MenuButtonAuthentication request "resume_batch_operation" as RETURN %}{% if RETURN %}
+                    <button class="btn btn-primary disabled waves-effect waves-light" type="button" type="button" data-toggle="collapse" data-target="#BatchOperation" aria-expanded="true" aria-controls="BatchOperation">
+                        <i class="fa fa-money m-l-5"></i>
+                        <span> 批量操作</span>
+                        
+                    </button>
+                    {% endif %}
+
+                    {% MenuButtonAuthentication request "resume_uplaod_attachment" as RETURN %}{% if RETURN %}
+                    <button class="btn btn-success btn-custom w-md waves-effect waves-light" data-toggle="modal" data-target="#btnUpload">
+                        <i class="ion-upload m-r-5"></i>
+                        <span> 上传</span>
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+            {% MenuButtonAuthentication request "resume_uplaod_batch_operation" as RETURN %}{% if RETURN %}
+            <div class="col-md-12 collapse hide" id="BatchOperation" style="">
+                <div class="card card-body">
+                    <h4 class="m-t-0 header-title">批量操作功能</h4>
+                    <p class="text-muted m-b-30 font-13">
+                        可对列出的数据进行 <code>批量</code> 的进行 <code>更新</code> 或者 <code>删除</code> 等操作.
+                    </p>
+                    <div>
+                        <button id="idCheckAll" type="button" class="btn btn-primary waves-effect waves-light">全选</button>
+                        <button id="idReverseAll" type="button" class="btn btn-light waves-effect">反选</button>
+                        <button id="idCancelAll" type="button" class="btn btn-secondary waves-effect">取消</button>
+                        <button id="idEditMode" type="button" class="btn btn-success waves-effect waves-light">进入编辑模式</button>
+                        <button id="idDeleteMode" type="button" class="btn btn-danger waves-effect waves-light">批量删除</button>
+                        <button id="idSave" type="button" class="btn btn-info waves-effect waves-light">保存</button>
+                        <a id="idAdd" href="/add_resume.html" class="btn btn-dark waves-effect waves-light">添加</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="col-md-12 collapse hide" id="collapseExample" style="">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card-box">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-3 col-form-label">性别</label>
+                                    <div class="col-9">
+                                        <div class="radio radio-info form-check-inline">
+                                            <input type="radio" id="inlineRadio1" value="true" name="gender">
+                                            <label for="inlineRadio1"> 男
+                                            </label>
+                                        </div>
+                                        <div class="radio form-check-inline">
+                                            <input type="radio" id="inlineRadio2" value="false" name="gender">
+                                            <label for="inlineRadio2"> 女
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword3" class="col-3 col-form-label">年龄</label>
+                                    <div class="col-9">
+                                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                        <div class="input-group mb-2">
+                                            <input type="text" name="age__gte" class="form-control" id="inlineFormInputGroup" placeholder="0<">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">~</div>
+                                            </div>
+                                            <input type="text" name="age__lte" class="form-control" id="inlineFormInputGroup" placeholder="0>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword5" class="col-3 col-form-label">更新日期</label>
+                                    <div class="col-9">
+                                        <input type="text" name="modify_time" class="form-control" id="inputPassword5" placeholder="ex: 2018-01-01">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-box">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-3 col-form-label">现居住地</label>
+                                    <div class="col-9">
+                                        <input type="text" name="place_residence" class="form-control" id="inputEmail3" placeholder="现居住地">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword3" class="col-3 col-form-label">学历</label>
+                                    <div class="col-9">
+                                        <input type="text" name="degree" class="form-control" id="inputPassword3" placeholder="学历">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword5" class="col-3 col-form-label">语言能力</label>
+                                    <div class="col-9">
+                                        <input type="text" name="language" class="form-control" id="inputPassword5" placeholder="语言能力">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-box">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-3 col-form-label">期望工作地</label>
+                                    <div class="col-9">
+                                        <input type="text" name="job_addr" class="form-control" id="inputEmail3" placeholder="期望工作地">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword3" class="col-3 col-form-label">工作年限</label>
+                                    <div class="col-9">
+                                        <input type="text" name="work_time" class="form-control" id="inputPassword3" placeholder="工作年限">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{# <div class="row"> #}
+    {# <div class="col-12"> #}
+        {# <div class="card-box"> #}
+            {# <h4 class="m-t-0 header-title">操作选项</h4> #}
+            {# <button id="idCheckAll" type="button" class="btn btn-primary m-b-20 ">全选</button> #}
+            {# <button id="idReverseAll" type="button" class="btn btn-primary m-b-20">反选</button> #}
+            {# <button id="idCancelAll" type="button" class="btn btn-primary m-b-20">取消</button> #}
+            {# <button id="idEditMode" type="button" class="btn btn-primary m-b-20">进入编辑模式</button> #}
+            {# <button id="idDeleteMode" type="button" class="btn btn-primary m-b-20">批量删除</button> #}
+            {# <button id="idSave" type="button" class="btn btn-primary m-b-20">保存</button> #}
+            {# <a id="idAdd" href="/add_resume.html" class="btn btn-primary m-b-20">添加</a> #}
+        {# </div> #}
+    {# </div> #}
+{# </div> #}
+{% MenuButtonAuthentication request "resume_list_search" as RETURN %}{% if RETURN %}
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <div id="datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                <div class="row">
+                    <div class="col-sm-12" id="father_table">
+                        <table class="table" >
+                            <thead id="table_th">
+                            </thead>
+                            <tbody id="table_tb">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-5">
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block js %}
+
+    <!-- Dropzone js -->
+    <script src="/static/plugins/minton/plugins/dropzone/dropzone.js"></script>
+    <script src="/static/js/dropzone_custom_update_manyfile.js"></script>
+
+
+    <script src="/static/plugins/minton/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+
+
+    <script>
+        $(function () {
+            init();
+            bindEditMode();
+            bindCheckbox();
+            bindCheckAll();
+            bindCancelAll();
+            bindReverseAll();
+            SetSaveAlert();
+            bindChangePager();
+            bindDeleteMode();
+
+            $("#datatable_paginate").hide();
+            $("#btnSearch").click();
+        });
+
+        // 获取当前 url 中的所有参数
+    　　function GetUrlAllPara() {
+    　　　　var url = document.location.toString();
+    　　　　var arrUrl = url.split("?");
+
+    　　　　var para = arrUrl[1];
+    　　　　return para;
+    　　}
+
+        // 获取当前 url 中的相应参数
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+
+        // 批量删除
+        function bindDeleteMode() {
+            $("#idDeleteMode").click(function () {
+                var postData = {};
+                $('#table_tb').find(':checked').each(function () {
+                    var currentTr = $(this).parent().parent();
+
+                    currentTr.children().each(function () {
+                        var rid = $(this).attr("resume-id");
+                        if(!jQuery.isEmptyObject(rid)){
+                            postData[rid] = rid;
+                        }
+                    });
+                });
+                if (!jQuery.isEmptyObject(postData)){
+                    //Warning Message
+                    swal({
+                        title: '确定删除?',
+                        text: "确定删除此信息?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonClass: 'btn btn-confirm mt-2 ResumesDelete',
+                        cancelButtonClass: 'btn btn-cancel ml-2 mt-2',
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消'
+                    });
+                    $('.ResumesDelete').click(function () {
+                        $.ajax({
+                            url: "/resume/list/delete",
+                            type: "POST",
+                            data: postData,
+                            dataType: "JSON",
+                            success: function (arg) {
+                                if (arg.status_code != "200"){
+                                    swal({
+                                        title: '错误',
+                                        text: "数据删除失败!",
+                                        type: 'error',
+                                        confirmButtonClass: 'btn btn-confirm mt-2'
+                                    })
+                                }else{
+                                    swal({
+                                        title: '已删除',
+                                        text: "数据删除成功!",
+                                        type: 'success',
+                                        confirmButtonClass: 'btn btn-confirm mt-2'
+                                    }).then(function () {
+                                        window.location.reload();
+                                    });
+                                }
+                            }
+                        })
+                    })
+                }else {
+                    $.Notification.autoHideNotify('error', 'top right', '无效的删除','无效的操作，没有需要删除的数据，请查看后再次删除!')
+                }
+            })
+        }
+        function bindChangePager() {
+            $('#idPagination').on('click','a',function () {
+                var num = $(this).text();
+                init(num);
+
+            })
+        }
+
+        // 进入编辑模式
+        function bindEditMode() {
+            $('#idEditMode').click(function () {
+                var editing = $(this).hasClass('btn-warning');
+                if(editing){
+                    // 退出编辑模式
+                    $(this).removeClass('btn-warning');
+                    $(this).text('进入编辑模式');
+
+                    $('#table_tb').find(':checked').each(function () {
+                        var $currentTr = $(this).parent().parent();
+                        trOutEditMode($currentTr);
+                    })
+
+                }else{
+                    // 进入编辑模式
+                    $(this).addClass('btn-warning');
+                    $(this).text('退出编辑模式');
+                    $('#table_tb').find(':checked').each(function () {
+                        var currentTr = $(this).parent().parent();
+                        trIntoEditMode(currentTr);
+                    })
+                }
+            })
+        }
+
+        function bindCheckbox() {
+            $('#table_tb').on('click',':checkbox',function () {
+
+                if($('#idEditMode').hasClass('btn-warning')){
+                    var ck = $(this).prop('checked');
+                    var $currentTr = $(this).parent().parent();
+                    if(ck){
+                        // 进入编辑模式
+                        trIntoEditMode($currentTr);
+                    }else{
+                        // 退出编辑模式
+                        trOutEditMode($currentTr)
+                    }
+                }
+            })
+        }
+
+        // 自定义字符串格式化
+        String.prototype.format = function (kwargs) {
+
+            var ret = this.replace(/\{(\w+)\}/g,function (km,m) {
+                return kwargs[m];
+            });
+            return ret;
+        };
+
+        // 获取数据
+        function init() {
+            $("#btnSearch").click(function () {
+                var solrData = {};
+                var sqlData = {};
+                var search_type = "";
+                var search_value = "";
+                $('#valueSearch').find('input').each(function () {
+                    var n = $(this).attr("name");
+                    var v = $(this).val();
+                    if(n == "solrSearch"){
+                        if(!v){
+                            search_value = "*";
+                            return
+                        }else{
+                            search_value = v;
+                            return
+                        }
+                    }
+                    if(v){
+                        if ($(this).attr("type") == "radio") {
+                            if ($(this).prop("checked")) {
+                                sqlData[n] = v
+                            }
+                        }
+                        else{
+                            sqlData[n] = v
+                        }
+
+                    }
+
+                });
+
+                var page = getUrlParam("_page");
+                if(page == null){
+                    page = 1;
+                };
+
+                if(page == 1){
+                    solrData["q"] = 'raw_text:' + search_value;
+
+                    var filter_value = "id";
+                    solrData["fl"] = filter_value;
+
+                    var size_value = 100;
+                    solrData["rows"] = size_value;
+
+                    if(search_value == "_my"){
+                        search_type = "_my"
+                    }else{
+                        search_type = "_so"
+                    }
+
+                    var getData = {"_page": page, "searchType": search_type,"solrData": JSON.stringify(solrData), "sqlData": JSON.stringify(sqlData)};
+                    
+                    $.ajax({
+                        url: '/solr/search/resume/list',
+                        type: "GET",
+                        data: getData,
+                        dataType: 'JSON',
+                        success:function (result) {
+                            $('#father_table').find('tr').each(function () {
+                               $(this).html("");
+                            });
+                            $("#datatable_paginate").children().each(function () {
+                                $(this).remove();
+                            });
+                            initGlobalData(result.global_list);
+                            initHeader(result.table_config);
+                            initBody(result.table_config, result.data_list);
+                            $("#datatable_paginate").append(result.ele);
+                            
+                        }
+                    });
+
+                }else{
+
+                    var urlParam = GetUrlAllPara();
+                    $.ajax({
+                        url: '/solr/search/resume/list' + '?' + urlParam,
+                        type: "GET",
+                        success:function (result) {
+                            $('#father_table').find('tr').each(function () {
+                               $(this).html("");
+                            });
+                            $("#datatable_paginate").children().each(function () {
+                                $(this).remove();
+                            });
+                            initGlobalData(result.global_list);
+                            initHeader(result.table_config);
+                            initBody(result.table_config, result.data_list);
+                            $("#datatable_paginate").append(result.ele);
+                            
+                        }
+                    });
+                }
+
+
+                $("#datatable_paginate").show();
+            });
+        }
+
+        // 创建初始 Table TH
+        function initHeader(table_config) {
+            var tr = document.createElement('tr'); // 创建 tr 标签
+            tr.setAttribute("role", "row");
+            $.each(table_config, function (k, item) {
+                if(item.display == '1') {
+                    var th = document.createElement('th');
+                    th.innerHTML = item.title;
+
+                    th.setAttribute("class", "sorting");// 添加排序
+                    $(tr).append(th);
+                }
+            });
+            $('#table_th').append(tr);
+
+        }
+        // 创建初始 Table TD
+        function initBody(table_config, data_list) {
+            $.each(data_list, function (k, row) {
+                if(row["gender"] == true){
+                    row["gender"] = "男"
+                }else{
+                    row["gender"] = "女"
+                }
+                var tr = document.createElement('tr');
+                $.each(table_config, function (i, colConfig) {
+                    if(colConfig.display == '1'){
+                        var td = document.createElement('td');
+                        td.innerHTML =  row[colConfig.q];
+
+                        var kwargs = {};
+                        $.each(colConfig.text.kwargs, function (key, value) {
+                           if(value.substring(0, 2) == '@@'){
+                               var globalName = value.substring(2,value.length); // 全局变量的名称
+                               var currentId = row[colConfig.q]; // 获取的数据库中存储的数字类型值
+                               var t = getTextFromGlobalById(globalName,currentId);
+                               kwargs[key] = t;
+                           }else if (value[0] == '@'){
+                                kwargs[key] = row[value.substring(1,value.length)]; //cabinet_num
+                           }else{
+                                kwargs[key] = value;
+                           }
+                        });
+                        var temp =  colConfig.text.content.format(kwargs);
+                        td.innerHTML = temp;
+
+                        /* 属性colConfig.attrs = {'edit-enable': 'true','edit-type': 'select'}  */
+                        $.each(colConfig.attr, function (kk, vv) {
+                            if (vv[0] == '@') {
+                                td.setAttribute(kk, row[vv.substring(1, vv.length)]);
+                            }else{
+                                td.setAttribute(kk, vv);
+                             }
+                        });
+
+                        $(tr).append(td);
+                    }
+                });
+                $('#table_tb').append(tr);
+            });
+        }
+
+        // 创建全局变量
+        function initGlobalData(global_dict) {
+            $.each(global_dict,function (k,v) {
+
+                window[k] = v;
+            })
+        }
+
+        // 获取全局变量
+        function getTextFromGlobalById(globalName,currentId) {
+            var ret = null;
+            $.each(window[globalName],function (k,item) {
+                if(item[0] == currentId){
+                    ret = item[1];
+                    return
+                }
+            });
+            return ret;
+        }
+
+        function trIntoEditMode($tr) {
+            $tr.addClass('success');
+            $tr.attr('has-edit', 'true');
+            $tr.children().each(function () {
+                var editEnable = $(this).attr('edit-enable');
+                var editType = $(this).attr('edit-type');
+                if(editEnable=='true'){
+                    if(editType == 'select'){
+                        var globalName = $(this).attr('global-name');
+                        var origin = $(this).attr('origin'); // 1
+                        // 生成select标签
+                        var sel = document.createElement('select');
+                        sel.className = "form-control";
+                        $.each(window[globalName],function(k1, v1){
+                            var op = document.createElement('option');
+                            op.setAttribute('value',v1[0]);
+                            op.innerHTML = v1[1];
+                            $(sel).append(op);
+                        });
+                        $(sel).val(origin);
+
+                        $(this).html(sel);
+
+
+                    }else if(editType == 'input'){
+                        // input文本框
+                        // *******可以进入编辑模式*******
+                        var innerText = $(this).text();
+                        var tag = document.createElement('input');
+                        tag.className = "form-control";
+                        tag.value = innerText;
+                        $(this).html(tag);
+                    }
+                }
+            })
+        }
+        function trOutEditMode($tr){
+            $tr.removeClass('success');
+            $tr.children().each(function () {
+                // $(this) => td
+                var editEnable = $(this).attr('edit-enable');
+                var editType = $(this).attr('edit-type');
+                if(editEnable=='true'){
+                    if (editType == 'select'){
+                        // 获取正在编辑的select对象
+                        var $select = $(this).children().first();
+                        // 获取选中的option的value
+                        var newId = $select.val();
+                        // 获取选中的option的文本内容
+                        var newText = $select[0].selectedOptions[0].innerHTML; // 找到当前选中的 option 中的值
+                        // 在td中设置文本内容
+                        $(this).html(newText);
+                        $(this).attr('new-val',newId);
+
+                    }else if(editType == 'input') {
+                        // *******可以退出编辑模式*******
+                        var $input = $(this).children().first();
+                        var inputValue = $input.val();
+                        $(this).html(inputValue);
+                        $(this).attr('new-val',inputValue);
+                    }
+                }
+            })
+        }
+        function SetSaveAlert() {
+            //Parameter
+            var postList = [];
+            $('#idSave').click(function () {
+
+                //找到已经编辑过的tr，tr has-edit='true'
+                $('#table_tb').find('tr[has-edit="true"]').each(function () {
+                    // $(this) => tr
+                    var temp = {};
+
+                    $(this).children('[edit-enable="true"]').each(function () {
+
+                        var id = $(this).attr('resume-id');
+                        if (!jQuery.isEmptyObject(id)) {
+                            temp['id'] = id;
+                        }
+                        var name = $(this).attr('name');
+                        var origin = $(this).attr('origin');
+                        var newVal = $(this).attr('new-val');
+                        if (origin != newVal){
+                            temp[name] = newVal;
+
+                        }
+                    });
+                    postList.push(temp);
+                });
+                if (!jQuery.isEmptyObject(postList)){
+                    swal({
+                        title: '你确定要保存？',
+                        text: "点击确定后会进行修改！",
+                        type: 'warning', // warning
+                        showCancelButton: true,
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        confirmButtonClass: 'btn btn-success mt-2 slzcc',
+                        cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                        buttonsStyling: false
+                    }).then(function () {
+                        swal({
+                            title: '已保存',
+                            text: "你的数据已提交成功!",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }, function (dismiss) {
+                        // dismiss can be 'cancel', 'overlay',
+                        // 'close', and 'timer'
+                        if (dismiss === 'cancel') {
+                            swal({
+                                title: '已取消',
+                                text: "成功取消操作!",
+                                type: 'error',
+                                confirmButtonClass: 'btn btn-confirm mt-2'
+                            })
+                        }
+                    });
+                    $('.slzcc').click(function () {
+                        EditData(postList);
+                    })
+                }else {
+                    $.Notification.autoHideNotify('info', 'top right', '无效的保存','无效的操作，没有需要保存的数据，请查看后再次保存!')
+                }
+            });
+        };
+        function bindSave() {
+            $('#idSave').click(function () {
+                var postList = [];
+                //找到已经编辑过的tr，tr has-edit='true'
+                $('#table_tb').find('tr[has-edit="true"]').each(function () {
+                    // $(this) => tr
+                    var temp = {};
+
+                    $(this).children('[edit-enable="true"]').each(function () {
+
+                        var id = $(this).attr('resume-id');
+                        if (!jQuery.isEmptyObject(id)) {
+                            temp['id'] = id;
+                        }
+                        var name = $(this).attr('name');
+                        var origin = $(this).attr('origin');
+                        var newVal = $(this).attr('new-val');
+                        if (origin != newVal){
+                            temp[name] = newVal;
+
+                        }
+                    });
+                    postList.push(temp);
+                });
+                $.ajax({
+                    url: '',
+                    type: 'POST',
+                    data: {'post_list': JSON.stringify(postList)},
+                    dataType: 'JSON',
+                    success:function (arg) {
+
+                    }
+                })
+            })
+        }
+        function EditData(postData) {
+            if(postData){
+                $.ajax({
+                    url: '',
+                    type: 'POST',
+                    data: {'post_list': JSON.stringify(postData)},
+                    dataType: 'JSON',
+                    success:function (arg) {
+
+                    }
+                })
+            }
+        }
+
+        function bindReverseAll() {
+            $('#idReverseAll').click(function () {
+                $('#table_tb').find(':checkbox').each(function () {
+                    // $(this) => checkbox
+                    if($('#idEditMode').hasClass('btn-warning')) {
+                        if($(this).prop('checked')){
+                            $(this).prop('checked',false);
+                            trOutEditMode($(this).parent().parent());
+                        }else{
+                            $(this).prop('checked',true);
+                            trIntoEditMode($(this).parent().parent());
+                        }
+                    }else{
+                        if($(this).prop('checked')){
+                            $(this).prop('checked',false);
+                        }else{
+                            $(this).prop('checked',true);
+                        }
+                    }
+                })
+            })
+        }
+
+        function bindCancelAll() {
+            $('#idCancelAll').click(function () {
+                $('#table_tb').find(':checked').each(function () {
+                    // $(this) => checkbox
+                    if($('#idEditMode').hasClass('btn-warning')){
+                        $(this).prop('checked',false);
+                        // 退出编辑模式
+                        trOutEditMode($(this).parent().parent());
+                    }else{
+                        $(this).prop('checked',false);
+                    }
+                });
+            })
+        }
+
+        function bindCheckAll() {
+            $('#idCheckAll').click(function () {
+                $('#table_tb').find(':checkbox').each(function () {
+                    // $(this)  = checkbox
+                    if($('#idEditMode').hasClass('btn-warning')){
+                        if($(this).prop('checked')){
+                            // 当前行已经进入编辑模式了
+                        }else{
+                            // 进入编辑模式
+                            var $currentTr = $(this).parent().parent();
+                            trIntoEditMode($currentTr);
+                            $(this).prop('checked',true);
+                        }
+                    }else{
+                        $(this).prop('checked',true);
+                    }
+                })
+            })
+        }
+
+        function bindCheckPaginate() {
+            $('#auto_paginate').click(function () {
+                var Btn=document.getElementById("btnSearch");
+                Btn.click();
+            });
+        }
+    </script>
+{% endblock %}

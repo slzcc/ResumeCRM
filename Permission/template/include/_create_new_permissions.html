@@ -1,0 +1,52 @@
+<div id="AddPermissions" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">创建新权限</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">
+                                    Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                {{ obj.name }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.name }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">
+                                    CodeName
+                                    <span class="text-danger">*</span>
+                                </label>
+                                {{ obj.codename }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.codename }}</span>
+                        </div>
+                    </div>
+                    <div class="row" style="display: none;">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">
+                                    Content_type
+                                    <span class="text-danger">*</span>
+                                </label>
+                                {{ obj.content_type }}
+                            </div>
+                            <span style="color: red">{{ obj.errors.content_type }}</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

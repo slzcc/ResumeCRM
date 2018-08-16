@@ -1,0 +1,1947 @@
+LibreOffice PspFontCacheFile format 6
+FontCacheDirectory:1530855706:/usr/share/fonts/opentype/stix
+File:STIXVariants-Regular.otf
+2;1
+STIXVariants
+0;STIXVariants-Regular;0;5;5;2;65535;1055;455;510;0;1096;1510;1096;1510;0;0;0;65536;Regular
+
+File:STIXSizeTwoSym-Regular.otf
+2;1
+STIXSizeTwoSym
+0;STIXSizeTwoSym-Regular;0;5;5;2;65535;2095;404;1499;0;3386;2499;3386;2499;0;0;0;65536;Regular
+
+File:STIXSizeTwoSym-Bold.otf
+2;1
+STIXSizeTwoSym
+0;STIXSizeTwoSym-Bold;0;8;5;2;65535;2095;404;1499;0;1181;2499;1181;2499;0;0;0;65536;Bold
+
+File:STIXSizeThreeSym-Bold.otf
+2;1
+STIXSizeThreeSym
+0;STIXSizeThreeSym-Bold;0;8;5;2;65535;2604;510;2114;0;1143;3114;1143;3114;0;0;0;65536;Bold
+
+File:STIXSizeThreeSym-Regular.otf
+2;1
+STIXSizeThreeSym
+0;STIXSizeThreeSym-Regular;0;5;5;2;65535;2604;510;2114;0;4312;3114;4312;3114;0;0;0;65536;Regular
+
+File:STIXSizeOneSym-Bold.otf
+2;1
+STIXSizeOneSym
+0;STIXSizeOneSym-Bold;0;8;5;2;65535;1588;363;951;0;1320;1951;1320;1951;0;0;0;65536;Bold
+
+File:STIXIntegralsUp-Regular.otf
+2;1
+STIXIntegralsUp
+0;STIXIntegralsUp-Regular;0;5;5;2;65535;1055;455;510;0;1104;1510;1104;1510;0;0;0;65536;Regular
+
+File:STIXNonUnicode-Bold.otf
+2;1
+STIXNonUnicode
+0;STIXNonUnicode-Bold;0;8;5;2;65535;1450;552;1002;0;1273;2002;1273;2002;0;0;0;65536;Bold
+
+File:STIXIntegralsD-Bold.otf
+2;1
+STIXIntegralsD
+0;STIXIntegralsD-Bold;0;8;5;2;65535;2182;451;1633;0;2306;2633;2306;2633;0;0;0;65536;Bold
+
+File:STIXSizeFourSym-Regular.otf
+2;1
+STIXSizeFourSym
+0;STIXSizeFourSym-Regular;0;5;5;2;65535;2604;510;2114;0;5238;3114;5238;3114;0;0;0;65536;Regular
+
+File:STIXIntegralsD-Regular.otf
+2;1
+STIXIntegralsD
+0;STIXIntegralsD-Regular;0;5;5;2;65535;2182;451;1633;0;1941;2633;1941;2633;0;0;0;65536;Regular
+
+File:STIXGeneral-Bold.otf
+2;1
+STIXGeneral
+0;STIXGeneral-Bold;0;8;5;2;65535;1055;455;510;0;2998;1510;2998;1510;0;0;0;65536;Bold
+
+File:STIXGeneral-BoldItalic.otf
+2;1
+STIXGeneral
+0;STIXGeneral-BoldItalic;2;8;5;2;65535;1042;455;497;0;2183;1497;2183;1497;0;0;0;65536;Bold Italic
+
+File:STIXSizeOneSym-Regular.otf
+2;1
+STIXSizeOneSym
+0;STIXSizeOneSym-Regular;0;5;5;2;65535;1588;363;951;0;2503;1951;2503;1951;0;0;0;65536;Regular
+
+File:STIXIntegralsSm-Bold.otf
+2;1
+STIXIntegralsSm
+0;STIXIntegralsSm-Bold;0;8;5;2;65535;1055;455;510;0;1536;1510;1536;1510;0;0;0;65536;Bold
+
+File:STIXGeneral-Italic.otf
+2;1
+STIXGeneral
+0;STIXGeneral-Italic;2;5;5;2;65535;1055;455;510;0;2399;1510;2399;1510;0;0;0;65536;Italic
+
+File:STIXIntegralsSm-Regular.otf
+2;1
+STIXIntegralsSm
+0;STIXIntegralsSm-Regular;0;5;5;2;65535;1055;455;510;0;1229;1510;1229;1510;0;0;0;65536;Regular
+
+File:STIXGeneral-Regular.otf
+2;1
+STIXGeneral
+0;STIXGeneral-Regular;0;5;5;2;65535;1055;455;510;0;2970;1510;2970;1510;0;0;0;65536;Regular
+
+File:STIXIntegralsUpD-Bold.otf
+2;1
+STIXIntegralsUpD
+0;STIXIntegralsUpD-Bold;0;8;5;2;65535;2182;451;1633;0;1675;2633;1675;2633;0;0;0;65536;Bold
+
+File:STIXVariants-Bold.otf
+2;1
+STIXVariants
+0;STIXVariants-Bold;0;8;5;2;65535;1055;455;510;0;1306;1510;1306;1510;0;0;0;65536;Bold
+
+File:STIXIntegralsUpD-Regular.otf
+2;1
+STIXIntegralsUpD
+0;STIXIntegralsUpD-Regular;0;5;5;2;65535;2182;451;1633;0;1442;2633;1442;2633;0;0;0;65536;Regular
+
+File:STIXIntegralsUp-Bold.otf
+2;1
+STIXIntegralsUp
+0;STIXIntegralsUp-Bold;0;8;5;2;65535;1055;455;510;0;1302;1510;1302;1510;0;0;0;65536;Bold
+
+File:STIXIntegralsUpSm-Bold.otf
+2;1
+STIXIntegralsUpSm
+0;STIXIntegralsUpSm-Bold;0;8;5;2;65535;1055;455;510;0;1216;1510;1216;1510;0;0;0;65536;Bold
+
+File:STIXIntegralsUpSm-Regular.otf
+2;1
+STIXIntegralsUpSm
+0;STIXIntegralsUpSm-Regular;0;5;5;2;65535;1055;455;510;0;1069;1510;1069;1510;0;0;0;65536;Regular
+
+File:STIXNonUnicode-BoldItalic.otf
+2;1
+STIXNonUnicode
+0;STIXNonUnicode-BoldItalic;2;8;5;2;65535;1450;552;1002;0;1334;2002;1334;2002;0;0;0;65536;Bold Italic
+
+File:STIXNonUnicode-Regular.otf
+2;1
+STIXNonUnicode
+0;STIXNonUnicode-Regular;0;5;5;2;65535;1450;552;1002;0;2280;2002;2280;2002;0;0;0;65536;Regular
+
+File:STIXSizeFiveSym-Regular.otf
+2;1
+STIXSizeFiveSym
+0;STIXSizeFiveSym-Regular;0;5;5;2;65535;960;454;414;0;6238;1414;6238;1414;0;0;0;65536;Regular
+
+File:STIXNonUnicode-Italic.otf
+2;1
+STIXNonUnicode
+0;STIXNonUnicode-Italic;2;5;5;2;65535;1450;552;1002;0;1269;2002;1269;2002;0;0;0;65536;Italic
+
+File:STIXSizeFourSym-Bold.otf
+2;1
+STIXSizeFourSym
+0;STIXSizeFourSym-Bold;0;8;5;2;65535;2604;510;2114;0;1315;3114;1315;3114;0;0;0;65536;Bold
+
+FontCacheDirectory:1530855706:/usr/share/fonts/opentype/stix-word
+File:STIXMath-Regular.otf
+2;1
+STIX Math
+0;STIXMath-Regular;0;5;5;2;65535;2566;524;2090;0;4208;3090;4208;3090;0;0;0;65536;Regular
+
+File:STIX-BoldItalic.otf
+2;1
+STIX
+0;STIX-BoldItalic;2;8;5;2;65535;1004;359;363;0;2183;1363;2183;1363;0;0;0;65536;Bold Italic
+
+File:STIX-Italic.otf
+2;1
+STIX
+0;STIX-Italic;2;5;5;2;65535;1023;305;328;0;2399;1328;2399;1328;0;0;0;65536;Italic
+
+File:STIX-Regular.otf
+2;1
+STIX
+0;STIX-Regular;0;5;5;2;65535;1023;486;509;0;3178;1509;3178;1509;0;0;0;65536;Regular
+
+File:STIX-Bold.otf
+2;1
+STIX
+0;STIX-Bold;0;8;5;2;65535;1055;552;607;0;2998;1607;2998;1607;0;0;0;65536;Bold
+
+FontCacheDirectory:1531115216:/usr/share/fonts/macbook
+File:STHeiti Medium.ttc
+2;2
+黑体-简;Heiti SC;Heiti-간체;黑體-簡;黒体-簡
+1;STHeitiSC-Medium;0;5;5;2;65535;860;140;150;0;1211;1000;1211;1000;0;0;0;0;中等
+黑体-繁;Heiti TC;Heiti-번체;黑體-繁;黒体-繁
+0;STHeitiTC-Medium;0;5;5;2;65535;860;140;150;0;1211;1000;1211;1000;0;0;0;0;中等
+
+File:STHeiti Light.ttc
+2;2
+黑体-简;Heiti SC;Heiti-간체;黑體-簡;黒体-簡
+1;STHeitiSC-Light;0;3;5;2;65535;860;140;150;0;1777;1000;1777;1000;0;0;0;0;细体
+黑体-繁;Heiti TC;Heiti-번체;黑體-繁;黒体-繁
+0;STHeitiTC-Light;0;3;5;2;65535;860;140;150;0;1777;1000;1777;1000;0;0;0;0;细体
+
+File:ZapfDingbats.ttf
+2;1
+Zapf Dingbats
+0;ZapfDingbatsITC;0;5;5;2;65535;813;143;-44;0;976;956;976;956;0;0;0;14;常规体
+
+File:SFNSSymbols-Regular.otf
+2;1
+系统字体;.SF NS Symbols;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSSymbols-Regular;0;5;5;2;65535;966;210;176;0;1310;1176;1310;1176;0;0;0;65540;常规体
+
+File:SFNSText.ttf
+2;1
+系统字体;.SF NS Text;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSText;0;5;5;2;65535;966;210;176;0;1622;1176;1622;1176;0;0;0;0;常规体
+
+File:SFNSDisplay-UltralightItalic.otf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay-UltralightItalic;2;1;5;2;65535;966;210;176;0;1522;1176;1522;1176;0;0;0;65536;超细斜体
+
+File:SFNSDisplay-SemiboldItalic.otf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay-SemiboldItalic;2;7;5;2;65535;966;210;176;0;1651;1176;1651;1176;0;0;0;65536;半粗斜体
+
+File:SFCompactText-Light.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-Light;0;3;5;2;65535;952;241;193;0;1406;1193;1406;1193;0;0;0;65536;Light
+
+File:ヒラギノ丸ゴ ProN W4.ttc
+2;2
+Hiragino Maru Gothic Pro;Hiragino Maru Gothic Pro W4;ヒラギノ丸ゴ Pro;ヒラギノ丸ゴ Pro W4
+0;HiraMaruPro-W4;0;5;5;2;65535;1029;249;278;0;1611;1278;1611;1278;0;0;0;65544;W4
+Hiragino Maru Gothic ProN;Hiragino Maru Gothic ProN W4;ヒラギノ丸ゴ ProN;ヒラギノ丸ゴ ProN W4
+1;HiraMaruProN-W4;0;5;5;2;65535;1029;249;278;0;1611;1278;1611;1278;0;0;0;65544;W4
+
+File:SFCompactText-Heavy.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-Heavy;0;9;5;2;65535;952;241;193;0;1569;1193;1569;1193;0;0;0;65536;Heavy
+
+File:SFCompactText-BoldItalic.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-BoldItalic;2;8;5;2;65535;952;241;193;0;1562;1193;1562;1193;0;0;0;65536;Bold Italic
+
+File:SFCompactText-SemiboldItalic.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-SemiboldItalic;2;7;5;2;65535;952;241;193;0;1541;1193;1541;1193;0;0;0;65536;Semibold Italic
+
+File:SFNSDisplayCondensed-Semibold.otf
+2;1
+.SF NS Display Condensed
+0;.SFNSDisplayCondensed-Semibold;0;8;5;2;65535;966;210;176;0;1403;1176;1403;1176;0;0;0;65540;Semibold
+
+File:SFCompactText-Bold.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-Bold;0;8;5;2;65535;952;241;193;0;1525;1193;1525;1193;0;0;0;65536;Bold
+
+File:SFNSTextItalic.ttf
+2;1
+系统字体;.SF NS Text;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSText-Italic;2;5;5;2;65535;966;210;176;0;1689;1176;1689;1176;0;0;0;0;斜体
+
+File:ヒラギノ角ゴシック W1.ttc
+2;2
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W1;0;2;5;2;65535;911;212;123;0;1460;1123;1460;1123;0;0;0;65544;W1
+Hiragino Sans;Hiragino Sans W1;ヒラギノ角ゴシック;ヒラギノ角ゴシック W1
+0;HiraginoSans-W1;0;2;5;2;65535;974;227;201;0;1562;1201;1562;1201;0;0;0;65544;W1
+
+File:Apple Symbols.ttf
+2;1
+Apple Symbols
+0;AppleSymbols;0;5;5;2;65535;882;169;51;0;3388;1051;3388;1051;0;0;0;0;常规体
+
+File:SFCompactDisplay-Heavy.otf
+2;1
+.SF Compact Display
+0;.SFCompactDisplay-Heavy;0;9;5;2;65535;952;241;193;0;1549;1193;1549;1193;0;0;0;65536;Heavy
+
+File:SFCompactDisplay-Bold.otf
+2;1
+.SF Compact Display
+0;.SFCompactDisplay-Bold;0;8;5;2;65535;952;241;193;0;1489;1193;1489;1193;0;0;0;65536;Bold
+
+File:SFNSDisplayCondensed-Light.otf
+2;1
+.SF NS Display Condensed
+0;.SFNSDisplayCondensed-Light;0;6;5;2;65535;966;210;176;0;1302;1176;1302;1176;0;0;0;65540;Light
+
+File:SFCompactRounded-Thin.otf
+2;1
+.SF Compact Rounded
+0;.SFCompactRounded-Thin;0;2;5;2;65535;952;241;193;0;1318;1193;1318;1193;0;0;0;65536;Thin
+
+File:ヒラギノ角ゴシック W2.ttc
+2;2
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W2;0;3;5;2;65535;916;213;129;0;1476;1129;1476;1129;0;0;0;65544;W2
+Hiragino Sans;Hiragino Sans W2;ヒラギノ角ゴシック;ヒラギノ角ゴシック W2
+0;HiraginoSans-W2;0;3;5;2;65535;985;230;215;0;1588;1215;1588;1215;0;0;0;65544;W2
+
+File:SFCompactRounded-Light.otf
+2;1
+.SF Compact Rounded
+0;.SFCompactRounded-Light;0;3;5;2;65535;952;241;193;0;1345;1193;1345;1193;0;0;0;65536;Light
+
+File:SFCompactDisplay-Light.otf
+2;1
+.SF Compact Display
+0;.SFCompactDisplay-Light;0;3;5;2;65535;952;241;193;0;1338;1193;1338;1193;0;0;0;65536;Light
+
+File:SFCompactRounded-Bold.otf
+2;1
+.SF Compact Rounded
+0;.SFCompactRounded-Bold;0;8;5;2;65535;952;241;193;0;1400;1193;1400;1193;0;0;0;65536;Bold
+
+File:SFCompactRounded-Regular.otf
+2;1
+.SF Compact Rounded
+0;.SFCompactRounded-Regular;0;5;5;2;65535;952;241;193;0;1381;1193;1381;1193;0;0;0;65536;Regular
+
+File:SFCompactDisplay-Thin.otf
+2;1
+.SF Compact Display
+0;.SFCompactDisplay-Thin;0;2;5;2;65535;952;241;193;0;1352;1193;1352;1193;0;0;0;65536;Thin
+
+File:Hiragino Sans GB.ttc
+2;4
+.Hiragino Sans GB Interface
+3;.HiraginoSansGBInterface-W6;0;7;5;2;65535;930;187;117;0;1101;1117;1101;1117;0;0;0;65544;W6
+冬青黑体简体中文 W3;Hiragino Sans GB;Hiragino Sans GB W3;冬青黑体简体中文;冬青黑體簡體中文;冬青黑體簡體中文 W3
+0;HiraginoSansGB-W3;0;3;5;2;65535;951;211;162;0;1135;1162;1135;1162;0;0;0;65544;W3
+.Hiragino Sans GB Interface
+1;.HiraginoSansGBInterface-W3;0;3;5;2;65535;878;194;72;0;1047;1072;1047;1072;0;0;0;65544;W3
+冬青黑体简体中文 W6;Hiragino Sans GB;Hiragino Sans GB W6;冬青黑体简体中文;冬青黑體簡體中文;冬青黑體簡體中文 W6
+2;HiraginoSansGB-W6;0;7;5;2;65535;1032;208;240;0;1222;1240;1222;1240;0;0;0;65544;W6
+
+File:SFCompactRounded-Medium.otf
+2;1
+.SF Compact Rounded
+0;.SFCompactRounded-Medium;0;6;5;2;65535;952;241;193;0;1354;1193;1354;1193;0;0;0;65536;Medium
+
+File:SFCompactDisplay-Semibold.otf
+2;1
+.SF Compact Display
+0;.SFCompactDisplay-Semibold;0;7;5;2;65535;952;241;193;0;1433;1193;1433;1193;0;0;0;65536;Semibold
+
+File:SFCompactDisplay-Ultralight.otf
+2;1
+.SF Compact Display
+0;.SFCompactDisplay-Ultralight;0;1;5;2;65535;952;241;193;0;1370;1193;1370;1193;0;0;0;65536;Ultralight
+
+File:SFCompactDisplay-Regular.otf
+2;1
+.SF Compact Display
+0;.SFCompactDisplay-Regular;0;5;5;2;65535;952;241;193;0;1344;1193;1344;1193;0;0;0;65536;Regular
+
+File:KohinoorBangla.ttc
+2;5
+Kohinoor Bangla
+2;KohinoorBangla-Medium;0;6;5;2;65535;1100;400;500;0;2075;1500;2075;1500;0;0;0;65536;Medium
+Kohinoor Bangla
+0;KohinoorBangla-Regular;0;5;5;2;65535;1100;400;500;0;2039;1500;2039;1500;0;0;0;65536;Regular
+Kohinoor Bangla
+1;KohinoorBangla-Semibold;0;7;5;2;65535;1100;400;500;0;2118;1500;2118;1500;0;0;0;65536;Semibold
+Kohinoor Bangla
+3;KohinoorBangla-Bold;0;8;5;2;65535;1100;400;500;0;2165;1500;2165;1500;0;0;0;65536;Bold
+Kohinoor Bangla
+4;KohinoorBangla-Light;0;3;5;2;65535;1100;400;500;0;2005;1500;2005;1500;0;0;0;65536;Light
+
+File:HelveticaNeueDeskInterface.ttc
+2;10
+.Helvetica Neue DeskInterface
+4;.HelveticaNeueDeskInterface-MediumP4;0;6;5;2;65535;966;211;177;0;2598;1177;2598;1177;0;0;0;4;中等
+.Helvetica Neue DeskInterface
+0;.HelveticaNeueDeskInterface-Regular;0;5;5;2;65535;966;211;177;0;2435;1177;2435;1177;0;0;0;0;常规体
+.Helvetica Neue DeskInterface
+1;.HelveticaNeueDeskInterface-Bold;0;8;5;2;65535;966;211;177;0;2494;1177;2494;1177;0;0;0;0;粗体
+.Helvetica Neue DeskInterface
+2;.HelveticaNeueDeskInterface-Italic;2;5;5;2;65535;966;211;177;0;2544;1177;2544;1177;0;0;0;0;Italic
+.Helvetica Neue DeskInterface
+3;.HelveticaNeueDeskInterface-BoldItalic;2;8;5;2;65535;966;211;177;0;2632;1177;2632;1177;0;0;0;0;Bold Italic
+.Helvetica Neue DeskInterface
+5;.HelveticaNeueDeskInterface-MediumItalicP4;2;6;5;2;65535;966;211;177;0;1949;1177;1949;1177;0;0;0;4;Medium Italic
+.Helvetica Neue DeskInterface
+6;.HelveticaNeueDeskInterface-Light;0;3;5;2;65535;966;211;177;0;1879;1177;1879;1177;0;0;0;0;细体
+.Helvetica Neue DeskInterface
+7;.HelveticaNeueDeskInterface-Thin;0;2;5;2;65535;966;211;177;0;1585;1177;1585;1177;0;0;0;4;瘦体
+.Helvetica Neue DeskInterface
+8;.HelveticaNeueDeskInterface-UltraLightP2;0;1;5;2;65535;966;211;177;0;1711;1177;1711;1177;0;0;0;0;超细体
+.Helvetica Neue DeskInterface
+9;.HelveticaNeueDeskInterface-Heavy;0;9;5;2;65535;966;211;177;0;2251;1177;2251;1177;0;0;0;0;Heavy
+
+File:SFNSDisplayCondensed-Regular.otf
+2;1
+.SF NS Display Condensed
+0;.SFNSDisplayCondensed-Regular;0;7;5;2;65535;966;210;176;0;1343;1176;1343;1176;0;0;0;65540;Regular
+
+File:AquaKana.ttc
+2;2
+.Aqua Kana;.Aqua Kana Bold;.Aqua かな;.Aqua かな ボールド
+1;AquaKana-Bold;0;7;5;2;65535;1058;274;332;0;1728;1332;1728;1332;0;0;0;8;Bold
+.Aqua Kana;.Aqua かな
+0;AquaKana;0;3;5;2;65535;1000;234;234;0;1618;1234;1618;1234;0;0;0;8;Regular
+
+File:GeezaPro.ttc
+2;7
+.Geeza Pro Interface
+2;.GeezaProInterface;0;5;5;2;65535;895;330;225;0;6538;1225;6538;1225;0;0;0;0;Regular
+Geeza Pro;جيزة
+0;GeezaPro;0;5;5;2;65535;895;330;225;0;6538;1225;6538;1225;0;0;0;0;常规体
+Geeza Pro;جيزة
+1;GeezaPro-Bold;0;8;5;2;65535;895;330;225;0;6583;1225;6583;1225;0;0;0;0;粗体
+.Geeza Pro Interface
+3;.GeezaProInterface-Bold;0;8;5;2;65535;895;330;225;0;6583;1225;6583;1225;0;0;0;0;Bold
+.Geeza Pro Interface
+4;.GeezaProInterface-Light;0;3;5;2;65535;895;330;225;0;6625;1225;6625;1225;0;0;0;0;Light
+.Geeza Pro PUA
+5;.GeezaProPUA;0;5;5;2;65535;895;330;225;0;6538;1225;6538;1225;0;0;0;0;常规体
+.Geeza Pro PUA
+6;.GeezaProPUA-Bold;0;8;5;2;65535;895;330;225;0;6583;1225;6583;1225;0;0;0;0;粗体
+
+File:NotoNastaliq.ttc
+2;2
+.Noto Nastaliq Urdu UI
+1;.NotoNastaliqUrduUI;0;5;5;2;65535;1322;413;735;0;3408;1735;3408;1735;0;0;0;0;Regular
+Noto Nastaliq Urdu
+0;NotoNastaliqUrdu;0;5;5;2;65535;1904;595;1499;0;4908;2499;4908;2499;0;0;0;0;Regular
+
+File:SFNSTextCondensed-Semibold.otf
+2;1
+.SF NS Text Condensed
+0;.SFNSTextCondensed-Semibold;0;7;5;2;65535;966;210;176;0;1478;1176;1478;1176;0;0;0;65540;Semibold
+
+File:Keyboard.ttf
+2;1
+.Keyboard
+0;.Keyboard;0;1;5;2;65535;966;210;176;0;2708;1176;2708;1176;0;0;0;0;Regular
+
+File:ヒラギノ角ゴシック W7.ttc
+2;2
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W7;0;8;5;2;65535;972;264;236;0;1473;1236;1473;1236;0;0;0;65544;W7
+Hiragino Sans;Hiragino Sans W7;ヒラギノ角ゴシック;ヒラギノ角ゴシック W7
+0;HiraginoSans-W7;0;8;5;2;65535;1090;297;387;0;1653;1387;1653;1387;0;0;0;65544;W7
+
+File:SFCompactText-LightItalic.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-LightItalic;2;3;5;2;65535;952;241;193;0;1493;1193;1493;1193;0;0;0;65536;Light Italic
+
+File:ヒラギノ角ゴシック W0.ttc
+2;2
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W0;0;1;5;2;65535;882;262;144;0;1297;1144;1297;1144;0;0;0;65544;W0
+Hiragino Sans;Hiragino Sans W0;ヒラギノ角ゴシック;ヒラギノ角ゴシック W0
+0;HiraginoSans-W0;0;1;5;2;65535;934;278;212;0;1373;1212;1373;1212;0;0;0;65544;W0
+
+File:AppleSDGothicNeo.ttc
+2;18
+.Apple SD Gothic NeoI;Apple SD 산돌고딕 Neo
+13;.AppleSDGothicNeoI-UltraLight;0;2;5;2;65535;900;300;200;1;1134;1200;1134;1200;0;0;0;65544;UltraLight
+Apple SD Gothic Neo;Apple SD 산돌고딕 Neo
+0;AppleSDGothicNeo-Regular;0;5;5;2;65535;900;300;200;1;1129;1200;1129;1200;0;0;0;65544;Regular
+.Apple SD Gothic NeoI;Apple SD 산돌고딕 Neo
+1;.AppleSDGothicNeoI-Regular;0;5;5;2;65535;900;300;200;1;1129;1200;1129;1200;0;0;0;65544;Regular
+Apple SD Gothic Neo;Apple SD 산돌고딕 Neo
+2;AppleSDGothicNeo-Medium;0;6;5;2;65535;900;300;200;1;1152;1200;1152;1200;0;0;0;65544;Medium
+.Apple SD Gothic NeoI;Apple SD 산돌고딕 Neo
+3;.AppleSDGothicNeoI-Medium;0;6;5;2;65535;900;300;200;1;1152;1200;1152;1200;0;0;0;65544;Medium
+Apple SD Gothic Neo;Apple SD 산돌고딕 Neo
+4;AppleSDGothicNeo-SemiBold;0;7;5;2;65535;900;300;200;1;1165;1200;1165;1200;0;0;0;65544;SemiBold
+.Apple SD Gothic NeoI;Apple SD 산돌고딕 Neo
+5;.AppleSDGothicNeoI-SemiBold;0;7;5;2;65535;900;300;200;1;1165;1200;1165;1200;0;0;0;65544;SemiBold
+Apple SD Gothic Neo;Apple SD 산돌고딕 Neo
+6;AppleSDGothicNeo-Bold;0;8;5;2;65535;900;300;200;1;1160;1200;1160;1200;0;0;0;65544;Bold
+.Apple SD Gothic NeoI;Apple SD 산돌고딕 Neo
+7;.AppleSDGothicNeoI-Bold;0;8;5;2;65535;900;300;200;1;1160;1200;1160;1200;0;0;0;65544;Bold
+Apple SD Gothic Neo;Apple SD 산돌고딕 Neo
+8;AppleSDGothicNeo-Light;0;3;5;2;65535;900;300;200;1;1129;1200;1129;1200;0;0;0;65544;Light
+.Apple SD Gothic NeoI;Apple SD 산돌고딕 Neo
+9;.AppleSDGothicNeoI-Light;0;3;5;2;65535;900;300;200;1;1129;1200;1129;1200;0;0;0;65544;Light
+Apple SD Gothic Neo;Apple SD 산돌고딕 Neo
+10;AppleSDGothicNeo-Thin;0;1;5;2;65535;900;300;200;1;1123;1200;1123;1200;0;0;0;65544;Thin
+.Apple SD Gothic NeoI;Apple SD 산돌고딕 Neo
+11;.AppleSDGothicNeoI-Thin;0;1;5;2;65535;900;300;200;1;1123;1200;1123;1200;0;0;0;65544;Thin
+Apple SD Gothic Neo;Apple SD 산돌고딕 Neo
+12;AppleSDGothicNeo-UltraLight;0;2;5;2;65535;900;300;200;1;1134;1200;1134;1200;0;0;0;65544;UltraLight
+Apple SD Gothic Neo;Apple SD 산돌고딕 Neo
+14;AppleSDGothicNeo-ExtraBold;0;9;5;2;65535;900;300;200;1;1195;1200;1195;1200;0;0;0;65544;ExtraBold
+.Apple SD Gothic NeoI;Apple SD 산돌고딕 Neo
+15;.AppleSDGothicNeoI-ExtraBold;0;9;5;2;65535;900;300;200;1;1195;1200;1195;1200;0;0;0;65544;ExtraBold
+Apple SD Gothic Neo;Apple SD 산돌고딕 Neo
+16;AppleSDGothicNeo-Heavy;0;10;5;2;65535;900;300;200;1;1244;1200;1244;1200;0;0;0;65544;Heavy
+.Apple SD Gothic NeoI;Apple SD 산돌고딕 Neo
+17;.AppleSDGothicNeoI-Heavy;0;10;5;2;65535;900;300;200;1;1244;1200;1244;1200;0;0;0;65544;Heavy
+
+File:ArabicUIDisplay.ttc
+2;9
+.Arabic UI Display;.Arabic UI Display Thin
+7;.ArabicUIDisplay-Thin;0;3;5;2;65535;1000;241;241;0;1762;1241;1762;1241;0;0;0;65544;Thin
+.Arabic UI Display;.Arabic UI Display Black
+0;.ArabicUIDisplay-Black;0;10;5;2;65535;1000;241;241;0;2101;1241;2101;1241;0;0;0;65544;Black
+.Arabic UI Display;.Arabic UI Display Bold
+1;.ArabicUIDisplay-Bold;0;8;5;2;65535;1000;241;241;0;1947;1241;1947;1241;0;0;0;65544;Bold
+.Arabic UI Display;.Arabic UI Display Heavy
+2;.ArabicUIDisplay-Heavy;0;9;5;2;65535;1000;241;241;0;2027;1241;2027;1241;0;0;0;65544;Heavy
+.Arabic UI Display;.Arabic UI Display Light
+3;.ArabicUIDisplay-Light;0;3;5;2;65535;1000;241;241;0;1797;1241;1797;1241;0;0;0;65544;Light
+.Arabic UI Display;.Arabic UI Display Medium
+4;.ArabicUIDisplay-Medium;0;6;5;2;65535;1000;241;241;0;1867;1241;1867;1241;0;0;0;65544;Medium
+.Arabic UI Display;.ArabicUIDisplay
+5;.ArabicUIDisplay-Regular;0;5;5;2;65535;1000;241;241;0;1823;1241;1823;1241;0;0;0;65544;Regular
+.Arabic UI Display;.Arabic UI Display Semibold
+6;.ArabicUIDisplay-Semibold;0;7;5;2;65535;1000;241;241;0;1902;1241;1902;1241;0;0;0;65544;Semibold
+.Arabic UI Display;.Arabic UI Display Ultralight
+8;.ArabicUIDisplay-Ultralight;0;3;5;2;65535;1000;241;241;0;1744;1241;1744;1241;0;0;0;65544;Ultralight
+
+File:SFNSTextCondensed-Medium.otf
+2;1
+.SF NS Text Condensed
+0;.SFNSTextCondensed-Medium;0;6;5;2;65535;966;210;176;0;1459;1176;1459;1176;0;0;0;65540;Medium
+
+File:SFNSDisplayCondensed-Ultralight.otf
+2;1
+.SF NS Display Condensed
+0;.SFNSDisplayCondensed-Ultralight;0;5;5;2;65535;966;210;176;0;1231;1176;1231;1176;0;0;0;65540;Ultralight
+
+File:SFCompactDisplay-Medium.otf
+2;1
+.SF Compact Display
+0;.SFCompactDisplay-Medium;0;6;5;2;65535;952;241;193;0;1393;1193;1393;1193;0;0;0;65536;Medium
+
+File:SFNSDisplayCondensed-Heavy.otf
+2;1
+.SF NS Display Condensed
+0;.SFNSDisplayCondensed-Heavy;0;9;5;2;65535;966;210;176;0;1486;1176;1486;1176;0;0;0;65540;Heavy
+
+File:ArabicUIText.ttc
+2;6
+.Arabic UI Text;.ArabicUIText
+0;.ArabicUIText-Regular;0;5;5;2;65535;1000;241;241;0;1823;1241;1823;1241;0;0;0;65544;Regular
+.Arabic UI Text;.Arabic UI Text Medium
+1;.ArabicUIText-Medium;0;6;5;2;65535;1000;241;241;0;1867;1241;1867;1241;0;0;0;65544;Medium
+.Arabic UI Text;.Arabic UI Text Semibold
+2;.ArabicUIText-Semibold;0;7;5;2;65535;1000;241;241;0;1903;1241;1903;1241;0;0;0;65544;Semibold
+.Arabic UI Text;.Arabic UI Text Bold
+3;.ArabicUIText-Bold;0;8;5;2;65535;1000;241;241;0;1963;1241;1963;1241;0;0;0;65544;Bold
+.Arabic UI Text;.Arabic UI Text Heavy
+4;.ArabicUIText-Heavy;0;9;5;2;65535;1000;241;241;0;2050;1241;2050;1241;0;0;0;65544;Heavy
+.Arabic UI Text;.Arabic UI Text Light
+5;.ArabicUIText-Light;0;3;5;2;65535;1000;241;241;0;1797;1241;1797;1241;0;0;0;65544;Light
+
+File:ヒラギノ角ゴシック W4.ttc
+2;2
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W4;0;5;5;2;65535;930;221;151;0;1510;1151;1510;1151;0;0;0;65544;W4
+Hiragino Sans;Hiragino Sans W4;ヒラギノ角ゴシック;ヒラギノ角ゴシック W4
+0;HiraginoSans-W4;0;5;5;2;65535;1015;242;257;0;1649;1257;1649;1257;0;0;0;65544;W4
+
+File:SFNSDisplayCondensed-Medium.otf
+2;1
+.SF NS Display Condensed
+0;.SFNSDisplayCondensed-Medium;0;7;5;2;65535;966;210;176;0;1372;1176;1372;1176;0;0;0;65540;Medium
+
+File:ヒラギノ角ゴシック W5.ttc
+2;2
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W5;0;6;5;2;65535;939;232;171;0;1529;1171;1529;1171;0;0;0;65544;W5
+Hiragino Sans;Hiragino Sans W5;ヒラギノ角ゴシック;ヒラギノ角ゴシック W5
+0;HiraginoSans-W5;0;6;5;2;65535;1033;256;289;0;1682;1289;1682;1289;0;0;0;65544;W5
+
+File:Avenir Next Condensed.ttc
+2;12
+Avenir Next Condensed Heavy
+8;AvenirNextCondensed-Heavy;0;10;3;2;65535;1000;366;366;0;1142;1366;1142;1366;0;0;0;4;Heavy
+Avenir Next Condensed
+0;AvenirNextCondensed-Bold;0;8;3;2;65535;1000;366;366;0;1059;1366;1059;1366;0;0;0;4;Bold
+Avenir Next Condensed
+1;AvenirNextCondensed-BoldItalic;2;8;3;2;65535;1000;366;366;0;1114;1366;1114;1366;0;0;0;4;Bold Italic
+Avenir Next Condensed Demi Bold
+2;AvenirNextCondensed-DemiBold;0;7;3;2;65535;1000;366;366;0;1671;1366;1671;1366;0;0;0;4;Demi Bold
+Avenir Next Condensed Demi Bold
+3;AvenirNextCondensed-DemiBoldItalic;2;7;3;2;65535;1000;366;366;0;1078;1366;1078;1366;0;0;0;4;Demi Bold Italic
+Avenir Next Condensed
+4;AvenirNextCondensed-Italic;2;5;3;2;65535;1000;366;366;0;1018;1366;1018;1366;0;0;0;4;Italic
+Avenir Next Condensed Medium
+5;AvenirNextCondensed-Medium;0;6;3;2;65535;1000;366;366;0;993;1366;993;1366;0;0;0;4;Medium
+Avenir Next Condensed Medium
+6;AvenirNextCondensed-MediumItalic;2;6;3;2;65535;1000;366;366;0;1030;1366;1030;1366;0;0;0;4;Medium Italic
+Avenir Next Condensed
+7;AvenirNextCondensed-Regular;0;5;3;2;65535;1000;366;366;0;1450;1366;1450;1366;0;0;0;4;Regular
+Avenir Next Condensed Heavy
+9;AvenirNextCondensed-HeavyItalic;2;10;3;2;65535;1000;366;366;0;1177;1366;1177;1366;0;0;0;4;Heavy Italic
+Avenir Next Condensed Ultra Light
+10;AvenirNextCondensed-UltraLight;0;3;3;2;65535;1000;366;366;0;984;1366;984;1366;0;0;0;4;Ultra Light
+Avenir Next Condensed Ultra Light
+11;AvenirNextCondensed-UltraLightItalic;2;3;3;2;65535;1000;366;366;0;1272;1366;1272;1366;0;0;0;4;Ultra Light Italic
+
+File:SFNSDisplay-MediumItalic.otf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay-MediumItalic;2;6;5;2;65535;966;210;176;0;1639;1176;1639;1176;0;0;0;65536;中等斜体
+
+File:SFCompactRounded-Semibold.otf
+2;1
+.SF Compact Rounded
+0;.SFCompactRounded-Semibold;0;7;5;2;65535;952;241;193;0;1367;1193;1367;1193;0;0;0;65536;Semibold
+
+File:ヒラギノ角ゴシック W3.ttc
+2;4
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W3;0;3;5;2;65535;923;216;139;0;1493;1139;1493;1139;0;0;0;65544;W3
+Hiragino Sans;Hiragino Sans W3;ヒラギノ角ゴシック;ヒラギノ角ゴシック W3
+0;HiraginoSans-W3;0;3;5;2;65535;1000;234;234;0;1618;1234;1618;1234;0;0;0;65544;W3
+Hiragino Kaku Gothic ProN;Hiragino Kaku Gothic ProN W3;ヒラギノ角ゴ ProN;ヒラギノ角ゴ ProN W3
+2;HiraKakuProN-W3;0;3;5;2;65535;1000;234;234;0;1618;1234;1618;1234;0;0;0;65544;W3
+Hiragino Kaku Gothic Pro;Hiragino Kaku Gothic Pro W3;ヒラギノ角ゴ Pro;ヒラギノ角ゴ Pro W3
+3;HiraKakuPro-W3;0;3;5;2;65535;1000;234;234;0;1618;1234;1618;1234;0;0;0;65544;W3
+
+File:SFNSTextCondensed-Light.otf
+2;1
+.SF NS Text Condensed
+0;.SFNSTextCondensed-Light;0;3;5;2;65535;966;210;176;0;1384;1176;1384;1176;0;0;0;65540;Light
+
+File:SFCompactText-Regular.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-Regular;0;5;5;2;65535;952;241;193;0;1428;1193;1428;1193;0;0;0;65536;Regular
+
+File:SFNSDisplay-LightItalic.otf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay-LightItalic;2;3;5;2;65535;966;210;176;0;1589;1176;1589;1176;0;0;0;65536;细斜体
+
+File:LucidaGrande.ttc
+2;4
+.Lucida Grande UI
+2;.LucidaGrandeUI;0;6;5;2;65535;966;210;176;0;2708;1176;2708;1176;0;0;0;6;Regular
+Lucida Grande
+0;LucidaGrande;0;6;5;2;65535;966;210;176;0;2708;1176;2708;1176;0;0;0;6;常规体
+Lucida Grande
+1;LucidaGrande-Bold;0;7;5;2;65535;966;210;176;0;2819;1176;2819;1176;0;0;0;4;粗体
+.Lucida Grande UI
+3;.LucidaGrandeUI-Bold;0;7;5;2;65535;966;210;176;0;2835;1176;2835;1176;0;0;0;4;Bold
+
+File:SFCompactRounded-Heavy.otf
+2;1
+.SF Compact Rounded
+0;.SFCompactRounded-Heavy;0;9;5;2;65535;952;241;193;0;1433;1193;1433;1193;0;0;0;65536;Heavy
+
+File:SFNSDisplay-BoldItalic.otf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay-BoldItalic;2;8;5;2;65535;966;210;176;0;1667;1176;1667;1176;0;0;0;65536;粗斜体
+
+File:ヒラギノ角ゴシック W6.ttc
+2;4
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W6;0;7;5;2;65535;954;247;201;0;1557;1201;1557;1201;0;0;0;65544;W6
+Hiragino Sans;Hiragino Sans W6;ヒラギノ角ゴシック;ヒラギノ角ゴシック W6
+0;HiraginoSans-W6;0;7;5;2;65535;1058;274;332;0;1728;1332;1728;1332;0;0;0;65544;W6
+Hiragino Kaku Gothic ProN;Hiragino Kaku Gothic ProN W6;ヒラギノ角ゴ ProN;ヒラギノ角ゴ ProN W6
+2;HiraKakuProN-W6;0;7;5;2;65535;1058;274;332;0;1728;1332;1728;1332;0;0;0;65544;W6
+Hiragino Kaku Gothic Pro;Hiragino Kaku Gothic Pro W6;ヒラギノ角ゴ Pro;ヒラギノ角ゴ Pro W6
+3;HiraKakuPro-W6;0;7;5;2;65535;1058;274;332;0;1728;1332;1728;1332;0;0;0;65544;W6
+
+File:SFNSTextCondensed-Regular.otf
+2;1
+.SF NS Text Condensed
+0;.SFNSTextCondensed-Regular;0;5;5;2;65535;966;210;176;0;1442;1176;1442;1176;0;0;0;65540;Regular
+
+File:SFNSDisplay-ThinItalic.otf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay-ThinItalic;2;2;5;2;65535;966;210;176;0;1545;1176;1545;1176;0;0;0;65536;细斜体
+
+File:ArialHB.ttc
+2;9
+.Arial Hebrew Desk Interface
+4;.ArialHebrewDeskInterface-Bold;0;8;5;2;65535;966;211;177;0;1270;1177;1270;1177;0;0;0;4;Bold
+Arial Hebrew
+0;ArialHebrew;0;5;5;2;65535;730;335;65;0;1101;1065;1101;1065;0;0;0;4;常规体
+Arial Hebrew
+1;ArialHebrew-Bold;0;8;5;2;65535;730;335;65;0;1101;1065;1101;1065;0;0;0;4;粗体
+Arial Hebrew
+2;ArialHebrew-Light;0;3;5;2;65535;730;335;65;0;956;1065;956;1065;0;0;0;4;细体
+.Arial Hebrew Desk Interface
+3;.ArialHebrewDeskInterface;0;5;5;2;65535;967;210;177;0;1252;1177;1252;1177;0;0;0;4;Regular
+.Arial Hebrew Desk Interface
+5;.ArialHebrewDeskInterface-Light;0;3;5;2;65535;967;210;177;0;1087;1177;1087;1177;0;0;0;4;Light
+Arial Hebrew Scholar
+6;ArialHebrewScholar;0;5;5;2;65535;730;335;65;0;1101;1065;1101;1065;0;0;0;4;常规体
+Arial Hebrew Scholar
+7;ArialHebrewScholar-Bold;0;8;5;2;65535;730;335;65;0;1101;1065;1101;1065;0;0;0;4;粗体
+Arial Hebrew Scholar
+8;ArialHebrewScholar-Light;0;3;5;2;65535;730;335;65;0;956;1065;956;1065;0;0;0;4;细体
+
+File:SFCompactText-HeavyItalic.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-HeavyItalic;2;9;5;2;65535;952;241;193;0;1587;1193;1587;1193;0;0;0;65536;Heavy Italic
+
+File:Helvetica.ttc
+2;6
+Helvetica
+4;Helvetica-Light;0;3;5;2;65535;979;250;229;0;1798;1229;1798;1229;0;0;0;4;细体
+Helvetica
+0;Helvetica;0;5;5;2;65535;950;225;175;0;2395;1175;2395;1175;0;0;0;0;常规体
+Helvetica
+1;Helvetica-Bold;0;8;5;2;65535;959;231;190;0;2453;1190;2453;1190;0;0;0;0;粗体
+Helvetica
+2;Helvetica-Oblique;1;5;5;2;65535;950;225;175;0;2503;1175;2503;1175;0;0;0;0;伪斜体
+Helvetica
+3;Helvetica-BoldOblique;1;8;5;2;65535;959;231;190;0;2589;1190;2589;1190;0;0;0;0;粗伪斜体
+Helvetica
+5;Helvetica-LightOblique;1;3;5;2;65535;979;273;252;0;1961;1252;1961;1252;0;0;0;4;细伪斜体
+
+File:SFNSDisplay-BlackItalic.otf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay-BlackItalic;2;10;5;2;65535;966;210;176;0;1745;1176;1745;1176;0;0;0;65536;黑斜体
+
+File:LastResort.otf
+2;1
+.LastResort
+0;LastResort;0;5;5;1;65535;833;250;8;0;957;1083;957;1083;0;0;0;0;Regular
+
+File:Apple Braille Outline 6 Dot.ttf
+2;1
+Apple Braille
+0;AppleBraille-Outline6Dot;0;5;5;2;65535;882;169;51;0;488;1051;488;1051;0;0;0;0;Outline 6 Dot
+
+File:SFCompactText-RegularItalic.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-Italic;2;5;5;2;65535;952;241;193;0;1508;1193;1508;1193;0;0;0;65536;Italic
+
+File:SFCompactText-Semibold.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-Semibold;0;7;5;2;65535;952;241;193;0;1485;1193;1485;1193;0;0;0;65536;Semibold
+
+File:ヒラギノ角ゴシック W8.ttc
+2;4
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W8;0;9;5;2;65535;990;285;275;0;1513;1275;1513;1275;0;0;0;65544;W8
+Hiragino Sans;Hiragino Sans W8;ヒラギノ角ゴシック;ヒラギノ角ゴシック W8
+0;HiraginoSans-W8;0;9;5;2;65535;1125;324;449;0;1719;1449;1719;1449;0;0;0;65544;W8
+Hiragino Kaku Gothic Std;Hiragino Kaku Gothic Std W8;ヒラギノ角ゴ Std;ヒラギノ角ゴ Std W8
+2;HiraKakuStd-W8;0;9;5;2;65535;1125;324;449;0;1719;1449;1719;1449;0;0;0;65544;W8
+Hiragino Kaku Gothic StdN;Hiragino Kaku Gothic StdN W8;ヒラギノ角ゴ StdN;ヒラギノ角ゴ StdN W8
+3;HiraKakuStdN-W8;0;9;5;2;65535;1125;324;449;0;1719;1449;1719;1449;0;0;0;65544;W8
+
+File:SFNSDisplayCondensed-Black.otf
+2;1
+.SF NS Display Condensed
+0;.SFNSDisplayCondensed-Black;0;10;5;2;65535;966;210;176;0;1554;1176;1554;1176;0;0;0;65540;Black
+
+File:SFNSDisplayCondensed-Bold.otf
+2;1
+.SF NS Display Condensed
+0;.SFNSDisplayCondensed-Bold;0;9;5;2;65535;966;210;176;0;1434;1176;1434;1176;0;0;0;65540;Bold
+
+File:SFNSTextCondensed-Bold.otf
+2;1
+.SF NS Text Condensed
+0;.SFNSTextCondensed-Bold;0;8;5;2;65535;966;210;176;0;1495;1176;1495;1176;0;0;0;65540;Bold
+
+File:SFCompactText-Medium.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-Medium;0;6;5;2;65535;952;241;193;0;1456;1193;1456;1193;0;0;0;65536;Medium
+
+File:Apple Braille Pinpoint 6 Dot.ttf
+2;1
+Apple Braille
+0;AppleBraille-Pinpoint6Dot;0;5;5;2;65535;882;169;51;0;488;1051;488;1051;0;0;0;0;Pinpoint 6 Dot
+
+File:Times.ttc
+2;4
+Times
+0;Times-Roman;0;5;5;2;65535;1271;428;699;0;1903;1699;1903;1699;0;0;0;0;常规体
+Times
+1;Times-Bold;0;8;5;2;65535;1294;407;701;0;2005;1701;2005;1701;0;0;0;0;粗体
+Times
+2;Times-Italic;2;5;5;2;65535;1205;412;617;0;1955;1617;1955;1617;0;0;0;0;斜体
+Times
+3;Times-BoldItalic;2;5;5;2;65535;1274;425;699;0;1930;1699;1930;1699;0;0;0;0;粗斜体
+
+File:SFNSTextCondensed-Heavy.otf
+2;1
+.SF NS Text Condensed
+0;.SFNSTextCondensed-Heavy;0;9;5;2;65535;966;210;176;0;1510;1176;1510;1176;0;0;0;65540;Heavy
+
+File:PingFang.ttc
+2;36
+.苹方-港;.PingFang HK;.蘋方-港
+27;.PingFangHK-Light;0;3;5;2;65535;1060;340;400;0;1181;1400;1181;1400;0;0;0;65540;细体
+苹方-港;PingFang HK;蘋方-港
+0;PingFangHK-Regular;0;5;5;2;65535;1060;340;400;0;1198;1400;1198;1400;0;0;0;65540;常规体
+苹方-繁;PingFang TC;蘋方-繁
+1;PingFangTC-Regular;0;5;5;2;65535;1060;340;400;0;1198;1400;1198;1400;0;0;0;65540;常规体
+苹方-简;PingFang SC;蘋方-簡
+2;PingFangSC-Regular;0;5;5;2;65535;1060;340;400;0;1198;1400;1198;1400;0;0;0;65540;常规体
+苹方-港;PingFang HK;蘋方-港
+3;PingFangHK-Medium;0;6;5;2;65535;1060;340;400;0;1221;1400;1221;1400;0;0;0;65540;中黑体
+苹方-繁;PingFang TC;蘋方-繁
+4;PingFangTC-Medium;0;6;5;2;65535;1060;340;400;0;1221;1400;1221;1400;0;0;0;65540;中黑体
+苹方-简;PingFang SC;蘋方-簡
+5;PingFangSC-Medium;0;6;5;2;65535;1060;340;400;0;1221;1400;1221;1400;0;0;0;65540;中黑体
+苹方-港;PingFang HK;蘋方-港
+6;PingFangHK-Semibold;0;7;5;2;65535;1060;340;400;0;1228;1400;1228;1400;0;0;0;65540;中粗体
+苹方-繁;PingFang TC;蘋方-繁
+7;PingFangTC-Semibold;0;7;5;2;65535;1060;340;400;0;1228;1400;1228;1400;0;0;0;65540;中粗体
+苹方-简;PingFang SC;蘋方-簡
+8;PingFangSC-Semibold;0;7;5;2;65535;1060;340;400;0;1228;1400;1228;1400;0;0;0;65540;中粗体
+苹方-港;PingFang HK;蘋方-港
+9;PingFangHK-Light;0;3;5;2;65535;1060;340;400;0;1181;1400;1181;1400;0;0;0;65540;细体
+苹方-繁;PingFang TC;蘋方-繁
+10;PingFangTC-Light;0;3;5;2;65535;1060;340;400;0;1181;1400;1181;1400;0;0;0;65540;细体
+苹方-简;PingFang SC;蘋方-簡
+11;PingFangSC-Light;0;3;5;2;65535;1060;340;400;0;1181;1400;1181;1400;0;0;0;65540;细体
+苹方-港;PingFang HK;蘋方-港
+12;PingFangHK-Thin;0;2;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;纤细体
+苹方-繁;PingFang TC;蘋方-繁
+13;PingFangTC-Thin;0;2;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;纤细体
+苹方-简;PingFang SC;蘋方-簡
+14;PingFangSC-Thin;0;2;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;纤细体
+苹方-港;PingFang HK;蘋方-港
+15;PingFangHK-Ultralight;0;1;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;极细体
+苹方-繁;PingFang TC;蘋方-繁
+16;PingFangTC-Ultralight;0;1;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;极细体
+苹方-简;PingFang SC;蘋方-簡
+17;PingFangSC-Ultralight;0;1;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;极细体
+.苹方-港;.PingFang HK;.蘋方-港
+18;.PingFangHK-Regular;0;5;5;2;65535;1060;340;400;0;1198;1400;1198;1400;0;0;0;65540;常规体
+.苹方-繁;.PingFang TC;.蘋方-繁
+19;.PingFangTC-Regular;0;5;5;2;65535;1060;340;400;0;1198;1400;1198;1400;0;0;0;65540;常规体
+.苹方-简;.PingFang SC;.蘋方-簡
+20;.PingFangSC-Regular;0;5;5;2;65535;1060;340;400;0;1198;1400;1198;1400;0;0;0;65540;常规体
+.苹方-港;.PingFang HK;.蘋方-港
+21;.PingFangHK-Medium;0;6;5;2;65535;1060;340;400;0;1221;1400;1221;1400;0;0;0;65540;中黑体
+.苹方-繁;.PingFang TC;.蘋方-繁
+22;.PingFangTC-Medium;0;6;5;2;65535;1060;340;400;0;1221;1400;1221;1400;0;0;0;65540;中黑体
+.苹方-简;.PingFang SC;.蘋方-簡
+23;.PingFangSC-Medium;0;6;5;2;65535;1060;340;400;0;1221;1400;1221;1400;0;0;0;65540;中黑体
+.苹方-港;.PingFang HK;.蘋方-港
+24;.PingFangHK-Semibold;0;7;5;2;65535;1060;340;400;0;1228;1400;1228;1400;0;0;0;65540;中粗体
+.苹方-繁;.PingFang TC;.蘋方-繁
+25;.PingFangTC-Semibold;0;7;5;2;65535;1060;340;400;0;1228;1400;1228;1400;0;0;0;65540;中粗体
+.苹方-简;.PingFang SC;.蘋方-簡
+26;.PingFangSC-Semibold;0;7;5;2;65535;1060;340;400;0;1228;1400;1228;1400;0;0;0;65540;中粗体
+.苹方-繁;.PingFang TC;.蘋方-繁
+28;.PingFangTC-Light;0;3;5;2;65535;1060;340;400;0;1181;1400;1181;1400;0;0;0;65540;细体
+.苹方-简;.PingFang SC;.蘋方-簡
+29;.PingFangSC-Light;0;3;5;2;65535;1060;340;400;0;1181;1400;1181;1400;0;0;0;65540;细体
+.苹方-港;.PingFang HK;.蘋方-港
+30;.PingFangHK-Thin;0;2;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;纤细体
+.苹方-繁;.PingFang TC;.蘋方-繁
+31;.PingFangTC-Thin;0;2;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;纤细体
+.苹方-简;.PingFang SC;.蘋方-簡
+32;.PingFangSC-Thin;0;2;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;纤细体
+.苹方-港;.PingFang HK;.蘋方-港
+33;.PingFangHK-Ultralight;0;1;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;极细体
+.苹方-繁;.PingFang TC;.蘋方-繁
+34;.PingFangTC-Ultralight;0;1;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;极细体
+.苹方-简;.PingFang SC;.蘋方-簡
+35;.PingFangSC-Ultralight;0;1;5;2;65535;1060;340;400;0;1164;1400;1164;1400;0;0;0;65540;极细体
+
+File:Apple Braille.ttf
+2;1
+Apple Braille
+0;AppleBraille;0;5;5;2;65535;882;169;51;0;488;1051;488;1051;0;0;0;0;Regular
+
+File:Apple Braille Pinpoint 8 Dot.ttf
+2;1
+Apple Braille
+0;AppleBraille-Pinpoint8Dot;0;5;5;2;65535;882;169;51;0;488;1051;488;1051;0;0;0;0;Pinpoint 8 Dot
+
+File:SFCompactRounded-Black.otf
+2;1
+.SF Compact Rounded
+0;.SFCompactRounded-Black;0;10;5;2;65535;952;241;193;0;1449;1193;1449;1193;0;0;0;65536;Black
+
+File:HelveticaNeue.ttc
+2;14
+Helvetica Neue
+10;HelveticaNeue-Medium;0;6;5;2;65535;975;217;192;0;2563;1192;2563;1192;0;0;0;4;中等
+Helvetica Neue
+0;HelveticaNeue;0;5;5;2;65535;952;213;165;0;2938;1165;2938;1165;0;0;0;0;常规体
+Helvetica Neue
+1;HelveticaNeue-Bold;0;8;5;2;65535;975;217;192;0;2455;1192;2455;1192;0;0;0;0;粗体
+Helvetica Neue
+2;HelveticaNeue-Italic;2;5;5;2;65535;957;213;170;0;2504;1170;2504;1170;0;0;0;0;斜体
+Helvetica Neue
+3;HelveticaNeue-BoldItalic;2;8;5;2;65535;975;217;192;0;2591;1192;2591;1192;0;0;0;0;粗斜体
+Helvetica Neue
+4;HelveticaNeue-CondensedBold;0;8;3;2;65535;961;221;182;0;1566;1182;1566;1182;0;0;0;0;紧缩粗体
+Helvetica Neue
+5;HelveticaNeue-UltraLight;0;1;5;2;65535;931;213;144;0;1686;1144;1686;1144;0;0;0;0;超细体
+Helvetica Neue
+6;HelveticaNeue-UltraLightItalic;2;1;5;2;65535;931;213;144;0;1584;1144;1584;1144;0;0;0;0;超细斜体
+Helvetica Neue
+7;HelveticaNeue-Light;0;3;5;2;65535;967;213;180;0;2417;1180;2417;1180;0;0;0;0;细体
+Helvetica Neue
+8;HelveticaNeue-LightItalic;2;3;5;2;65535;951;213;164;0;1934;1164;1934;1164;0;0;0;0;细斜体
+Helvetica Neue
+9;HelveticaNeue-CondensedBlack;0;10;3;2;65535;972;227;199;0;1613;1199;1613;1199;0;0;0;0;紧缩黑体
+Helvetica Neue
+11;HelveticaNeue-MediumItalic;2;6;5;2;65535;975;217;192;0;2453;1192;2453;1192;0;0;0;4;中等斜体
+Helvetica Neue
+12;HelveticaNeue-Thin;0;2;5;2;65535;967;213;180;0;1561;1180;1561;1180;0;0;0;4;瘦体
+Helvetica Neue
+13;HelveticaNeue-ThinItalic;2;2;5;2;65535;967;213;180;0;1621;1180;1621;1180;0;0;0;4;瘦斜体
+
+File:Apple Braille Outline 8 Dot.ttf
+2;1
+Apple Braille
+0;AppleBraille-Outline8Dot;0;5;5;2;65535;882;169;51;0;488;1051;488;1051;0;0;0;0;Outline 8 Dot
+
+File:Avenir.ttc
+2;12
+Avenir Medium
+9;Avenir-MediumOblique;1;6;5;2;65535;1000;325;325;0;1227;1325;1227;1325;0;0;0;4;Medium Oblique
+Avenir Book
+0;Avenir-Book;0;5;5;2;65535;1000;325;325;0;1167;1325;1167;1325;0;0;0;4;Book
+Avenir Book
+1;Avenir-BookOblique;1;5;5;2;65535;1000;325;325;0;1211;1325;1211;1325;0;0;0;4;Book Oblique
+Avenir Black
+2;Avenir-Black;0;9;5;2;65535;1000;366;366;0;2038;1366;2038;1366;0;0;0;4;Black
+Avenir Black Oblique
+3;Avenir-BlackOblique;1;9;5;2;65535;1000;366;366;0;2142;1366;2142;1366;0;0;0;4;Black Oblique
+Avenir Heavy
+4;Avenir-Heavy;0;10;5;2;65535;1000;325;325;0;1875;1325;1875;1325;0;0;0;4;Heavy
+Avenir Heavy
+5;Avenir-HeavyOblique;1;10;5;2;65535;1000;325;325;0;1353;1325;1353;1325;0;0;0;4;Heavy Oblique
+Avenir Light
+6;Avenir-Light;0;3;5;2;65535;1000;325;325;0;1167;1325;1167;1325;0;0;0;4;Light
+Avenir Light
+7;Avenir-LightOblique;1;3;5;2;65535;1000;325;325;0;1205;1325;1205;1325;0;0;0;4;Light Oblique
+Avenir Medium
+8;Avenir-Medium;0;6;5;2;65535;1000;325;325;0;1811;1325;1811;1325;0;0;0;4;Medium
+Avenir
+10;Avenir-Oblique;1;5;5;2;65535;1000;325;325;0;1222;1325;1222;1325;0;0;0;4;Oblique
+Avenir
+11;Avenir-Roman;0;5;5;2;65535;1000;325;325;0;1741;1325;1741;1325;0;0;0;4;Roman
+
+File:Avenir Next.ttc
+2;12
+Avenir Next Ultra Light
+11;AvenirNext-UltraLightItalic;2;3;5;2;65535;1000;366;366;0;1760;1366;1760;1366;0;0;0;4;Ultra Light Italic
+Avenir Next
+0;AvenirNext-Bold;0;8;5;2;65535;1000;366;366;0;2100;1366;2100;1366;0;0;0;4;Bold
+Avenir Next
+1;AvenirNext-BoldItalic;2;8;5;2;65535;1000;366;366;0;2141;1366;2141;1366;0;0;0;4;Bold Italic
+Avenir Next Demi Bold
+2;AvenirNext-DemiBold;0;7;5;2;65535;1000;366;366;0;1884;1366;1884;1366;0;0;0;4;Demi Bold
+Avenir Next Demi Bold
+3;AvenirNext-DemiBoldItalic;2;7;5;2;65535;1000;366;366;0;1955;1366;1955;1366;0;0;0;4;Demi Bold Italic
+Avenir Next
+4;AvenirNext-Italic;2;5;5;2;65535;1000;366;366;0;1746;1366;1746;1366;0;0;0;4;Italic
+Avenir Next Medium
+5;AvenirNext-Medium;0;6;5;2;65535;1000;366;366;0;1809;1366;1809;1366;0;0;0;4;Medium
+Avenir Next Medium
+6;AvenirNext-MediumItalic;2;6;5;2;65535;1000;366;366;0;1840;1366;1840;1366;0;0;0;4;Medium Italic
+Avenir Next
+7;AvenirNext-Regular;0;5;5;2;65535;1000;366;366;0;1703;1366;1703;1366;0;0;0;4;Regular
+Avenir Next Heavy
+8;AvenirNext-Heavy;0;10;5;2;65535;1000;366;366;0;1400;1366;1400;1366;0;0;0;4;Heavy
+Avenir Next Heavy
+9;AvenirNext-HeavyItalic;2;10;5;2;65535;1000;366;366;0;1458;1366;1458;1366;0;0;0;4;Heavy Italic
+Avenir Next Ultra Light
+10;AvenirNext-UltraLight;0;3;5;2;65535;1000;366;366;0;1682;1366;1682;1366;0;0;0;4;Ultra Light
+
+File:ヒラギノ明朝 ProN.ttc
+2;4
+Hiragino Mincho Pro;Hiragino Mincho Pro W3;ヒラギノ明朝 Pro;ヒラギノ明朝 Pro W3
+1;HiraMinPro-W3;0;3;5;2;65535;985;182;167;0;1514;1167;1514;1167;0;0;0;65544;W3
+Hiragino Mincho ProN;Hiragino Mincho ProN W3;ヒラギノ明朝 ProN;ヒラギノ明朝 ProN W3
+0;HiraMinProN-W3;0;3;5;2;65535;985;182;167;0;1514;1167;1514;1167;0;0;0;65544;W3
+Hiragino Mincho ProN;Hiragino Mincho ProN W6;ヒラギノ明朝 ProN;ヒラギノ明朝 ProN W6
+2;HiraMinProN-W6;0;7;5;2;65535;1001;203;204;0;1619;1204;1619;1204;0;0;0;65544;W6
+Hiragino Mincho Pro;Hiragino Mincho Pro W6;ヒラギノ明朝 Pro;ヒラギノ明朝 Pro W6
+3;HiraMinPro-W6;0;7;5;2;65535;1001;203;204;0;1619;1204;1619;1204;0;0;0;65544;W6
+
+File:KohinoorTelugu.ttc
+2;5
+Kohinoor Telugu
+2;KohinoorTelugu-Medium;0;6;5;2;65535;1100;400;500;0;2658;1500;2658;1500;0;0;0;65536;Medium
+Kohinoor Telugu
+0;KohinoorTelugu-Regular;0;5;5;2;65535;1100;400;500;0;2617;1500;2617;1500;0;0;0;65536;Regular
+Kohinoor Telugu
+1;KohinoorTelugu-Semibold;0;7;5;2;65535;1100;400;500;0;2704;1500;2704;1500;0;0;0;65536;Semibold
+Kohinoor Telugu
+3;KohinoorTelugu-Bold;0;8;5;2;65535;1100;400;500;0;2758;1500;2758;1500;0;0;0;65536;Bold
+Kohinoor Telugu
+4;KohinoorTelugu-Light;0;3;5;2;65535;1100;400;500;0;2580;1500;2580;1500;0;0;0;65536;Light
+
+File:MarkerFelt.ttc
+2;2
+Marker Felt
+1;MarkerFelt-Wide;0;8;5;2;65535;908;237;145;0;1610;1145;1610;1145;0;0;0;0;宽体
+Marker Felt
+0;MarkerFelt-Thin;0;5;5;2;65535;868;218;86;0;1657;1086;1657;1086;0;0;0;0;瘦体
+
+File:SFCompactRounded-Ultralight.otf
+2;1
+.SF Compact Rounded
+0;.SFCompactRounded-Ultralight;0;1;5;2;65535;952;241;193;0;1325;1193;1325;1193;0;0;0;65536;Ultralight
+
+File:Optima.ttc
+2;5
+Optima
+0;Optima-Regular;0;5;5;2;65535;919;268;187;0;1330;1187;1330;1187;0;0;0;0;常规体
+Optima
+1;Optima-Bold;0;8;5;2;65535;921;268;189;0;1383;1189;1383;1189;0;0;0;0;粗体
+Optima
+2;Optima-Italic;2;5;5;2;65535;923;262;185;0;1388;1185;1388;1185;0;0;0;0;斜体
+Optima
+3;Optima-BoldItalic;2;8;5;2;65535;931;261;192;0;1453;1192;1453;1192;0;0;0;0;粗斜体
+Optima
+4;Optima-ExtraBlack;0;10;5;2;65535;961;262;223;0;1547;1223;1547;1223;0;0;0;0;特黑体
+
+File:Menlo.ttc
+2;4
+Menlo
+3;Menlo-BoldItalic;2;8;5;1;65535;928;235;163;0;1253;1163;1253;1163;0;0;0;0;Bold Italic
+Menlo
+0;Menlo-Regular;0;5;5;1;65535;928;235;163;0;1275;1163;1275;1163;0;0;0;0;Regular
+Menlo
+1;Menlo-Bold;0;8;5;1;65535;928;235;163;0;1176;1163;1176;1163;0;0;0;0;Bold
+Menlo
+2;Menlo-Italic;2;5;5;1;65535;928;235;163;0;1166;1163;1166;1163;0;0;0;0;Italic
+
+File:SFCompactDisplay-Black.otf
+2;1
+.SF Compact Display
+0;.SFCompactDisplay-Black;0;10;5;2;65535;952;241;193;0;1572;1193;1572;1193;0;0;0;65536;Black
+
+File:Noteworthy.ttc
+2;2
+Noteworthy
+1;Noteworthy-Bold;0;8;5;2;65535;1057;353;410;0;1937;1410;1937;1410;0;0;0;0;Bold
+Noteworthy
+0;Noteworthy-Light;0;3;5;2;65535;1057;353;410;0;1761;1410;1761;1410;0;0;0;0;Light
+
+File:Palatino.ttc
+2;4
+Palatino
+1;Palatino-Italic;2;5;5;2;65535;1135;470;605;0;2149;1605;2149;1605;0;0;0;4;Italic
+Palatino
+0;Palatino-Roman;0;5;5;2;65535;1173;482;655;0;2172;1655;2172;1655;0;0;0;4;Regular
+Palatino
+2;Palatino-Bold;0;8;5;2;65535;1193;464;657;0;2424;1657;2424;1657;0;0;0;4;Bold
+Palatino
+3;Palatino-BoldItalic;2;8;5;2;65535;1135;475;610;0;2346;1610;2346;1610;0;0;0;4;Bold Italic
+
+File:SFNSDisplay.ttf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay;0;5;5;2;65535;966;210;176;0;1500;1176;1500;1176;0;0;0;0;常规体
+
+File:ヒラギノ角ゴシック W9.ttc
+2;2
+.Hiragino Kaku Gothic Interface
+1;.HiraKakuInterface-W9;0;10;5;2;65535;1013;308;321;0;1561;1321;1561;1321;0;0;0;65544;W9
+Hiragino Sans;Hiragino Sans W9;ヒラギノ角ゴシック;ヒラギノ角ゴシック W9
+0;HiraginoSans-W9;0;10;5;2;65535;1167;355;522;0;1798;1522;1798;1522;0;0;0;65544;W9
+
+File:SFNSDisplayCondensed-Thin.otf
+2;1
+.SF NS Display Condensed
+0;.SFNSDisplayCondensed-Thin;0;5;5;2;65535;966;210;176;0;1255;1176;1255;1176;0;0;0;65540;Thin
+
+File:Symbol.ttf
+2;1
+Symbol
+0;Symbol;0;5;5;2;65535;827;298;125;0;1259;1125;1259;1125;0;0;0;4;常规体
+
+File:Thonburi.ttc
+2;3
+Thonburi
+0;Thonburi;0;5;5;2;65535;939;234;173;0;2143;1173;2143;1173;0;0;0;0;常规体
+Thonburi
+1;Thonburi-Bold;0;8;5;2;65535;939;234;173;0;2160;1173;2160;1173;0;0;0;0;粗体
+Thonburi
+2;Thonburi-Light;0;3;5;2;65535;939;234;173;0;2142;1173;2142;1173;0;0;0;0;Light
+
+File:Kohinoor.ttc
+2;5
+Kohinoor Devanagari;कोहिनूर देवनागरी
+0;KohinoorDevanagari-Regular;0;5;5;2;65535;1050;450;500;0;2546;1500;2546;1500;0;0;0;65536;Regular
+Kohinoor Devanagari;कोहिनूर देवनागरी
+1;KohinoorDevanagari-Medium;0;6;5;2;65535;1050;450;500;0;2584;1500;2584;1500;0;0;0;65536;Medium
+Kohinoor Devanagari;कोहिनूर देवनागरी
+2;KohinoorDevanagari-Semibold;0;7;5;2;65535;1050;450;500;0;2628;1500;2628;1500;0;0;0;65536;Semibold
+Kohinoor Devanagari;कोहिनूर देवनागरी
+3;KohinoorDevanagari-Bold;0;8;5;2;65535;1050;450;500;0;2679;1500;2679;1500;0;0;0;65536;Bold
+Kohinoor Devanagari;कोहिनूर देवनागरी
+4;KohinoorDevanagari-Light;0;3;5;2;65535;1050;450;500;0;2512;1500;2512;1500;0;0;0;65536;Light
+
+File:SFNSDisplay-RegularItalic.otf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay-Italic;2;5;5;2;65535;966;210;176;0;1623;1176;1623;1176;0;0;0;65536;斜体
+
+File:SFCompactText-MediumItalic.otf
+2;1
+.SF Compact Text
+0;.SFCompactText-MediumItalic;2;6;5;2;65535;952;241;193;0;1524;1193;1524;1193;0;0;0;65536;Medium Italic
+
+File:SFNSDisplay-HeavyItalic.otf
+2;1
+系统字体;.SF NS Display;Czcionka systemowa;Fon Sistem;Font de sistem;Font di sistema;Font sustava;Fonte do Sistema;Järjestelmäfontti;Phông chữ Hệ thống;Police système;Rendszerbetűtípus;Sistem Fontu;Systeemlettertype;System Font;Systemschrift;Systemskrift;Systemtypsnitt;Systémové písmo;Tipo de letra del sistema;Tipo de letra do sistema;Tipus de lletra del sistema;Γραμματοσειρά συστήματος;Системний шрифт;Системный шрифт;גופן מערכת;خط النظام;แบบอักษรระบบ;システムフォント;系統字體;시스템 서체
+0;.SFNSDisplay-HeavyItalic;2;9;5;2;65535;966;210;176;0;1689;1176;1689;1176;0;0;0;65536;粗斜体
+
+FontCacheDirectory:1530855778:/usr/share/fonts/windows10
+File:mingliub.ttc
+2;3
+PMingLiU-ExtB;新細明體-ExtB
+1;PMingLiU-ExtB;0;5;5;2;65535;800;199;-1;1;996;999;996;999;0;0;0;8;Regular
+MingLiU-ExtB;細明體-ExtB
+0;MingLiU-ExtB;0;5;5;2;65535;800;199;-1;1;996;999;996;999;0;0;0;8;Regular
+MingLiU_HKSCS-ExtB;細明體_HKSCS-ExtB
+2;Ming-Lt-HKSCS-ExtB;0;5;5;2;65535;800;199;-1;1;996;999;996;999;0;0;0;8;Regular
+
+File:YuGothM.ttc
+2;2
+Yu Gothic Medium;游ゴシック Medium
+0;YuGothic-Medium;0;6;5;2;65535;990;296;286;1;1582;1286;1582;1286;0;0;0;8;Medium
+Yu Gothic UI
+1;YuGothicUI-Regular;0;5;5;2;65535;1079;250;329;1;1582;1329;1582;1329;0;0;0;8;Regular
+
+File:wingding.ttf
+2;1
+Wingdings
+0;Wingdings-Regular;0;5;5;2;10;898;210;108;0;1358;1108;1358;1108;0;0;0;8;Regular
+
+File:verdana.ttf
+2;1
+Verdana
+0;Verdana;0;5;5;2;65535;1005;209;214;0;2081;1214;2081;1214;0;0;0;8;Regular
+
+File:trebucit.ttf
+2;1
+Trebuchet MS
+0;TrebuchetMS-Italic;2;5;5;2;65535;938;222;160;0;1811;1160;1811;1160;0;0;0;8;Italic
+
+File:trebucbi.ttf
+2;1
+Trebuchet MS
+0;Trebuchet-BoldItalic;2;8;5;2;65535;938;222;160;0;1901;1160;1901;1160;0;0;0;8;Bold Italic
+
+File:timesbd.ttf
+2;1
+Times New Roman
+0;TimesNewRomanPS-BoldMT;0;8;5;2;65535;891;216;107;0;2558;1107;2558;1107;0;0;0;8;Bold
+
+File:tahomabd.ttf
+2;1
+Tahoma
+0;Tahoma-Bold;0;8;5;2;65535;1000;206;206;0;2893;1206;2893;1206;0;0;0;8;Bold
+
+File:symbol.ttf
+2;1
+Symbol
+0;SymbolMT;0;5;5;2;10;1005;219;224;0;1112;1224;1112;1224;0;0;0;8;Regular
+
+File:SitkaI.ttc
+2;6
+Sitka Banner
+5;SitkaBanner-Italic;2;5;5;2;65535;1146;297;443;0;1574;1443;1574;1443;0;0;0;8;Italic
+Sitka Small
+0;SitkaSmall-Italic;2;5;5;2;65535;1172;304;476;0;1975;1476;1975;1476;0;0;0;8;Italic
+Sitka Text
+1;SitkaText-Italic;2;5;5;2;65535;1146;297;443;0;1843;1443;1843;1443;0;0;0;8;Italic
+Sitka Subheading
+2;SitkaSubheading-Italic;2;5;5;2;65535;1146;297;443;0;1755;1443;1755;1443;0;0;0;8;Italic
+Sitka Heading
+3;SitkaHeading-Italic;2;5;5;2;65535;1146;297;443;0;1684;1443;1684;1443;0;0;0;8;Italic
+Sitka Display
+4;SitkaDisplay-Italic;2;5;5;2;65535;1146;297;443;0;1622;1443;1622;1443;0;0;0;8;Italic
+
+File:sylfaen.ttf
+2;1
+Sylfaen
+0;Sylfaen;0;5;5;2;65535;1006;310;316;0;1585;1316;1585;1316;0;0;0;8;Regular
+
+File:simsunb.ttf
+2;1
+SimSun-ExtB
+0;SimSun-ExtB;0;5;5;2;65535;859;140;-1;0;1000;999;1000;999;0;0;0;8;Regular
+
+File:times.ttf
+2;1
+Times New Roman
+0;TimesNewRomanPSMT;0;5;5;2;65535;891;216;107;0;2613;1107;2613;1107;0;0;0;8;Regular
+
+File:simhei.ttf
+2;1
+黑体;SimHei
+0;SimHei;0;5;5;2;65535;859;140;-1;1;1007;999;1007;999;0;0;0;8;Regular
+
+File:seguisym.ttf
+2;1
+Segoe UI Symbol
+0;SegoeUISymbol;0;5;5;2;65535;1079;250;329;1;2474;1329;2474;1329;0;0;0;8;Regular
+
+File:seguiemj.ttf
+2;1
+Segoe UI Emoji
+0;SegoeUIEmoji;0;5;5;2;65535;1079;250;329;0;1677;1329;1677;1329;0;0;0;8;Regular
+
+File:seguibli.ttf
+2;1
+Segoe UI Black
+0;SegoeUIBlack-Italic;2;10;5;2;65535;1079;250;329;0;1977;1329;1977;1329;0;0;0;8;Black Italic
+
+File:segoeuiz.ttf
+2;1
+Segoe UI
+0;SegoeUI-BoldItalic;2;8;5;2;65535;1079;250;329;0;1990;1329;1990;1329;0;0;0;8;Bold Italic
+
+File:timesi.ttf
+2;1
+Times New Roman
+0;TimesNewRomanPS-ItalicMT;2;5;5;2;65535;891;216;107;0;1830;1107;1830;1107;0;0;0;8;Italic
+
+File:seguisli.ttf
+2;1
+Segoe UI Semilight
+0;SegoeUI-SemilightItalic;2;4;5;2;65535;1079;250;329;0;1861;1329;1861;1329;0;0;0;8;Semilight Italic
+
+File:YuGothL.ttc
+2;2
+Yu Gothic Light;游ゴシック Light
+0;YuGothic-Light;0;3;5;2;65535;989;297;286;1;1569;1286;1569;1286;0;0;0;8;Light
+Yu Gothic UI Light
+1;YuGothicUI-Light;0;3;5;2;65535;1079;250;329;1;1569;1329;1569;1329;0;0;0;8;Light
+
+File:seguili.ttf
+2;1
+Segoe UI Light
+0;SegoeUI-LightItalic;2;3;5;2;65535;1079;250;329;0;1846;1329;1846;1329;0;0;0;8;Light Italic
+
+File:segoeuisl.ttf
+2;1
+Segoe UI Semilight
+0;SegoeUI-Semilight;0;4;5;2;65535;1079;250;329;0;2585;1329;2585;1329;0;0;0;8;Semilight
+
+File:segoeuib.ttf
+2;1
+Segoe UI
+0;SegoeUI-Bold;0;8;5;2;65535;1079;250;329;0;2631;1329;2631;1329;0;0;0;8;Bold
+
+File:segoeuil.ttf
+2;1
+Segoe UI Light
+0;SegoeUI-Light;0;3;5;2;65535;1079;250;329;0;2585;1329;2585;1329;0;0;0;8;Light
+
+File:segoeui.ttf
+2;1
+Segoe UI
+0;SegoeUI;0;5;5;2;65535;1079;250;329;0;2571;1329;2571;1329;0;0;0;8;Regular
+
+File:segoesc.ttf
+2;1
+Segoe Script
+0;SegoeScript;0;5;5;2;65535;1088;495;583;0;1694;1583;1694;1583;0;0;0;8;Regular
+
+File:segoescb.ttf
+2;1
+Segoe Script
+0;SegoeScript-Bold;0;8;5;2;65535;1088;495;583;0;1625;1583;1625;1583;0;0;0;8;Bold
+
+File:segoepr.ttf
+2;1
+Segoe Print
+0;SegoePrint;0;5;5;2;65535;1247;495;742;0;1557;1742;1557;1742;0;0;0;8;Regular
+
+File:Sitka.ttc
+2;6
+Sitka Banner
+5;SitkaBanner;0;5;5;2;65535;1146;297;443;0;1611;1443;1611;1443;0;0;0;8;Regular
+Sitka Small
+0;SitkaSmall;0;5;5;2;65535;1172;304;476;0;1990;1476;1990;1476;0;0;0;8;Regular
+Sitka Text
+1;SitkaText;0;5;5;2;65535;1146;297;443;0;1860;1443;1860;1443;0;0;0;8;Regular
+Sitka Subheading
+2;SitkaSubheading;0;5;5;2;65535;1146;297;443;0;1766;1443;1766;1443;0;0;0;8;Regular
+Sitka Heading
+3;SitkaHeading;0;5;5;2;65535;1146;297;443;0;1695;1443;1695;1443;0;0;0;8;Regular
+Sitka Display
+4;SitkaDisplay;0;5;5;2;65535;1146;297;443;0;1643;1443;1643;1443;0;0;0;8;Regular
+
+File:segmdl2.ttf
+2;1
+Segoe MDL2 Assets
+0;SegoeMDL2Assets;0;5;5;2;65535;1000;0;150;0;2558;1000;2558;1000;0;0;0;8;Regular
+
+File:trebucbd.ttf
+2;1
+Trebuchet MS
+0;TrebuchetMS-Bold;0;8;5;2;65535;938;222;160;0;1968;1160;1968;1160;0;0;0;8;Bold
+
+File:SitkaZ.ttc
+2;6
+Sitka Banner
+5;SitkaBanner-BoldItalic;2;8;5;2;65535;1146;297;443;0;1763;1443;1763;1443;0;0;0;8;Bold Italic
+Sitka Small
+0;SitkaSmall-BoldItalic;2;8;5;2;65535;1172;304;476;0;2203;1476;2203;1476;0;0;0;8;Bold Italic
+Sitka Text
+1;SitkaText-BoldItalic;2;8;5;2;65535;1146;297;443;0;2061;1443;2061;1443;0;0;0;8;Bold Italic
+Sitka Subheading
+2;SitkaSubheading-BoldItalic;2;8;5;2;65535;1146;297;443;0;1959;1443;1959;1443;0;0;0;8;Bold Italic
+Sitka Heading
+3;SitkaHeading-BoldItalic;2;8;5;2;65535;1146;297;443;0;1885;1443;1885;1443;0;0;0;8;Bold Italic
+Sitka Display
+4;SitkaDisplay-BoldItalic;2;8;5;2;65535;1146;297;443;0;1816;1443;1816;1443;0;0;0;8;Bold Italic
+
+File:Dengb.ttf
+2;1
+等线;DengXian
+0;DengXian-Bold;0;8;5;2;65535;810;231;41;1;1369;1041;1369;1041;0;0;0;8;Bold
+
+File:Candaraz.ttf
+2;1
+Candara
+0;Candara-BoldItalic;2;8;5;2;65535;952;268;220;0;1545;1220;1545;1220;0;0;0;8;Bold Italic
+
+File:Deng.ttf
+2;1
+等线;DengXian
+0;DengXian-Regular;0;5;5;2;65535;810;231;41;1;1292;1041;1292;1041;0;0;0;8;Regular
+
+File:ntailu.ttf
+2;1
+Microsoft New Tai Lue
+0;MicrosoftNewTaiLue;0;5;5;2;65535;927;380;307;0;1322;1307;1322;1307;0;0;0;8;Regular
+
+File:courbi.ttf
+2;1
+Courier New
+0;CourierNewPS-BoldItalicMT;2;8;5;1;65535;832;300;132;0;941;1132;941;1132;0;0;0;8;Bold Italic
+
+File:consolai.ttf
+2;1
+Consolas
+0;Consolas-Italic;2;5;5;1;65535;919;250;169;0;1068;1169;1068;1169;0;0;0;8;Italic
+
+File:calibril.ttf
+2;1
+Calibri Light
+0;Calibri-Light;0;3;5;2;65535;952;268;220;0;1819;1220;1819;1220;0;0;0;8;Light
+
+File:webdings.ttf
+2;1
+Webdings
+0;Webdings;0;5;5;2;10;799;200;-1;0;4001;999;4001;999;0;0;0;8;Regular
+
+File:simsun.ttc
+2;2
+新宋体;NSimSun
+1;NSimSun;0;5;5;2;65535;859;140;-1;1;1007;999;1007;999;0;0;0;8;常规
+宋体;SimSun
+0;SimSun;0;5;5;2;65535;859;140;-1;1;1007;999;1007;999;0;0;0;8;常规
+
+File:constan.ttf
+2;1
+Constantia
+0;Constantia;0;5;5;2;65535;952;268;220;0;1625;1220;1625;1220;0;0;0;8;Regular
+
+File:msgothic.ttc
+2;3
+MS Gothic;ＭＳ ゴシック
+0;MS-Gothic;0;5;5;1;65535;859;140;-1;1;1972;999;1972;999;0;0;0;8;Regular
+MS UI Gothic
+1;MS-UIGothic;0;5;5;2;65535;859;140;-1;1;1972;999;1972;999;0;0;0;8;Regular
+MS PGothic;ＭＳ Ｐゴシック
+2;MS-PGothic;0;5;5;2;65535;859;140;-1;1;1972;999;1972;999;0;0;0;8;Regular
+
+File:cambriab.ttf
+2;1
+Cambria
+0;Cambria-Bold;0;8;5;2;65535;950;222;172;0;2481;1172;2481;1172;0;0;0;8;Bold
+
+File:SitkaB.ttc
+2;6
+Sitka Banner
+5;SitkaBanner-Bold;0;8;5;2;65535;1146;297;443;0;1729;1443;1729;1443;0;0;0;8;Bold
+Sitka Small
+0;SitkaSmall-Bold;0;8;5;2;65535;1172;304;476;0;2131;1476;2131;1476;0;0;0;8;Bold
+Sitka Text
+1;SitkaText-Bold;0;8;5;2;65535;1146;297;443;0;2001;1443;2001;1443;0;0;0;8;Bold
+Sitka Subheading
+2;SitkaSubheading-Bold;0;8;5;2;65535;1146;297;443;0;1906;1443;1906;1443;0;0;0;8;Bold
+Sitka Heading
+3;SitkaHeading-Bold;0;8;5;2;65535;1146;297;443;0;1836;1443;1836;1443;0;0;0;8;Bold
+Sitka Display
+4;SitkaDisplay-Bold;0;8;5;2;65535;1146;297;443;0;1777;1443;1777;1443;0;0;0;8;Bold
+
+File:Nirmala.ttf
+2;1
+Nirmala UI
+0;NirmalaUI;0;5;5;2;65535;1079;250;329;0;3831;1329;3831;1329;0;0;0;8;Regular
+
+File:verdanaz.ttf
+2;1
+Verdana
+0;Verdana-BoldItalic;2;8;5;2;65535;1005;209;214;0;2292;1214;2292;1214;0;0;0;8;Bold Italic
+
+File:corbelz.ttf
+2;1
+Corbel
+0;Corbel-BoldItalic;2;8;5;2;65535;952;268;220;0;1688;1220;1688;1220;0;0;0;8;Bold Italic
+
+File:calibriz.ttf
+2;1
+Calibri
+0;Calibri-BoldItalic;2;8;5;2;65535;952;268;220;0;2020;1220;2020;1220;0;0;0;8;Bold Italic
+
+File:holomdl2.ttf
+2;1
+HoloLens MDL2 Assets
+0;HoloLensMDL2Assets;0;5;5;2;65535;1000;0;150;0;1437;1000;1437;1000;0;0;0;8;Regular
+
+File:tahoma.ttf
+2;1
+Tahoma
+0;Tahoma;0;5;5;2;65535;1000;206;206;0;2451;1206;2451;1206;0;0;0;8;Regular
+
+File:malgunsl.ttf
+2;1
+Malgun Gothic Semilight;맑은 고딕 Semilight
+0;MalgunGothic-Semilight;0;3;5;2;65535;1088;241;329;1;1354;1329;1354;1329;0;0;0;8;Semilight
+
+File:comic.ttf
+2;1
+Comic Sans MS
+0;ComicSansMS;0;5;5;2;65535;1102;291;393;0;3204;1393;3204;1393;0;0;0;8;Regular
+
+File:seguibl.ttf
+2;1
+Segoe UI Black
+0;SegoeUIBlack;0;10;5;2;65535;1079;250;329;0;1935;1329;1935;1329;0;0;0;8;Black
+
+File:courbd.ttf
+2;1
+Courier New
+0;CourierNewPS-BoldMT;0;8;5;1;65535;832;300;132;0;892;1132;892;1132;0;0;0;8;Bold
+
+File:constani.ttf
+2;1
+Constantia
+0;Constantia-Italic;2;5;5;2;65535;952;268;220;0;1585;1220;1585;1220;0;0;0;8;Italic
+
+File:bahnschrift.ttf
+2;1
+Bahnschrift
+0;Bahnschrift;0;5;5;2;65535;993;206;199;0;1328;1199;1328;1199;0;0;0;4;Regular
+
+File:verdanai.ttf
+2;1
+Verdana
+0;Verdana-Italic;2;5;5;2;65535;1005;209;214;0;2037;1214;2037;1214;0;0;0;8;Italic
+
+File:seguisb.ttf
+2;1
+Segoe UI Semibold
+0;SegoeUI-Semibold;0;7;5;2;65535;1079;250;329;0;2571;1329;2571;1329;0;0;0;8;Semibold
+
+File:corbeli.ttf
+2;1
+Corbel
+0;Corbel-Italic;2;5;5;2;65535;952;268;220;0;1641;1220;1641;1220;0;0;0;8;Italic
+
+File:calibrii.ttf
+2;1
+Calibri
+0;Calibri-Italic;2;5;5;2;65535;952;268;220;0;1983;1220;1983;1220;0;0;0;8;Italic
+
+File:marlett.ttf
+2;1
+Marlett
+0;Marlett;0;6;5;1;10;937;207;171;0;1109;1144;1109;1144;0;0;0;8;Regular
+
+File:NirmalaB.ttf
+2;1
+Nirmala UI
+0;NirmalaUI-Bold;0;8;5;2;65535;1079;250;329;0;4204;1329;4204;1329;0;0;0;8;Bold
+
+File:calibrili.ttf
+2;1
+Calibri Light
+0;Calibri-LightItalic;2;3;5;2;65535;952;268;220;0;1843;1220;1843;1220;0;0;0;8;Light Italic
+
+File:ariali.ttf
+2;1
+Arial
+0;Arial-ItalicMT;2;5;5;2;65535;905;211;116;0;1875;1116;1875;1116;0;0;0;8;Italic
+
+File:YuGothR.ttc
+2;2
+Yu Gothic;游ゴシック
+0;YuGothic-Regular;0;5;5;2;65535;984;302;286;1;1571;1286;1571;1286;0;0;0;8;Regular
+Yu Gothic UI Semilight
+1;YuGothicUI-Semilight;0;4;5;2;65535;1079;250;329;1;1571;1329;1571;1329;0;0;0;8;Semilight
+
+File:consolab.ttf
+2;1
+Consolas
+0;Consolas-Bold;0;8;5;1;65535;919;250;169;0;1176;1169;1176;1169;0;0;0;8;Bold
+
+File:gadugi.ttf
+2;1
+Gadugi
+0;Gadugi;0;5;5;2;65535;1079;250;329;0;1417;1329;1417;1329;0;0;0;8;Regular
+
+File:arial.ttf
+2;1
+Arial
+0;ArialMT;0;5;5;2;65535;905;211;116;0;2664;1116;2664;1116;0;0;0;8;Regular
+
+File:couri.ttf
+2;1
+Courier New
+0;CourierNewPS-ItalicMT;2;5;5;1;65535;832;300;132;0;867;1132;867;1132;0;0;0;8;Italic
+
+File:consola.ttf
+2;1
+Consolas
+0;Consolas;0;5;5;1;65535;919;250;169;0;1109;1169;1109;1169;0;0;0;8;Regular
+
+File:arialbd.ttf
+2;1
+Arial
+0;Arial-BoldMT;0;8;5;2;65535;905;211;116;0;2627;1116;2627;1116;0;0;0;8;Bold
+
+File:segoeprb.ttf
+2;1
+Segoe Print
+0;SegoePrint-Bold;0;8;5;2;65535;1247;495;742;0;1578;1742;1578;1742;0;0;0;8;Bold
+
+File:Candara.ttf
+2;1
+Candara
+0;Candara;0;5;5;2;65535;952;268;220;0;1583;1220;1583;1220;0;0;0;8;Regular
+
+File:malgun.ttf
+2;1
+Malgun Gothic;맑은 고딕
+0;MalgunGothic;0;5;5;2;65535;1088;241;329;1;2174;1329;2174;1329;0;0;0;8;Regular
+
+File:mmrtext.ttf
+2;1
+Myanmar Text
+0;MyanmarText;0;5;5;2;65535;1036;824;860;0;3082;1860;3082;1860;0;0;0;8;Regular
+
+File:cambriai.ttf
+2;1
+Cambria
+0;Cambria-Italic;2;5;5;2;65535;950;222;172;0;2326;1172;2326;1172;0;0;0;8;Italic
+
+File:Dengl.ttf
+2;1
+等线 Light;DengXian Light
+0;DengXian-Light;0;3;5;2;65535;810;231;41;1;1294;1041;1294;1041;0;0;0;8;Light
+
+File:comicz.ttf
+2;1
+Comic Sans MS
+0;ComicSansMS-BoldItalic;2;8;5;2;65535;1102;291;393;0;3358;1393;3358;1393;0;0;0;8;Bold Italic
+
+File:NirmalaS.ttf
+2;1
+Nirmala UI Semilight
+0;NirmalaUI-Semilight;0;4;5;2;65535;1079;250;329;0;3830;1329;3830;1329;0;0;0;8;Semilight
+
+File:Candarai.ttf
+2;1
+Candara
+0;Candara-Italic;2;5;5;2;65535;952;268;220;0;1473;1220;1473;1220;0;0;0;8;Italic
+
+File:phagspa.ttf
+2;1
+Microsoft PhagsPa
+0;MicrosoftPhagsPa;0;5;5;2;65535;1043;235;278;0;1903;1278;1903;1278;0;0;0;8;Regular
+
+File:ebrimabd.ttf
+2;1
+Ebrima
+0;Ebrima-Bold;0;8;5;2;65535;1003;243;246;0;2378;1246;2378;1246;0;0;0;8;Bold
+
+File:ebrima.ttf
+2;1
+Ebrima
+0;Ebrima;0;5;5;2;65535;1079;250;329;0;2186;1329;2186;1329;0;0;0;8;Regular
+
+File:msjh.ttc
+2;2
+Microsoft JhengHei UI
+1;MicrosoftJhengHeiUIRegular;0;5;5;2;65535;1015;254;269;0;1429;1269;1429;1269;0;0;0;8;Normal
+Microsoft JhengHei;微軟正黑體
+0;MicrosoftJhengHeiRegular;0;5;5;2;65535;1075;254;329;0;1429;1329;1429;1329;0;0;0;8;Normal
+
+File:comicbd.ttf
+2;1
+Comic Sans MS
+0;ComicSansMS-Bold;0;8;5;2;65535;1102;291;393;0;3203;1393;3203;1393;0;0;0;8;Bold
+
+File:mmrtextb.ttf
+2;1
+Myanmar Text
+0;MyanmarText-Bold;0;8;5;2;65535;1079;824;903;0;3118;1903;3118;1903;0;0;0;8;Bold
+
+File:verdanab.ttf
+2;1
+Verdana
+0;Verdana-Bold;0;8;5;2;65535;1005;209;214;0;2256;1214;2256;1214;0;0;0;8;Bold
+
+File:trebuc.ttf
+2;1
+Trebuchet MS
+0;TrebuchetMS;0;5;5;2;65535;938;222;160;0;1842;1160;1842;1160;0;0;0;8;Regular
+
+File:corbelb.ttf
+2;1
+Corbel
+0;Corbel-Bold;0;8;5;2;65535;952;268;220;0;1709;1220;1709;1220;0;0;0;8;Bold
+
+File:simfang.ttf
+2;1
+仿宋;FangSong
+0;FangSong;0;5;5;2;65535;859;140;-1;1;1010;999;1010;999;0;0;0;8;Regular
+
+File:calibri.ttf
+2;1
+Calibri
+0;Calibri;0;5;5;2;65535;952;268;220;0;1742;1220;1742;1220;0;0;0;8;Regular
+
+File:cour.ttf
+2;1
+Courier New
+0;CourierNewPSMT;0;5;5;1;65535;832;300;132;0;743;1132;743;1132;0;0;0;8;Regular
+
+File:calibrib.ttf
+2;1
+Calibri
+0;Calibri-Bold;0;8;5;2;65535;952;268;220;0;1780;1220;1780;1220;0;0;0;8;Bold
+
+File:consolaz.ttf
+2;1
+Consolas
+0;Consolas-BoldItalic;2;8;5;1;65535;919;250;169;0;1096;1169;1096;1169;0;0;0;8;Bold Italic
+
+File:Candarab.ttf
+2;1
+Candara
+0;Candara-Bold;0;8;5;2;65535;952;268;220;0;1656;1220;1656;1220;0;0;0;8;Bold
+
+File:javatext.ttf
+2;1
+Javanese Text
+0;JavaneseText;0;5;5;2;65535;1250;1020;1270;0;4141;2270;4141;2270;0;0;0;8;Regular
+
+File:corbel.ttf
+2;1
+Corbel
+0;Corbel;0;5;5;2;65535;952;268;220;0;1662;1220;1662;1220;0;0;0;8;Regular
+
+File:constanz.ttf
+2;1
+Constantia
+0;Constantia-BoldItalic;2;8;5;2;65535;952;268;220;0;1661;1220;1661;1220;0;0;0;8;Bold Italic
+
+File:mvboli.ttf
+2;1
+MV Boli
+0;MVBoli;0;5;5;2;65535;1139;472;611;0;1435;1611;1435;1611;0;0;0;8;Regular
+
+File:seguisbi.ttf
+2;1
+Segoe UI Semibold
+0;SegoeUI-SemiboldItalic;2;7;5;2;65535;1079;250;329;0;1935;1329;1935;1329;0;0;0;8;Semibold Italic
+
+File:constanb.ttf
+2;1
+Constantia
+0;Constantia-Bold;0;8;5;2;65535;952;268;220;0;1792;1220;1792;1220;0;0;0;8;Bold
+
+File:ariblk.ttf
+2;1
+Arial Black
+0;Arial-Black;0;10;5;2;65535;1100;309;409;0;1880;1409;1880;1409;0;0;0;8;Black
+
+File:framd.ttf
+2;1
+Franklin Gothic Medium
+0;FranklinGothic-Medium;0;5;5;2;65535;916;217;133;0;1308;1133;1308;1133;0;0;0;8;Regular
+
+File:palab.ttf
+2;1
+Palatino Linotype
+0;PalatinoLinotype-Bold;0;8;5;2;65535;1049;299;348;0;1618;1348;1618;1348;0;0;0;8;Bold
+
+File:segoeuii.ttf
+2;1
+Segoe UI
+0;SegoeUI-Italic;2;5;5;2;65535;1079;250;329;0;1879;1329;1879;1329;0;0;0;8;Italic
+
+File:msjhl.ttc
+2;2
+Microsoft JhengHei UI Light
+1;MicrosoftJhengHeiUILight;0;3;5;2;65535;1015;254;269;0;1418;1269;1418;1269;0;0;0;8;Light
+Microsoft JhengHei Light;微軟正黑體 Light
+0;MicrosoftJhengHeiLight;0;3;5;2;65535;1075;254;329;0;1418;1329;1418;1329;0;0;0;8;Light
+
+File:framdit.ttf
+2;1
+Franklin Gothic Medium
+0;FranklinGothic-MediumItalic;2;5;5;2;65535;916;217;133;0;1205;1133;1205;1133;0;0;0;8;Italic
+
+File:Gabriola.ttf
+2;1
+Gabriola
+0;Gabriola;0;5;5;2;65535;1191;649;840;0;4493;1840;4493;1840;0;0;0;8;Regular
+
+File:georgiai.ttf
+2;1
+Georgia
+0;Georgia-Italic;2;5;5;2;65535;916;219;135;0;1391;1135;1391;1135;0;0;0;8;Italic
+
+File:msyhl.ttc
+2;2
+Microsoft YaHei Light
+0;MicrosoftYaHeiLight;0;3;5;2;65535;1015;261;276;0;1423;1276;1423;1276;0;0;0;8;Light
+Microsoft YaHei UI Light
+1;MicrosoftYaHeiUILight;0;3;5;2;65535;1058;254;312;0;1423;1312;1423;1312;0;0;0;8;Light
+
+File:gadugib.ttf
+2;1
+Gadugi
+0;Gadugi-Bold;0;8;5;2;65535;1079;250;329;0;1547;1329;1547;1329;0;0;0;8;Bold
+
+File:msyh.ttc
+2;2
+微软雅黑;Microsoft YaHei
+0;MicrosoftYaHei;0;5;5;2;65535;1058;261;319;0;1427;1319;1427;1319;0;0;0;8;Regular
+Microsoft YaHei UI
+1;MicrosoftYaHeiUI;0;5;5;2;65535;1015;254;269;0;1427;1269;1427;1269;0;0;0;8;Regular
+
+File:georgia.ttf
+2;1
+Georgia
+0;Georgia;0;5;5;2;65535;916;219;135;0;1339;1135;1339;1135;0;0;0;8;Regular
+
+File:georgiab.ttf
+2;1
+Georgia
+0;Georgia-Bold;0;8;5;2;65535;916;219;135;0;1485;1135;1485;1135;0;0;0;8;Bold
+
+File:georgiaz.ttf
+2;1
+Georgia
+0;Georgia-BoldItalic;2;8;5;2;65535;916;219;135;0;1596;1135;1596;1135;0;0;0;8;Bold Italic
+
+File:impact.ttf
+2;1
+Impact
+0;Impact;0;5;3;2;65535;1008;210;218;0;1542;1218;1542;1218;0;0;0;8;Regular
+
+File:simkai.ttf
+2;1
+楷体;KaiTi
+0;KaiTi;0;5;5;2;65535;859;140;-1;1;1077;999;1077;999;0;0;0;8;Regular
+
+File:phagspab.ttf
+2;1
+Microsoft PhagsPa
+0;MicrosoftPhagsPa-Bold;0;8;5;2;65535;1043;235;278;0;1942;1278;1942;1278;0;0;0;8;Bold
+
+File:LeelawUI.ttf
+2;1
+Leelawadee UI
+0;LeelawadeeUI;0;5;5;2;65535;1079;250;329;0;2335;1329;2335;1329;0;0;0;8;Regular
+
+File:YuGothB.ttc
+2;3
+Yu Gothic;游ゴシック
+0;YuGothic-Bold;0;8;5;2;65535;988;298;286;1;1615;1286;1615;1286;0;0;0;8;Bold
+Yu Gothic UI
+1;YuGothicUI-Bold;0;8;5;2;65535;1079;250;329;1;1615;1329;1615;1329;0;0;0;8;Bold
+Yu Gothic UI Semibold
+2;YuGothicUI-Semibold;0;7;5;2;65535;1079;250;329;1;1615;1329;1615;1329;0;0;0;8;Semibold
+
+File:LeelaUIb.ttf
+2;1
+Leelawadee UI
+0;LeelawadeeUI-Bold;0;8;5;2;65535;1079;250;329;0;2595;1329;2595;1329;0;0;0;8;Bold
+
+File:micross.ttf
+2;1
+Microsoft Sans Serif
+0;MicrosoftSansSerif;0;5;5;2;65535;921;209;130;0;2053;1130;2053;1130;0;0;0;8;Regular
+
+File:cambriaz.ttf
+2;1
+Cambria
+0;Cambria-BoldItalic;2;8;5;2;65535;950;222;172;0;2486;1172;2486;1172;0;0;0;8;Bold Italic
+
+File:msyhbd.ttc
+2;2
+微软雅黑;Microsoft YaHei
+0;MicrosoftYaHei-Bold;0;8;5;2;65535;1058;261;319;1;1448;1319;1448;1319;0;0;0;8;Bold
+Microsoft YaHei UI
+1;MicrosoftYaHeiUI-Bold;0;8;5;2;65535;1015;254;269;1;1448;1269;1448;1269;0;0;0;8;Bold
+
+File:seguihis.ttf
+2;1
+Segoe UI Historic
+0;SegoeUIHistoric;0;5;5;2;65535;1079;250;329;0;5430;1329;5430;1329;0;0;0;8;Regular
+
+File:LeelUIsl.ttf
+2;1
+Leelawadee UI Semilight
+0;LeelawadeeUI-Semilight;0;4;5;2;65535;1079;250;329;0;2319;1329;2319;1329;0;0;0;8;Semilight
+
+File:lucon.ttf
+2;1
+Lucida Console
+0;LucidaConsole;0;5;4;1;65535;789;210;-1;0;630;999;630;999;0;0;0;8;Regular
+
+File:l_10646.ttf
+2;1
+Lucida Sans Unicode
+0;LucidaSansUnicode;0;5;5;2;65535;1096;439;535;0;1998;1535;1998;1535;0;0;0;8;Regular
+
+File:malgunbd.ttf
+2;1
+Malgun Gothic;맑은 고딕
+0;MalgunGothicBold;0;8;5;2;65535;1088;241;329;1;2250;1329;2250;1329;0;0;0;8;Bold
+
+File:msjhbd.ttc
+2;2
+Microsoft JhengHei UI
+1;MicrosoftJhengHeiUIBold;0;8;5;2;65535;1015;254;269;0;1372;1269;1372;1269;0;0;0;8;Negreta
+Microsoft JhengHei;微軟正黑體
+0;MicrosoftJhengHeiBold;0;8;5;2;65535;1075;254;329;0;1372;1329;1372;1329;0;0;0;8;Negreta
+
+File:ntailub.ttf
+2;1
+Microsoft New Tai Lue
+0;MicrosoftNewTaiLue-Bold;0;8;5;2;65535;927;380;307;0;1317;1307;1317;1307;0;0;0;8;Bold
+
+File:taile.ttf
+2;1
+Microsoft Tai Le
+0;MicrosoftTaiLe;0;5;5;2;65535;927;344;271;0;1595;1271;1595;1271;0;0;0;8;Regular
+
+File:taileb.ttf
+2;1
+Microsoft Tai Le
+0;MicrosoftTaiLe-Bold;0;8;5;2;65535;927;344;271;0;1700;1271;1700;1271;0;0;0;8;Bold
+
+File:arialbi.ttf
+2;1
+Arial
+0;Arial-BoldItalicMT;2;8;5;2;65535;905;211;116;0;1949;1116;1949;1116;0;0;0;8;Bold Italic
+
+File:cambria.ttc
+2;2
+Cambria
+0;Cambria;0;5;5;2;65535;950;222;172;0;4341;1172;4341;1172;0;0;0;8;Regular
+Cambria Math
+1;CambriaMath;0;5;5;2;65535;3116;2463;4579;0;4341;5579;4341;5579;0;0;0;8;Regular
+
+File:himalaya.ttf
+2;1
+Microsoft Himalaya
+0;Microsoft Himalaya;0;5;5;2;65535;591;408;-1;0;1427;999;1427;999;0;0;0;8;Regular
+
+File:msyi.ttf
+2;1
+Microsoft Yi Baiti
+0;Microsoft-Yi-Baiti;0;5;5;2;65535;859;141;150;1;1034;1000;1034;1000;0;0;0;8;Regular
+
+File:timesbi.ttf
+2;1
+Times New Roman
+0;TimesNewRomanPS-BoldItalicMT;2;8;5;2;65535;891;216;107;0;1947;1107;1947;1107;0;0;0;8;Bold Italic
+
+File:monbaiti.ttf
+2;1
+Mongolian Baiti
+0;MongolianBaiti;0;5;5;2;65535;844;219;63;0;1084;1063;1084;1063;0;0;0;8;Regular
+
+File:palai.ttf
+2;1
+Palatino Linotype
+0;PalatinoLinotype-Italic;2;5;5;2;65535;1049;299;348;0;1409;1348;1409;1348;0;0;0;8;Italic
+
+File:palabi.ttf
+2;1
+Palatino Linotype
+0;PalatinoLinotype-BoldItalic;2;8;5;2;65535;1049;299;348;0;1461;1348;1461;1348;0;0;0;8;Bold Italic
+
+File:comici.ttf
+2;1
+Comic Sans MS
+0;ComicSansMS-Italic;2;5;5;2;65535;1102;291;393;0;3339;1393;3339;1393;0;0;0;8;Italic
+
+File:pala.ttf
+2;1
+Palatino Linotype
+0;PalatinoLinotype-Roman;0;5;5;2;65535;1049;299;348;0;1588;1348;1588;1348;0;0;0;8;Regular
+
+FontCacheDirectory:1530855660:/usr/share/fonts/truetype/dejavu
+File:DejaVuSerif-Bold.ttf
+2;1
+DejaVu Serif
+0;DejaVuSerif-Bold;0;8;5;2;65535;938;235;173;0;2630;1173;2630;1173;0;0;0;0;Bold
+
+File:DejaVuSerif.ttf
+2;1
+DejaVu Serif
+0;DejaVuSerif;0;5;5;2;65535;928;235;163;0;2874;1163;2874;1163;0;0;0;0;Book
+
+File:DejaVuSans.ttf
+2;1
+DejaVu Sans
+0;DejaVuSans;0;5;5;2;65535;928;235;163;1;2813;1163;2813;1163;0;0;0;0;Book
+
+File:DejaVuSans-Bold.ttf
+2;1
+DejaVu Sans
+0;DejaVuSans-Bold;0;8;5;2;65535;928;235;163;0;3044;1163;3044;1163;0;0;0;0;Bold
+
+File:DejaVuSansMono-Bold.ttf
+2;1
+DejaVu Sans Mono
+0;DejaVuSansMono-Bold;0;8;5;1;65535;928;235;163;0;1176;1163;1176;1163;0;0;0;0;Bold
+
+File:DejaVuSansMono.ttf
+2;1
+DejaVu Sans Mono
+0;DejaVuSansMono;0;5;5;1;65535;928;235;163;0;1274;1163;1274;1163;0;0;0;0;Book
+
+FontCacheDirectory:1530855690:/usr/share/fonts/truetype/openoffice
+File:opens___.ttf
+2;1
+OpenSymbol
+0;OpenSymbol;0;5;5;2;65535;799;200;-1;0;1262;999;1262;999;0;0;0;8;Regular
+

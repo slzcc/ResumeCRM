@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+from django.shortcuts import render
+from django.http import JsonResponse, HttpResponse
+from django import conf
+
+from repository import models
+from django.contrib.auth.decorators import login_required
+from Permission.Authentication import check_permission
+from HttpCode.StatusCode import StatusCode
+
+import datetime, re, shutil, json, os, time, requests
+from django.utils.safestring import mark_safe
+
+@login_required
+@check_permission(StatusCode["1407"])
+def GetResumeInfoView(request, obj_id):
+    if request.method == "GET":
+
+        obj = models.ResumeInfo.objects.get(id=obj_id)
+        obj_name = models.ResumeSource.objects.all().values_list("name")
+        ele = ""
+        if obj_name:
+            for i in list(obj_name):
+                for j in i:
+                    ele += "<option value={}>{}</option>".format(j, j)
+        ele = mark_safe(ele)
+        
+        uid = obj_id
+        return render(request, 'resume-info.html', locals())
+
+def DeleteCandidate(request, uid):
+    if request.method == "POST":
+        models.ResumeInfo.objects.filter(id=uid).delete()
+
+    ret = {"status": "seccuss", "status_code": "200"}
+    return JsonResponse(ret)
+
+def EditResumeView(request, uid):
+    data = {}
+    MoreTable = {}
+    for i in request.POST:
+        if i == "comments":
+            MoreTable[i] = request.POST.get(i, None)
+        else:
+            data[i] = request.POST.get(i, None)
+    obj = models.ResumeInfo.objects.filter(id=uid)
+    obj.update(**data)
+    if 'comments' in MoreTable.keys():
+
+        ct = models.Comment.objects.create(describe=MoreTable["comments"])
+        obj.last().comments.clear()
+        obj.last().comments.add(ct)
+
+    ret = {"status": "seccuss", "status_code": "200"}
+    return JsonResponse(ret)
+
+def SaveResumeCommands(request):
+    ret = {"status": "seccuss", "status_code": "200"}
+    data = {}
+    for i in request.POST:
+        if i in ("resume_id"):
+            pass
+        else:
+            data[i] = request.POST.get(i)
+    _query_resume = models.ResumeInfo.objects.filter(id=request.POST.get("resume_id")).first()
+    _obj = models.Comment.objects.create(**data)
+    _query_resume.user_comments.add(_obj)
+    return JsonResponse(ret)

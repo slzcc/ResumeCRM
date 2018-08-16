@@ -1,0 +1,273 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load web_tags %}
+
+{% block css %}
+    <style>
+    </style>
+    <!-- Table Responsive css -->
+    <link href="/static/plugins/minton/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css" rel="stylesheet" type="text/css" media="screen">
+    <!-- DataTables -->
+    <link href="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Responsive datatable examples -->
+    <link href="/static/plugins/minton/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h1 class="page-title">SMTP 管理</h1>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/system/email/list">SMTP 管理</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+
+<div id="AddSMTP" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="full-width-modalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="full-width-modalLabel">Create SMTP</h4>
+            </div>
+            <div class="modal-body" id="SandEmailBody">
+                <form class="" action="#" novalidate="" method="post">
+                    <div class="form-group">
+                        <label>Name</label>
+                        {{ obj.name }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>发件人地址</label>
+                        {{ obj.form_address }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>发件人名称</label>
+                        {{ obj.form_name }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>SMTP 服务器地址</label>
+                        {{ obj.smtp_server }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>SMTP 服务器端口</label>
+                        {{ obj.smtp_port }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>用户名</label>
+                        {{ obj.smtp_username }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>密码</label>
+                        {{ obj.smtp_password }}
+                    </div>
+
+                    <div class="form-group">
+                        <label>是否开启 SSL</label>
+                        {{ obj.smtp_ssl }}
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class="form-group mx-sm-3 text-right">
+                            </span></button>
+                            <button class="btn btn-primary waves-effect waves-light"> <span>Save Info</span></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {# <div class="modal-footer"> #}
+                {# <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button> #}
+                {# <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button> #}
+            {# </div> #}
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">角色管理</h4>
+            <p class="text-muted m-b-30 font-13">
+                请选择需要操作的 <code>角色</code>, 进行 <code>搜索</code> 或者 <code>查看</code> 等操作.
+            </p>
+            
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-group mx-sm-3 text-right">
+                            <button id="btnDeleteSMTP" class="btn btn-danger"><i class="fa fa-times"></i> <span>Delete SMTP</span></button>
+                            <button id="btnAddSMTP" class="btn btn-primary" data-toggle="modal" data-target="#AddSMTP"><i class="fa fa-plus m-r-5"></i> <span>Add SMTP</span></button>
+                        </div>
+                    </div>
+                </div>
+
+            
+            <table id="email-tables" class="table table-bordered">
+                <thead>
+                <tr>
+                    <th data-toggle="true" class="footable-visible footable-first-column footable-sortable">
+                        <input type="checkbox" onclick="SelectAllObjs(this)">
+                    </th>
+                    <th>服务名称</th>
+                    <th>发送地址</th>
+                    <th>SMTP 地址</th>
+
+                </tr>
+                </thead>
+
+                <tbody>
+                    {% SetSystemEmailTbody AllEmailList %}
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="/static/plugins/minton/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script>
+    function SelectAllObjs(ele) {
+
+        if ($(ele).prop('checked')){
+            $('input[row-select]').prop('checked',true)
+
+        }else {
+            $('input[row-select]').prop('checked',false)
+        }
+
+    };
+    $(function(){
+        bindDeleteEmail();
+    })
+    function bindDeleteEmail(){
+
+        $("#btnDeleteSMTP").click(function(){
+            var postData = {};
+            var DELETEDATA = "EmailList"
+            postData[DELETEDATA] = [];
+            $("#email-tables").find('input[type="checkbox"]').each(function(){
+                if ($(this).prop('checked') && $(this).attr("row-select")){
+                    postData[DELETEDATA].push($(this).val())
+                }
+            })
+            
+            if (!jQuery.isEmptyObject(postData[DELETEDATA])){
+                swal({
+                    title: '你确定要删除？',
+                    text: "点击确定后会进行删除！",
+                    type: 'question', // warning
+                    showCancelButton: true,
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    confirmButtonClass: 'btn btn-success mt-2 delete-resume-source',
+                    cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                    buttonsStyling: false
+                }).then(function () {
+                    
+                }, function (dismiss) {
+                    if (dismiss === 'cancel') {
+                        swal({
+                            title: '已取消',
+                            text: "成功取消删除操作!",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                });
+                $('.delete-resume-source').click(function () {
+                    postData[DELETEDATA] = JSON.stringify(postData[DELETEDATA])
+                    DeleteData(postData);
+                })
+            }else {
+                $.Notification.autoHideNotify('error', 'top right', '无效的删除','无效的操作，没有需要删除的数据，请查看后再次删除!')
+            }
+            
+        })
+    }
+    function DeleteData(postData){
+        $.ajax({
+            url: '/system/email/delete',
+            data: postData,
+            type: 'POST',
+            dataType: "JSON",
+            success: function(arg){
+                if (arg.status_code != "200"){
+                    swal({
+                        title: '错误',
+                        text: "数据删除失败!",
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }else{
+                    swal({
+                        title: '已删除',
+                        text: "数据删除成功!",
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    }).then(function () {
+                        window.location.reload();
+                    });
+                    
+                }
+            }
+        })
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // Default Datatable
+        $('#email-tables').DataTable({
+            lengthChange: false,
+        });
+
+        //Buttons examples
+        var table = $('#datatable-buttons').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf']
+        });
+
+        // Key Tables
+
+        $('#key-table').DataTable({
+            keys: true
+        });
+
+        // Responsive Datatable
+        $('#responsive-datatable').DataTable();
+
+        // Multi Selection Datatable
+        $('#selection-datatable').DataTable({
+            select: {
+                style: 'multi'
+            }
+        });
+
+        table.buttons().container()
+                .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+    } );
+
+</script>
+{% endblock %}

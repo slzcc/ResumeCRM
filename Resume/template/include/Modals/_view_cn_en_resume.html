@@ -1,0 +1,113 @@
+{% load authentication_tags %}
+
+<!-- sample modal content -->
+<div id="btnAttachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="CenterModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="CenterModalLabel">附件操作</h4>
+            </div>
+            <div class="modal-body">
+
+                <!-- body -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <h4 class="m-t-0 header-title">中文简历 &amp; 英文简历</h4>
+                            <p class="text-muted m-b-30 font-14">
+                                请选择执行对象 <code>中文</code> 或者 <code>英文</code> 简历，并选择 <code>执行操作按钮</code>.
+                            </p>
+
+                            <div class="p-20">
+                                {# <form role="form" class="form-horizontal"> #}
+                                    
+                                    <div class="form-group row">
+                                        <label class="col-2 col-form-label">中文简历</label>
+                                        <div class="col-10">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+
+                                                    <button type="button" class="btn btn-success waves-effect waves-light">
+                                                        <i class="ion-ios7-gear"></i>
+                                                        <span>操作</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-success dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false"><i class="caret"></i></button>
+                                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(109px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                        {% MenuButtonAuthentication request "resume_candidate_info_again_upload" as RETURN %}{% if RETURN %}
+                                                        <a class="dropdown-item" id="zh_filename" href="#" data-toggle="modal" data-target="#btnUpload">上传附件</a>
+                                                        {% endif %}
+                                                        {% MenuButtonAuthentication request "resume_candidate_info_download_origin_attachment" as RETURN %}{% if RETURN %}
+                                                        <a class="dropdown-item" name="zh_filename" href="/documents/download/resume/source?file={{objs_zh_filename}}&uid={{obj.id}}" target="_blank" download="{{zh_filename_name}}">下载附件</a>
+                                                        {% endif %}
+                                                        
+                                                    </div>
+                                                    
+
+                                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                        <a class="dropdown-item" href="#">Something else here</a>
+                                                        <div role="separator" class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="#">Separated link</a>
+                                                    </div>
+                                                </div>
+                                                <input type="text" name="zh_filename" id="attachmentName" value="{{ objs_zh_filename }}" class="form-control text-dark" disabled>
+                                                {# <input type="text" class="form-control" name="zh_filename" placeholder="" aria-label="" aria-describedby="basic-addon1"> #}
+                                                {# {{ form_obj.zh_filename }} #}
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-2 col-form-label">英文简历</label>
+                                        <div class="col-10">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+
+                                                    <button type="button" class="btn btn-success waves-effect waves-light">
+                                                        <i class="ion-ios7-gear"></i>
+                                                        <span>操作</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-success dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false"><i class="caret"></i></button>
+                                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(109px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                        {% MenuButtonAuthentication request "resume_candidate_info_again_upload" as RETURN %}{% if RETURN %}
+                                                        <a class="dropdown-item" id="en_filename" href="#" data-toggle="modal" data-target="#btnUpload">上传附件</a>
+                                                        {% endif %}
+                                                        {% MenuButtonAuthentication request "resume_candidate_info_download_origin_attachment" as RETURN %}{% if RETURN %}
+                                                        <a class="dropdown-item" name="en_filename" href="/documents/download/resume/source?file={{objs_en_filename}}&uid={{obj.id}}" target="_blank" download="{{en_filename_name}}">下载附件</a>
+                                                        {% endif %}
+                                                    </div>
+                                                    
+
+                                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                        <a class="dropdown-item" href="#">Something else here</a>
+                                                        <div role="separator" class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="#">Separated link</a>
+                                                    </div>
+                                                </div>
+                                                <input type="text" name="en_filename" value="{{ objs_en_filename }}" class="form-control text-dark" disabled>
+
+                                                {# <input type="text" class="form-control" name="en_filename" placeholder="" aria-label="" aria-describedby="basic-addon1"> #}
+                                                {# {{ form_obj.en_filename }} #}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                {# </form> #}
+                            </div>
+                        </div> <!-- end card-box -->
+                    </div> <!-- end col -->
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                {# <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button> #}
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

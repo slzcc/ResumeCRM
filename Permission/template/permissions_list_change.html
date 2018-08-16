@@ -1,0 +1,199 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load generaladmin_tags %}
+
+{% block css %}
+    <style>
+    </style>
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">权限列表</h4>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/permission/{{ obj.id }}/change">{{ obj.name }}</a></li>
+                    <li class="breadcrumb-item"><a href="/permission/list">权限列表</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">修改权限</h4>
+               
+            <p class="text-muted m-b-1 font-30">
+                修改 <code> {{ obj.name }} </code> 的权限:
+            </p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-box">
+                        <form role="form" novalidate="" method="post">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-4 col-form-label">Name</label>
+                                <div class="col-7">
+                                    {{ form_obj.name }}
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label for="hori-pass1" class="col-4 col-form-label">CodeName</label>
+                                <div class="col-7">
+                                    {{ form_obj.codename }}
+                                </div>
+                            </div>
+                            <div class="form-group row" style="display: none;">
+                                <label for="hori-pass1" class="col-4 col-form-label">ContentType</label>
+                                <div class="col-7">
+                                    {{ form_obj.content_type }}
+                                </div>
+                            </div>
+
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="form-group mx-sm-3 text-right">
+                                    <button type="submit" class="btn btn-primary"> <span>Save</span></button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="form-group col-md-12">
+                            <div class="form-group mx-sm-3 text-right">
+                                <button id="btnDeletePermission" class="btn btn-danger"><i class="fa fa-times"></i> <span>Delete</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+
+    function  MoveSelectedOption(ele,target_id) {
+
+        var new_target_id = $(ele).parent().attr('id');
+        var option = "<option value='" + $(ele).val() +"'ondblclick=MoveSelectedOption(this,'"+ new_target_id +"') >" + $(ele).text() +"</option>";
+        $("#"+ target_id).append(option);
+        $(ele).remove();
+
+    }
+
+    function MoveAllElements(from_id,to_id) {
+
+        console.log( $("#"+from_id).children())
+         $("#"+from_id).children().each(function () {
+             MoveSelectedOption(this,to_id);
+         })
+    }
+
+    function FuzzSearch(ele){
+
+        console.log($(ele).val())
+        var search_text = $(ele).val().toUpperCase();
+        $(ele).next().children().each(function () {
+            if ( $(this).text().toUpperCase().search(search_text) != -1){
+                $(this).show();
+            }else {
+                $(this).hide();
+            }
+        })
+
+    }
+
+    // function VerificationBeforeFormSubmit() {
+
+
+        // $("select[tag] option").prop('selected',true);
+
+    // }
+    // $("#id_content_type").prop("disabled", true);  
+
+    $(function(){
+        bindDeletePermission();
+    });
+    function bindDeletePermission(){
+
+        $("#btnDeletePermission").click(function(){
+            var postData = {};
+            var DELETEDATA = "PermissionsList"
+            postData[DELETEDATA] = ["{{ obj.id }}"];
+            
+            
+            if (!jQuery.isEmptyObject(postData[DELETEDATA])){
+                swal({
+                    title: '你确定要删除？',
+                    text: "点击确定后会进行删除！",
+                    type: 'question', // warning
+                    showCancelButton: true,
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    confirmButtonClass: 'btn btn-success mt-2 delete-resume-source',
+                    cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                    buttonsStyling: false
+                }).then(function () {
+                    
+                }, function (dismiss) {
+                    if (dismiss === 'cancel') {
+                        swal({
+                            title: '已取消',
+                            text: "成功取消删除操作!",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                });
+                $('.delete-resume-source').click(function () {
+                    postData[DELETEDATA] = JSON.stringify(postData[DELETEDATA])
+                    DeleteData(postData);
+                })
+            }else {
+                $.Notification.autoHideNotify('error', 'top right', '无效的删除','无效的操作，没有需要删除的数据，请查看后再次删除!')
+            }
+            
+        })
+    }
+    function DeleteData(postData){
+        $.ajax({
+            url: '/permission/delete',
+            data: postData,
+            type: 'POST',
+            dataType: "JSON",
+            success: function(arg){
+                if (arg.status_code != "200"){
+                    swal({
+                        title: '错误',
+                        text: "数据删除失败!",
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }else{
+                    swal({
+                        title: '已删除',
+                        text: "数据删除成功!",
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    }).then(function () {
+                        window.location.href="/permission/list";
+                    });
+                    
+                }
+            }
+        })
+    }
+</script>
+{% endblock %}

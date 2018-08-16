@@ -1,0 +1,123 @@
+{% extends 'base_templates/_page_layout.html' %}
+
+{% block css %}
+    <!-- Table Responsive css -->
+    <link href="/static/plugins/minton/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css" rel="stylesheet" type="text/css" media="screen">
+    <!-- DataTables -->
+    <link href="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Responsive datatable examples -->
+    <link href="/static/plugins/minton/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <!-- X-editable css -->
+    <link type="text/css" href="/static/plugins/minton/plugins/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <style>
+    </style>
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">全局管理</h4>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/system/general/list">全局管理</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="header-title m-t-0 m-b-20">全局管理</h4>
+
+            <table class="table table-bordered table-striped" id="xeditable_table">
+                <tbody>
+                    <tr>
+                        <td width="35%">下载简历的数量 (份)</td>
+                        <td width="65%"><a href="#" id="inline-DownloadRN" name="download-resume-number" edit-enable="true" old-data="{{ DownloadRN.num_value }}" data-type="text" data-pk="1" data-title="Enter Download Number">{{ DownloadRN.num_value }}</a></td>
+                    </tr>
+
+                    <tr>
+                        <td>首选 SMTP 服务</td>
+                        <td>
+                            {% if PreferreEmail.email_server.name %}
+                            <a href="#" id="inline-email" name="email" edit-enable="true" old-data="{{ PreferreEmail.email_server.name }}" data-type="select" data-pk="1" data-value="{{ PreferreEmail.email_server.id }}" data-title="Select Email"></a>
+                            {% else %}
+                            <a href="#" id="inline-email" name="email" edit-enable="true" old-data="{{ "Not Selected" }}" data-type="select" data-pk="1" data-value="{{ PreferreEmail.email_server.id }}" data-title="Select Email"></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>首选 Resume Template</td>
+                        <td>
+                            {% if PreferreEmail.email_server.name %}
+                            <a href="#" id="inline-resume-template" name="resume-template" edit-enable="true" old-data="{{ PreferreResumeTemplate.resume_template.name }}" data-type="select" data-pk="1" data-value="{{ PreferreResumeTemplate.resume_template.id }}" data-title="Select Resume Template"></a>
+                            {% else %}
+                            <a href="#" id="inline-resume-template" name="resume-template" edit-enable="true" old-data="{{ "Not Selected" }}" data-type="select" data-pk="1" data-value="{{ PreferreResumeTemplate.resume_template.id }}" data-title="Select Resume Template"></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->
+{% endblock %}
+
+{% block js %}
+<script src="/static/plugins/minton/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- X-editable Plugin -->
+<script src="/static/plugins/minton/plugins/moment/moment.js"></script>
+<script type="text/javascript" src="/static/plugins/minton/plugins/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+<script type="text/javascript" src="/static/plugins/minton/pages/jquery.xeditable_resumecrm.js"></script>
+<script>
+    $(function(){
+        $('#inline-email').editable({
+            prepend: "Not Selected",
+            mode: 'inline',
+            inputclass: 'form-control-sm',
+            source : {{ EmailList | safe }},
+            display: function(value, sourceData) {
+                var colors = {"": "gray", 1: "green", 2: "blue"},
+                    elem = $.grep(sourceData, function(o){return o.value == value;});
+
+                if(elem.length) {
+                    $(this).text(elem[0].text).css("color", colors[value]);
+                } else {
+                    $(this).empty();
+                }
+            }
+        });
+
+        $('#inline-resume-template').editable({
+            prepend: "Not Selected",
+            mode: 'inline',
+            inputclass: 'form-control-sm',
+            source : {{ ResumeTemplateList | safe }},
+            display: function(value, sourceData) {
+                var colors = {"": "gray", 1: "green", 2: "blue"},
+                    elem = $.grep(sourceData, function(o){return o.value == value;});
+
+                if(elem.length) {
+                    $(this).text(elem[0].text).css("color", colors[value]);
+                } else {
+                    $(this).empty();
+                }
+            }
+        });
+    })
+</script>
+{% endblock %}
