@@ -7,8 +7,8 @@ import os, time, json, sys
 import importlib
 
 import http.client as httplib
-import html2text
-from lxml import html
+# import html2text
+# from lxml import html
 
 from concurrent.futures import ProcessPoolExecutor
 from concurrent.futures import ThreadPoolExecutor

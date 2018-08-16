@@ -1,0 +1,12 @@
+requests
+redis
+celery
+django
+pymysql
+dwebsocket2
+channels
+channels_redis
+python-docx
+django-celery-beat
+uwsgi
+django-cors-headers

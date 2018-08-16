@@ -10,7 +10,6 @@
 *.doc
 *.docs
 *.pdf
-*.txt
 *.db
 *.pid
 

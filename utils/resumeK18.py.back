@@ -7,8 +7,6 @@ import os, time, json, sys
 import importlib
 
 import http.client as httplib
-import html2text
-from lxml import html
 
 from concurrent.futures import ProcessPoolExecutor
 from concurrent.futures import ThreadPoolExecutor
@@ -53,8 +51,6 @@ def upload_file(file_path):
     response = conn.getresponse()
 
     result = response.read()
-    # result = response.read().decode('utf-8')
-    # text = html2text.html2text(result)
 
     selector = html.fromstring(result)
     text = selector.xpath("//*/*/text()")
@@ -63,8 +59,4 @@ def upload_file(file_path):
     return write_file(fileName, text)
 
 def write_file(fileName, text):
-    # text = json.dumps(text)
-    # print(type(text), "text")
-    # print(json.loads(text))
-    # requests.post("http://127.0.0.1:8088/k18resume.html", data={"content": json.loads(text), "filename": os.path.basename(fileName)})
     return fileName, text
