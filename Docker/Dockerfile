@@ -1,7 +1,7 @@
 FROM slzcc/supervisor:apt
 
 RUN pip3 install --upgrade pip && \
-    git clone -b develop https://gitee.com/shileizcc_admin/ResumeCRM.git /ResumeCRM
+    git clone https://gitee.com/shileizcc_admin/ResumeCRM.git /ResumeCRM
 
 RUN pip install -r /ResumeCRM/package.txt
 
