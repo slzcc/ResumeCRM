@@ -3,7 +3,6 @@ redis
 celery
 django
 pymysql
-dwebsocket2
 channels
 channels_redis
 python-docx
