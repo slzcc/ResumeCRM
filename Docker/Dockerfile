@@ -1,5 +1,12 @@
 FROM slzcc/supervisor:apt
 
+RUN apt update && \
+	apt install -y language-pack-zh-hans fonts-wqy-microhei fonts-wqy-zenhei xfonts-75dpi xfonts-base libfontenc1 libxfont1 xfonts-encodings xfonts-utils && \
+	apt-get autoremove --purge --yes && \
+    rm --force --recursive \
+        /tmp/* \
+        /var/lib/apt/lists/*
+
 RUN pip3 install --upgrade pip && \
     git clone https://gitee.com/shileizcc_admin/ResumeCRM.git /ResumeCRM
 

@@ -2,6 +2,15 @@
 {% load staticfiles %}
 
 {% block css %}
+    <link href="/static/plugins/minton/plugins/summernote/summernote-bs4.css" rel="stylesheet" />
+
+    <link href="/static/plugins/minton/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+    <link href="/static/plugins/minton/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/css/style.css" rel="stylesheet" type="text/css">
+
+    <script src="/static/plugins/minton/js/modernizr.min.js"></script>
 {% endblock %}
 
 {% block conent %}
@@ -20,15 +29,45 @@
     </form>
 </div>
 
+<div id="sse">
+   <a href="javascript:WebSocketTest()">运行 WebSocket</a>
+</div>
+
 {% endblock %}
 
 {% block js %}
         
 <script type="text/javascript">
-  var source = new EventSource("/notification/message/check");
-  source.onmessage = function(event) {
-  var message = event.data; 
-  // do stuff based on received message 
-  };
+  var pushData = "hello world!"
+  function WebSocketTest(){
+
+    if ("WebSocket" in window){
+      // alert("您的浏览器支持 WebSocket!");
+
+      // 打开一个 web socket
+      var ws = new WebSocket("ws://127.0.0.1:8088/websocket/message/send?auth={{ request.user.uuid }}&target={{ request.user.uuid }");
+
+      ws.onopen = function(){
+        // Web Socket 已连接上，使用 send() 方法发送数据
+        // alert("数据发送中...");
+        ws.send(pushData)
+      };
+
+      ws.onmessage = function (evt){ 
+        var received_msg = evt.data;
+        console.log(decodeURIComponent(received_msg));
+      };
+
+      ws.onclose = function(){ 
+        // 关闭 websocket
+        // alert("连接已关闭..."); 
+      };
+    }else{
+      // 浏览器不支持 WebSocket
+      // alert("您的浏览器不支持 WebSocket!");
+    }
+  }
 </script>
+        <script src="/static/plugins/minton/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 {% endblock %}

@@ -1,7 +1,7 @@
 version: '3'
 services:
     resume:
-        image: slzcc/resumecrm:v3
+        image: slzcc/resumecrm:base
         container_name: resume_server
         ports:
           - 8088:8088

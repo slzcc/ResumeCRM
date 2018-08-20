@@ -141,7 +141,34 @@
 
         <script src="/static/plugins/minton/js/modernizr.min.js"></script>
         {% block js %}{% endblock %}
+        <script type="text/javascript">
+            $(function (){
+                LinkWebSocketTest();
+            })
+            function LinkWebSocketTest(){
+                if ("WebSocket" in window){
+                  var ws = new WebSocket("ws://{{ request.get_host }}/websocket/message/send?auth={{ request.user.uuid }}");
 
+                  // ws.onopen = function(){
+                    // ws.send("")
+                  // };
+                  ws.onmessage = function (evt){ 
+                    var received_msg = evt.data;
+                    received_msg = decodeURIComponent(received_msg);
+                    var _type = received_msg.split("|")[0]
+                    var _title = received_msg.split("|")[1]
+                    var _context = received_msg.split("|")[2]
+                    if(_context != ""){
+                        $.Notification.autoHideNotify(_type, 'top right', _title, _context)
+                    }
+                    console.log(decodeURIComponent(received_msg));
+                  };
+
+                  ws.onclose = function(){ 
+                  };
+                }
+            }
+        </script>
         <script src="/static/plugins/minton/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
         <script type="text/javascript" src="/static/plugins/minton/plugins/multiselect/js/jquery.multi-select.js"></script>
         <script type="text/javascript" src="/static/plugins/minton/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>

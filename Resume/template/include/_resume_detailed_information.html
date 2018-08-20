@@ -20,7 +20,7 @@
                 上传人员: &nbsp<code class="highlighter-rouge">  {{ objs_upload_user }}  </code>&nbsp&nbsp
                 跟踪人员: &nbsp<code class="highlighter-rouge">  {{ objs_agent }}  </code>&nbsp&nbsp
             </p>
-            {% include 'include/Modals/_view_cn_en_resume.html' %}
+            {% include 'include/Models/_view_cn_en_resume.html' %}
         </div>
         
         <div class="card-box">
@@ -51,12 +51,21 @@
                                             <label class="col-3 col-form-label" >姓名:</label>
                                             <div class="col-9" >
                                                 <div class="input-group" id="lcons_label">
-                                                        {{ obj.username }}
-                                                        {% if objs_en_filename %}
-                                                            <button class="btn btn-danger btn-sm m-b-5 m-l-15" disabled="disabled"><i class="mdi mdi-etsy"></i></button>
-                                                            {# <button class="btn btn-danger waves-effect waves-light btn-sm m-b-5 m-l-15" disabled><i class="mdi mdi-etsy "></i></button> #}
-                                                        {% endif %}
-                                                    </div>
+                                                    {{ obj.username }}
+                                                    {% if objs_en_filename %}
+                                                        {# <button class="btn btn-danger btn-sm m-b-5 m-l-15" disabled="disabled"><i class="mdi mdi-etsy"></i></button> #}
+                                                        {# <button class="btn btn-danger waves-effect waves-light btn-sm m-b-5 m-l-15" disabled><i class="mdi mdi-etsy "></i></button> #}
+                                                        <nav style="margin-top: -10px;">
+                                                          <div class="container-fluid">
+                                                            <div class="navbar-header">
+                                                              <a class="navbar-brand" href="#">
+                                                                <img alt="Brand" width="20" height="20" src="https://mirror.shileizcc.com/Other/e2.png">
+                                                              </a>
+                                                            </div>
+                                                          </div>
+                                                        </nav>
+                                                    {% endif %}
+                                                </div>
                                                 
                                             </div>
                                         </div>                                            

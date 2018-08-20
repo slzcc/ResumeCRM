@@ -561,8 +561,9 @@ class ResumeSubscription(models.Model):
 class Notification(models.Model):
 
     uuid = models.CharField(max_length=128, verbose_name="识别码")
-    user = models.ForeignKey("UserProfile", related_name="nftuser", verbose_name="通知人员", on_delete=models.CASCADE)
-    origin = models.ForeignKey("UserProfile", related_name="nftorigin", verbose_name="发送人员", on_delete=models.CASCADE)
+    title = models.CharField(max_length=128, verbose_name="标题", null=True, blank=True)
+    to_user = models.ForeignKey("UserProfile", related_name="nftouser", verbose_name="通知人员", on_delete=models.CASCADE, null=True, blank=True)
+    from_user = models.ForeignKey("UserProfile", related_name="nffromuser", verbose_name="发送人员", on_delete=models.CASCADE, null=True, blank=True)
     trigger_time = models.DateTimeField(verbose_name="时间", null=True, blank=True, default=timezone.now)
     describe = models.TextField(verbose_name="描述", null=True, blank=True)
     read = models.BooleanField(default=False, verbose_name=_('Read'))

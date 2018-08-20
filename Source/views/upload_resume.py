@@ -21,7 +21,8 @@ ret = {"status": "seccuss", "status_code": "200", "event": "add"}
 
 def UploadResume(request):
     _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
-
+    location = request.get_host()
+    
     if request.method == "POST":
 
         dataDir = {"update_file_type": "zh_filename"}
@@ -46,11 +47,11 @@ def UploadResume(request):
             
 
             if 'update_resume_id' in dataDir.keys():
-                tasks.AnalyseResume.delay(filePath=os.path.join(path, file_data.name), update_id=dataDir["update_resume_id"], resume_source=dataDir["resume_source"], upload_user_id=request.user.id, isAnalyse=True, access=_access)
+                tasks.AnalyseResume.delay(location=location, filePath=os.path.join(path, file_data.name), update_id=dataDir["update_resume_id"], resume_source=dataDir["resume_source"], upload_user_id=request.user.id, isAnalyse=True, access=_access)
             else:
-                tasks.AnalyseResume.delay(filePath=os.path.join(path, file_data.name), resume_source=dataDir["resume_source"], upload_user_id=request.user.id, isAnalyse=True, access=_access)
+                tasks.AnalyseResume.delay(location=location, filePath=os.path.join(path, file_data.name), resume_source=dataDir["resume_source"], upload_user_id=request.user.id, isAnalyse=True, access=_access)
         else:
-            tasks.AnalyseResume.delay(filePath=os.path.join(path, file_data.name), update_id=dataDir["update_resume_id"], resume_source=dataDir["resume_source"], upload_user_id=request.user.id, isAnalyse=False, access=_access)
+            tasks.AnalyseResume.delay(location=location, filePath=os.path.join(path, file_data.name), update_id=dataDir["update_resume_id"], resume_source=dataDir["resume_source"], upload_user_id=request.user.id, isAnalyse=False, access=_access)
 
 
     return JsonResponse(ret)

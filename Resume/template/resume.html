@@ -47,8 +47,8 @@
 {% endblock %}
 
 {% block conent %}
-{% include 'include/Modals/_upload_resume_manyfile_parsing.html' %}
-
+{% include 'include/Models/_upload_resume_manyfile_parsing.html' %}
+{% include 'include/Models/_notification_view_all.html' %}
 <div class="row" id="valueSearch">
     <div class="col-12">
         {% MenuButtonAuthentication request "resume_list_search" as RETURN %}{% if RETURN %}
@@ -70,7 +70,7 @@
                     </button>
                     {% endif %}
                     {% MenuButtonAuthentication request "resume_batch_operation" as RETURN %}{% if RETURN %}
-                    <button class="btn btn-primary disabled waves-effect waves-light" type="button" type="button" data-toggle="collapse" data-target="#BatchOperation" aria-expanded="true" aria-controls="BatchOperation">
+                    <button class="btn btn-dark btn-custom disabled waves-effect waves-light" type="button" type="button" data-toggle="collapse" data-target="#BatchOperation" aria-expanded="true" aria-controls="BatchOperation">
                         <i class="fa fa-money m-l-5"></i>
                         <span> 批量操作</span>
                         

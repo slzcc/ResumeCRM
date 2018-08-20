@@ -90,6 +90,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'HttpCode', 'template'), 
             os.path.join(BASE_DIR, 'Test', 'template'), 
             os.path.join(BASE_DIR, 'Dashboard', 'template'), 
+            os.path.join(BASE_DIR, 'Notification', 'template'), 
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -116,6 +117,7 @@ DATABASES = {
         'USER': os.getenv('MYSQL_USER'),
         'PASSWORD': os.getenv('MYSQL_PASSWORD'),
         'HOST': os.getenv('MYSQL_HOST'),
+        # 'HOST': 'mysql',
         'PORT': os.getenv('MYSQL_PORT'),
     }
 }
@@ -169,6 +171,17 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'Dashboard', 'static'),
     os.path.join(BASE_DIR, 'static'),
 )
+# ******************************************************************************************************************************
+# Channels
+ASGI_APPLICATION = "Notification.routing.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("results", 6379)],
+        },
+    },
+}
 
 # ******************************************************************************************************************************
 # 如果用户未登录则跳转链接为
@@ -176,10 +189,12 @@ LOGIN_URL = "/user/login"
 # ******************************************************************************************************************************
 # Nginx_Upload
 NGINX_MIRROR_ADDRESS = "http://10.30.0.41"
+# NGINX_MIRROR_ADDRESS = "http://192.168.1.6"
 NGINX_UPLOAD_ADDRESS = os.path.join(NGINX_MIRROR_ADDRESS, "upload")
 # ******************************************************************************************************************************
 # Transcode PDF
 TRANSCODE_PDF_ADDRESS = "http://10.30.0.41:8089/api/v1/file/pdf"
+# TRANSCODE_PDF_ADDRESS = "http://192.168.1.6:8089/api/v1/file/pdf"
 # ******************************************************************************************************************************
 
 # 是否开启权限，用于调试

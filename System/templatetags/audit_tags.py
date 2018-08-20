@@ -39,7 +39,7 @@ def SetAudutTable(data):
 		event_type_obj =  models.StoredEventType.objects.get(id=item["event_type_id"])
 		ele += '<tr>'
 		ele += '<th><a href="" target="_blank">{}</a></th>'.format(item["uuid"])
-		ele += '<td>{}</td>'.format(item["trigger_time"].strftime('%y/%m/%d %H:%M'))
+		ele += '<td>{}</td>'.format((item["trigger_time"] + datetime.timedelta(hours=+8)).strftime('%y/%m/%d %H:%M'))
 		ele += '<td><small class="text-{}"><b>{}</b></small></td>'.format("warning" if user_obj.name != "System" else "success", user_obj.name)
 		ele += '<td><code>{}</code></td>'.format(event_type_obj.name + "." + item["label"])
 		status_index, status_value = getStatusTypeChoicesValue(item["status"])

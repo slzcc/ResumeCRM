@@ -9,3 +9,5 @@ python-docx
 django-celery-beat
 uwsgi
 django-cors-headers
+websocket-client
+lxml

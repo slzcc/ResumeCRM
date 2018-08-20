@@ -16,6 +16,7 @@ def SetIUploadTable(data):
 	_view_list = ["邮箱", "电话", "上传时间", "申请岗位", "简历状态"]
 	view_list = ["username", "email", "phone", "create_time", "jobs", "resume_status", "id"]
 	obj = data.values(*view_list)
+	# print(obj)
 	ele = ''
 	ele += '<thead><tr>'
 	ele += '<th class="id="tech-companies-1-col-0"">{}</th>'.format("姓名")

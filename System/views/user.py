@@ -59,7 +59,7 @@ def UserList(request):
 			status_code = 402
 			_save_name = dict(obj.data)["email"][0]
 			_describe = EventCode.EventCode["System.User.Create"]["zh"]["failed"].format(request.user,  _save_name)
-			_status = 1
+			_status = 2
 			_set_uuid = uuid.uuid1()
 			_event_record = tasks.CommonRecordEventLog.delay(
 				uuid=_set_uuid,

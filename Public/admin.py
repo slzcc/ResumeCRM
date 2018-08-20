@@ -52,6 +52,7 @@ admin.site.register(models.StatisticalDownloadResume)
 admin.site.register(models.StoredEventType)
 admin.site.register(models.EventLog)
 admin.site.register(models.ResumeSubscription)
+admin.site.register(models.Notification)
 
 # admin.site.register(models.Group)
 

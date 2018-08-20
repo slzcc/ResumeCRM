@@ -1,0 +1,150 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load notification_tags %}
+
+{% block css %}
+    <style>
+        .mx-box {
+            max-height: 600px;
+            min-height: 380px;
+        }
+        .nav {
+            /*display: -ms-flexbox;*/
+            display: block;
+            /*-ms-flex-wrap: wrap;*/
+            /*flex-wrap: wrap;*/
+            /*padding-left: 0;*/
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .tabs-vertical-env .nav.click_properties {
+          /*display: table-cell;*/
+          /*min-width: 120px;*/
+          /*vertical-align: top;*/
+          /*width: 150px;*/
+        }
+
+        .tabs-vertical-env .nav.click_properties li > a {
+          color: #2a3142;
+          white-space: nowrap;
+          font-weight: 600;
+          border-radius: 2px;
+        }
+
+        .tabs-vertical-env .nav.click_properties li > a.active {
+          background-color: #00b19d;
+          border: 0;
+          color: #ffffff;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">通知管理</h4>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="#">通知管理</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block conent %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">通知管理</h4>
+            <p class="text-muted m-b-30 font-13">
+                带有 <code>叹号</code> 的标志表示未读消息，阅读后可取消未阅读标志.
+            </p>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card-box">
+                        {# <h4 class="m-t-0 m-b-20 header-title"><b>Inbox</b></h4> #}
+
+                        <div class="inbox-widget nicescroll mx-box" tabindex="5000" style="overflow: hidden; outline: none;">
+                            <div class="tabs-vertical-env">
+                                {% SetNotificationTitle data %}
+                                <ul class="nav click_properties">
+                                    <li class="nav-item">
+                                        <a href="#v-home" class="nav-link" data-toggle="tab" aria-expanded="false">
+                                            <div class="inbox-item">
+                                        
+                                                <p class="inbox-item-author">Chadengle</p>
+                                                <p class="inbox-item-text">Hey! there I'm available...</p>
+                                                <p class="inbox-item-date">13:40 PM</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card-box">
+                        <div class="tab-content">
+                            {% SetNotificationBody data %}
+                            <div class="tab-pane" id="v-home">
+                                <h4 class="m-t-0 font-18"><b>Hi Bro, How are you?</b></h4>
+                                <hr>
+                                <div class="media m-b-30">
+                                    <div class="media-body">
+                                        <span class="media-meta pull-right">07:23 AM</span>
+                                        <h4 class="text-primary font-16 m-0">Jonathan Smith</h4>
+                                        <small class="text-muted">From: jonathan@domain.com</small>
+                                    </div>
+                                </div>
+
+                                <p><b>Hi Bro...</b></p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                                <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
+                                <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,</p>
+                            </div>
+                            <div class="tab-pane" id="v-profile">
+                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                            </div>
+                            <div class="tab-pane active show" id="v-messages">
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                            </div>
+                            <div class="tab-pane" id="v-settings">
+                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# <div class="row"> #}
+    {# <nav class="navbar navbar-default"> #}
+      {# <div class="container-fluid"> #}
+        {# <div class="navbar-header"> #}
+          {# <a class="navbar-brand" href="#"> #}
+            {# <img alt="Brand" width="20" height="20" src="https://mirror.shileizcc.com/Other/bootscript_logo.png"> #}
+          {# </a> #}
+        {# </div> #}
+      {# </div> #}
+    {# </nav> #}
+{# </div> #}
+{% endblock %}
+
+{% block js %}
+<script>
+    
+</script>
+{% endblock %}

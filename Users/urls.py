@@ -1,7 +1,7 @@
 
 from django.urls import path, re_path, include
 from Users.views import (
-    login, logout, register, lock_screen, profile, recoverpw, update
+    login, logout, register, lock_screen, profile, recoverpw, update, notification
 )
 
 # Users
@@ -13,6 +13,7 @@ urlpatterns = [
     re_path('^lock-screen$', lock_screen.UserLockScreen, name="user-lock-screen"),
     re_path('^register$', register.UserRegistrys, name="user-register"),
     re_path('^recoverpw$', recoverpw.UserForgotPassword, name="user-recoverpw"),
+    re_path('^notification$', notification.Notification, name="user-notification"),
     re_path('^update/password/(\d+)$', update.UpdateUserPassword, name="user-update-password"),
     re_path('^update/head-portrait$', update.UpdateUserHeadPortrait, name="user-update-head-portrait"),
 

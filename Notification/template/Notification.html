@@ -1,0 +1,59 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link href="/static/plugins/minton/plugins/summernote/summernote-bs4.css" rel="stylesheet" />
+
+<link href="/static/plugins/minton/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+<link href="/static/plugins/minton/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/static/plugins/minton/css/icons.css" rel="stylesheet" type="text/css">
+<link href="/static/plugins/minton/css/style.css" rel="stylesheet" type="text/css">
+
+<script src="/static/plugins/minton/js/modernizr.min.js"></script>
+{% endblock %}
+
+{% block conent %}
+
+{% endblock %}
+
+{% block js %}
+        
+<script type="text/javascript">
+// 获取当前 url 中的所有参数
+function GetUrlAllPara() {
+      var url = document.location.toString();
+      var arrUrl = url.split("?");
+
+      var para = arrUrl[1];
+      return para;
+}
+
+function WebSocketTest(){
+  var pushData = GetUrlAllPara();
+
+  if ("WebSocket" in window){
+    
+    // 打开一个 web socket
+    var ws = new WebSocket("ws://{{ location }}/websocket/message/send?" + pushData);
+
+    ws.onopen = function(){
+      ws.send(pushData)
+    };
+
+    ws.onmessage = function (evt){ 
+      var received_msg = evt.data;
+      // console.log(received_msg)
+    };
+
+  }
+}
+
+// $(function(){
+//     WebSocketTest();
+// });
+window.setTimeout(WebSocketTest,1000);
+</script>
+<script src="/static/plugins/minton/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+{% endblock %}

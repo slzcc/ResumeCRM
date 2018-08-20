@@ -6,21 +6,23 @@ from Storage import K18AnalyseResumeDataStorage, upload_nginx
 from django import conf
 from repository import models
 from Events.controller import common 
-import pytz, uuid
+import pytz, uuid, requests
 from Events import tasks, EventCode
+from Notification import PushMessage
+
 tz = pytz.timezone('Asia/Shanghai')
 
 @shared_task
-def AnalyseResume(filePath, resume_source, upload_user_id, access, isAnalyse=True, update_id=None):
+def AnalyseResume(location, filePath, resume_source, upload_user_id, access, isAnalyse=True, update_id=None):
 	if isAnalyse:
 		filePath, text = resumeK18.upload_file(filePath)
 		if update_id:
-			data={"content": json.loads(text[0]), "filePath": filePath, "resume_source": resume_source, "update_resume_id": update_id, "upload_user": upload_user_id, "access": access}
+			data={"location": location, "content": json.loads(text[0]), "filePath": filePath, "resume_source": resume_source, "update_resume_id": update_id, "upload_user": upload_user_id, "access": access}
 		else:
-			data={"content": json.loads(text[0]), "filePath": filePath, "resume_source": resume_source, "upload_user": upload_user_id, "access": access}
+			data={"location": location, "content": json.loads(text[0]), "filePath": filePath, "resume_source": resume_source, "upload_user": upload_user_id, "access": access}
 		return AnalyseResumeStorageDatabase(data)
 	else:
-		data={"filePath": filePath, "resume_source": resume_source, "update_resume_id": update_id, "upload_user": upload_user_id, "access": access}
+		data={"location": location, "filePath": filePath, "resume_source": resume_source, "update_resume_id": update_id, "upload_user": upload_user_id, "access": access}
 		return AnalyseResumeStorageDatabase(data)
 
 @shared_task
@@ -46,6 +48,19 @@ def AnalyseResumeStorageDatabase(data):
 				source=models.UserProfile.objects.get(id=data["upload_user"]).uuid,
 				target=base.uuid,
 			)
+			
+			# 发送提示信息
+			_SendNotification_Message = {"auth": models.UserProfile.objects.get(id=1).uuid, "target": models.UserProfile.objects.get(id=int(data["upload_user"])).uuid, "content": "custom|发现新的简历|{}上传了一份{}的简历，请刷新页面查阅新添加的简历.".format(models.UserProfile.objects.get(id=int(data['upload_user'])).email, base.username)}
+			session = requests.get(url="http://{}{}".format(data["location"], "/notification/message/send"), params=_SendNotification_Message)
+			
+			# 发送通知
+			_PushMessageData = {
+				"to_user_id": int(data["upload_user"]),
+				"from_user_id": 1,
+				"title": "上传简历 {} 成功!".format(base.username),
+				"describe": "简历 {} 上传成功，点击链接 /resume/candidate/{}/change 进入阅读页面!".format(base.username, base.id)
+			}
+			PushMessage.PushMessage(to_user_id=_PushMessageData["to_user_id"], from_user_id=_PushMessageData["from_user_id"], title=_PushMessageData["title"], describe=_PushMessageData["describe"])
 		else:
 			_describe = EventCode.EventCode["Resume.Update.ZH.Attachment"]["zh"]["seccess"].format(models.UserProfile.objects.get(id=int(data["upload_user"])),  base.id, base.username)
 			_status = 1
@@ -62,6 +77,8 @@ def AnalyseResumeStorageDatabase(data):
 				source=models.UserProfile.objects.get(id=data["upload_user"]).uuid,
 				target=base.uuid,
 			)
+			_SendNotification_Message = {"auth": models.UserProfile.objects.get(id=1).uuid, "target": models.UserProfile.objects.get(id=int(data["upload_user"])).uuid, "content": "info|发现更新的简历|请刷新页面查阅新添加的简历."}
+			session = requests.get(url="http://{}{}".format(data["location"], "/notification/message/send"), params=_SendNotification_Message)
 
 	else:
 		base = models.ResumeInfo.objects.filter(id=data["update_resume_id"]).last()

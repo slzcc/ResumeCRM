@@ -5,5 +5,5 @@ from Notification import views
 
 # Notification
 urlpatterns = [
-    re_path('^message/check$', views.TriggerStream, name="notification-message-check"),
+    re_path('^message/send$', views.TriggerStream, name="notification-message-check"),
 ]
