@@ -37,6 +37,12 @@
           color: #ffffff;
         }
     </style>
+    <!-- DataTables -->
+    <link href="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Responsive datatable examples -->
+    <link href="/static/plugins/minton/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block title %}
@@ -73,18 +79,8 @@
 
                         <div class="inbox-widget nicescroll mx-box" tabindex="5000" style="overflow: hidden; outline: none;">
                             <div class="tabs-vertical-env">
-                                {% SetNotificationTitle data %}
                                 <ul class="nav click_properties">
-                                    <li class="nav-item">
-                                        <a href="#v-home" class="nav-link" data-toggle="tab" aria-expanded="false">
-                                            <div class="inbox-item">
-                                        
-                                                <p class="inbox-item-author">Chadengle</p>
-                                                <p class="inbox-item-text">Hey! there I'm available...</p>
-                                                <p class="inbox-item-date">13:40 PM</p>
-                                            </div>
-                                        </a>
-                                    </li>
+                                    {% SetNotificationTitle data %}
                                 </ul>
                             </div>
                         </div>
@@ -94,34 +90,6 @@
                     <div class="card-box">
                         <div class="tab-content">
                             {% SetNotificationBody data %}
-                            <div class="tab-pane" id="v-home">
-                                <h4 class="m-t-0 font-18"><b>Hi Bro, How are you?</b></h4>
-                                <hr>
-                                <div class="media m-b-30">
-                                    <div class="media-body">
-                                        <span class="media-meta pull-right">07:23 AM</span>
-                                        <h4 class="text-primary font-16 m-0">Jonathan Smith</h4>
-                                        <small class="text-muted">From: jonathan@domain.com</small>
-                                    </div>
-                                </div>
-
-                                <p><b>Hi Bro...</b></p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-                                <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
-                                <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,</p>
-                            </div>
-                            <div class="tab-pane" id="v-profile">
-                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                            </div>
-                            <div class="tab-pane active show" id="v-messages">
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                            </div>
-                            <div class="tab-pane" id="v-settings">
-                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -144,7 +112,30 @@
 {% endblock %}
 
 {% block js %}
+<script src="/static/plugins/minton/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 <script>
-    
+    $(function(){
+        SetUrl();
+    });
+    function GetUrlAllPara() {
+        var url = document.location.toString();
+        var arrUrl = url.split("#");
+
+        var para = arrUrl[1];
+        return para;
+    }
+
+    function SetUrl() {
+        var location = GetUrlAllPara();
+        console.log(location);
+
+        $(".click_properties").find('a').each(function () {
+            if($(this).attr("href") == "#"+location){
+                console.log($(this));
+                $(this).click();
+            }
+        })
+    }
 </script>
 {% endblock %}

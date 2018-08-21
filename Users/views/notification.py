@@ -15,7 +15,8 @@ tz = pytz.timezone('Asia/Shanghai')
 
 def Notification(request):
 
-    if request.method == "GET":
-
-        data = models.Notification.objects.filter(to_user=request.user).order_by("-trigger_time")
-        return render(request, "my_notification.html", locals())
+	if request.method == "GET":
+		GetParameter = request.get_full_path()
+		print(GetParameter)
+		data = models.Notification.objects.filter(to_user=request.user).order_by("-trigger_time")
+		return render(request, "my_notification.html", locals())

@@ -44,7 +44,7 @@ def setCrojob_inSolrData(request):
 	crontab_time = crojob_models.CrontabSchedule.objects.create(**data)
 
 	# data = {'enabled': True, 'crontab':crontab_time, 'name': 'solr', 'enabled': True, 'kwargs': '{}', 'task': 'Cronjob.tasks.full_update_solr','args': json.loads(url_list), 'description': ''}
-	data = {'enabled': True, 'crontab':crontab_time, 'name': 'solr', 'enabled': True, 'kwargs': json.loads(url_list), 'task': 'Cronjob.tasks.full_update_solr','args': '', 'description': ''}
+	data = {'enabled': True, 'crontab':crontab_time, 'name': 'solr', 'enabled': True, 'kwargs': json.loads(url_list), 'task': 'Cronjob.tasks.full_update_solr','args': [], 'description': ''}
 
 	crojob_models.PeriodicTask.objects.create(**data)
 	
