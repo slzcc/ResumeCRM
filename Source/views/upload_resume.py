@@ -33,6 +33,9 @@ def UploadResume(request):
         file_data = request.FILES.get("file", None)
         path = os.path.join(conf.settings.BASE_DIR, 'static', 'firmware', "temporary")
 
+        # 如果目录不存在则创建
+        if not os.path.exists(path): os.makedirs(path)
+
         # 把文件内容保存到本地
         f = open(os.path.join(path, file_data.name), 'wb')
         for line in file_data.chunks():
