@@ -45,7 +45,7 @@ def setCrojob_inSolrData(request):
 	data = {'enabled': True, 'crontab':crontab_time, 'name': 'solr', 'enabled': True, 'kwargs': {}, 'task': 'Cronjob.tasks.full_update_solr','args': [], 'description': ''}
 
 	crojob_models.PeriodicTask.objects.create(**data)
-	obj = models.PeriodicTask.objects.filter(name="solr")
+	obj = crojob_models.PeriodicTask.objects.filter(name="solr")
 	obj.update(kwargs=url_list)
 	return HttpResponse("")
 
