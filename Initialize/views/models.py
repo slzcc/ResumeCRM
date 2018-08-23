@@ -38,7 +38,7 @@ def setDefaultUser(request):
 
 
 def setCrojob_inSolrData(request):
-	url_list = json.dumps({"url": SOLR_SERVER_URL + "solr/gettingstarted/dataimport?command=full-import&clean=true&entity=resume_source_text"})
+	url_list = json.dumps({"url": conf.settings.SOLR_SERVER_URL + "solr/gettingstarted/dataimport?command=full-import&clean=true&entity=resume_source_text"})
 	data = {"minute": "*", "hour": "*", "day_of_month": "*", "month_of_year": "*"}
 	crontab_time = crojob_models.CrontabSchedule.objects.create(**data)
 
