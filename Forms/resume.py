@@ -100,31 +100,31 @@ class ResumeInfoFrom(forms.ModelForm):
         )
 
         widgets = {
-            'username' : forms.TextInput(attrs={'class':"form-control-plaintext", "style":"display:block"}),
-            'email' : forms.EmailInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'phone' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'high' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'age' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'gender' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'marital_status' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'birthday' : forms.DateInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'place_residence' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'language' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'nation' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'degree' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'graduated_school' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'professional' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'learning_type' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'jobs' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'job_addr' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'current_situation' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'nature_work' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'marital_status' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'work_time' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'salary' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'duty_time' : forms.DateInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'old_jobs' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark",}),
-            'old_company' : forms.TextInput(attrs={'class':"form-control-plaintext text-dark" ,}),
+            'username' : forms.TextInput(attrs={'class':"form-control-plaintext", "style":"display:block", "disabled": "disabled"}),
+            'email' : forms.EmailInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'phone' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'high' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'age' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'gender' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'marital_status' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'birthday' : forms.DateInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'place_residence' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'language' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'nation' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'degree' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'graduated_school' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'professional' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'learning_type' : forms.TextInput(attrs={'class':"form-control-plaintext","disabled": "disabled" }),
+            'jobs' : forms.TextInput(attrs={'class':"form-control-plaintext","disabled": "disabled" }),
+            'job_addr' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'current_situation' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'nature_work' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'marital_status' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'work_time' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'salary' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'duty_time' : forms.DateInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'old_jobs' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
+            'old_company' : forms.TextInput(attrs={'class':"form-control-plaintext", "disabled": "disabled"}),
             'zh_filename' : forms.Select(attrs={'class':"form-control", "disabled": "true", "id": "attachmentName",}),
             'en_filename' : forms.Select(attrs={'class':"form-control", "disabled": "true",}),
 
@@ -132,7 +132,7 @@ class ResumeInfoFrom(forms.ModelForm):
         def __new__(cls, *args, **kwargs):
             for field_name in cls.base_fields:
                 filed_obj = cls.base_fields[field_name]
-                filed_obj.widget.attrs.update({'required':''})
+                filed_obj.widget.attrs.update({'required':'', "disabled": "disabled"})
 
             return  ModelForm.__new__(cls)
 

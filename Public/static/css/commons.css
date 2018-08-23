@@ -1,3 +1,23 @@
+.notification_body {
+    min-height: 130px;
+    border: 2px dashed rgba(0, 0, 0, 0.3);
+    background: #0000;
+    text-align: center;
+    opacity: 0.7;
+    /*border-radius: 6px;*/
+}
+
+#wrapper_location {
+    display: table;
+    width: 260px;
+}
+
+#cell_location {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/*
 img {
     border: 0;
 }
@@ -53,7 +73,7 @@ img {
 
 }
 
-/*  列表功能开始 */
+
 .list-block {
 
 }
@@ -104,4 +124,4 @@ img {
     border-left: 1px solid #ddd;
     padding: 10px;
 }
-/*  列表功能结束 */
+*/

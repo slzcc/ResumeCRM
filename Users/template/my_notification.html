@@ -32,9 +32,26 @@
         }
 
         .tabs-vertical-env .nav.click_properties li > a.active {
-          background-color: #00b19d;
-          border: 0;
+          background-color: #ebf2f9;
+          /*border: 0;*/
+          opacity:0.8;
+          border:1px solid #2494be;
           color: #ffffff;
+        }
+        .screen {
+            width: 100%;
+            /*height: 700px;*/
+            /*overflow: hidden;*/
+        }
+        .notify-icon {
+            float: left;
+            height: 36px;
+            width: 36px;
+            line-height: 36px;
+            text-align: center;
+            margin-right: 10px;
+            border-radius: 50%;
+            color: #ffffff;
         }
     </style>
     <!-- DataTables -->
@@ -65,22 +82,25 @@
 
 {% block conent %}
 
-<div class="row">
+<div class="row screen">
     <div class="col-12">
         <div class="card-box">
             <h4 class="m-t-0 header-title">通知管理</h4>
             <p class="text-muted m-b-30 font-13">
-                带有 <code>叹号</code> 的标志表示未读消息，阅读后可取消未阅读标志.
+                带有 <code>红色标识</code> 的标志表示未读消息数量，阅读后可取消未阅读标志.
             </p>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card-box">
-                        {# <h4 class="m-t-0 m-b-20 header-title"><b>Inbox</b></h4> #}
+                        <h4 class="m-t-0 m-b-20 header-title ">
+                            <b>未读数量 </b>
+                            <span class="badge badge-pink noti-icon-badge not-read-number">{{ not_read_str }}</span>
+                        </h4>
 
                         <div class="inbox-widget nicescroll mx-box" tabindex="5000" style="overflow: hidden; outline: none;">
                             <div class="tabs-vertical-env">
                                 <ul class="nav click_properties">
-                                    {% SetNotificationTitle data %}
+                                    {% SetNotificationTitle data GetParameter%}
                                 </ul>
                             </div>
                         </div>
@@ -88,8 +108,8 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="card-box">
-                        <div class="tab-content">
-                            {% SetNotificationBody data %}
+                        <div class="tab-content table_body">
+                            {% SetNotificationBody data GetParameter%}
                         </div>
                     </div>
                 </div>
@@ -116,26 +136,110 @@
 <script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 <script>
     $(function(){
-        SetUrl();
+        ManualGetValue();
+        $(".mx-box")[0].scrollTop = 25 * {{ location_num }}
     });
+
+    const capitalize = ([first,...rest], lowerRest = false) =>
+    first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
+    
+    function AutomaticGetValue() {
+        if(getUrlParam("view")){
+            var _auth = getUrlParam("view");
+            $(".click_properties").find('a').each(function () {
+                if($(this).attr("value") == _auth){
+                    $(this).attr("class", "badge badge-warning");
+                    $(this).text("已读");
+                }
+            })
+            postData = {"auth": _auth}
+            $.ajax({
+                'url': '',
+                'type': 'POST',
+                'dataType': 'JSON',
+                'data': postData,
+                success: function(arg){
+                    var _body = '<div class="tab-pane active show" id="' + arg.auth + '"><h4 class="m-t-0 font-18"><b>' + arg.title + '</b></h4><hr><div class="media m-b-30"><div class="media-body"><span class="media-meta pull-right">'+ arg.trigger_time +'</span><h4 class="text-primary font-16 m-0">'+ capitalize(arg.user) +'</h4><small class="text-muted">From: '+ arg.email +'</small></div></div><p><b>Hi ~</b></p><p>'+ arg.describe +'</p>'
+
+                    $(".table_body").html(_body);
+                    $(".not-read-number").each(function(){
+                        var oldNum = $(this).text();
+                        if(oldNum <= 0){
+                            var newNum = 0;
+                        }else{
+                            var newNum = Number(oldNum) - 1;
+                        }
+                        $(this).text(newNum);
+                    })
+                }
+            })
+        }
+    }
+
+    // Get Value
+    function ManualGetValue() {
+        $(".nav-item").on("click", function(e){
+            var stateObject = {};
+            var title = "ResumeCRM";
+            var newUrl = GetUrlRelativePath();
+            var newParameter = "?" + "view=";
+            var _auth = $(this).children().attr("value");
+            $(this).find('span').each(function(){
+                $(this).attr("class", "badge badge-warning");
+                $(this).text("已读");
+            })
+            postData = {"auth": _auth}
+            $.ajax({
+                'url': '',
+                'type': 'POST',
+                'dataType': 'JSON',
+                'data': postData,
+                success: function(arg){
+                    history.pushState(stateObject, title, newUrl + newParameter + _auth);
+                    var _body = '<div class="tab-pane active show" id="' + arg.auth + '"><h4 class="m-t-0 font-18"><b>' + arg.title + '</b></h4><hr><div class="media m-b-30"><div class="media-body"><span class="media-meta pull-right">'+ arg.trigger_time +'</span><h4 class="text-primary font-16 m-0">'+ capitalize(arg.user) +'</h4><small class="text-muted">From: '+ arg.email +'</small></div></div><p><b>Hi ~</b></p><p>'+ arg.describe +'</p>'
+
+                    $(".table_body").html(_body);
+                    // $(".not-read-number").each(function(){
+                    //     var oldNum = $(this).text();
+                    //     if(oldNum <= 0){
+                    //         var newNum = 0;
+                    //     }else{
+                    //         var newNum = Number(oldNum) - 1;
+                    //     }
+                    //     $(this).text(newNum);
+                    // })
+                }
+            })
+        });
+    }
+    // 获取 Url 参数
     function GetUrlAllPara() {
         var url = document.location.toString();
-        var arrUrl = url.split("#");
+        var arrUrl = url.split("?");
 
         var para = arrUrl[1];
         return para;
     }
 
-    function SetUrl() {
-        var location = GetUrlAllPara();
-        console.log(location);
+    // 获取 Url 相对路径
+    function GetUrlRelativePath(){
+        var url = document.location.toString();
+        var arrUrl = url.split("//");
 
-        $(".click_properties").find('a').each(function () {
-            if($(this).attr("href") == "#"+location){
-                console.log($(this));
-                $(this).click();
-            }
-        })
+        var start = arrUrl[1].indexOf("/");
+        var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+        if(relUrl.indexOf("?") != -1){
+            relUrl = relUrl.split("?")[0];
+        }
+        return relUrl;
+    }
+    // 获取当前 url 中的相应参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
     }
 </script>
 {% endblock %}

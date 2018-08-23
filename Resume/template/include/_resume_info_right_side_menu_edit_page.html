@@ -1,0 +1,17 @@
+{% load authentication_tags %}
+
+<div class="side-bar right-bar cancel-border">
+    <div class="">
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="Settings">
+                <div class="tab-pane active show" id="Settings">
+                    <div class="row custom-card-box">
+                        <button type="button" class="btn btn-block btn-md btn-primary waves-effect waves-light" id="btnSave">保存</button>
+                        <button type="button" class="btn btn-block btn-md btn-secondary waves-effect waves-light" id="btnCancel">取消</button>
+                        <button type="button" class="btn btn-block btn-md btn-info waves-effect waves-light" onclick="window.location.href='/resume/candidate/{{ obj.id }}/change'">返回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

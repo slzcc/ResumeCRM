@@ -4,7 +4,7 @@ from django import conf
 from repository import models
 import os, json, uuid
 
-def PushMessage(to_user_id, describe, title, from_user_id=1):
+def PushMessage(to_user_id, describe, title, from_user_id=1, notification_type=0):
 	
 	if to_user_id:
 		to_user = models.UserProfile.objects.get(id=to_user_id)
@@ -17,7 +17,8 @@ def PushMessage(to_user_id, describe, title, from_user_id=1):
 		"to_user": to_user, 
 		"from_user": from_user, 
 		"describe": describe, 
-		"title": title
+		"title": title,
+		"notification_type": notification_type
 	}
 	try:
 		obj = models.Notification.objects.create(**data)

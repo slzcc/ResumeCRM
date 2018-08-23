@@ -33,7 +33,7 @@ urlpatterns = [
     re_path('^candidate/delete/(\d+)$', resume_info.DeleteCandidate, name="resume-candidate-info-delete"),
     re_path('^candidate/subscription$', resume_info.ResumeSubscription, name="resume-candidate-info-subscription"),
     # re_path('^delete-(?P<uid>\d+)-resume.html$', resume_info.DeleteResumeInfoView),
-    # re_path('^edit-(?P<uid>\d+)-resume.html$', resume_info.EditResumeView, name="resume-user-info-edit"),
+    re_path('^candidate/update/(\d+)$', resume_info.EditResumeView, name="resume-candidate-info-update"),
 
     # 评论
     re_path('^candidate/commands/save$', resume_info.SaveResumeCommands, name="resume-candidate-info-comment"),

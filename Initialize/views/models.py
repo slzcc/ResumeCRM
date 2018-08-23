@@ -38,16 +38,15 @@ def setDefaultUser(request):
 
 
 def setCrojob_inSolrData(request):
-	# url_list = json.dumps(["http://10.30.0.41:8983/solr/gettingstarted/dataimport?command=full-import&clean=true&entity=resume_source_text"])
 	url_list = json.dumps({"url": "http://10.30.0.41:8983/solr/gettingstarted/dataimport?command=full-import&clean=true&entity=resume_source_text"})
 	data = {"minute": "*", "hour": "*", "day_of_month": "*", "month_of_year": "*"}
 	crontab_time = crojob_models.CrontabSchedule.objects.create(**data)
 
-	# data = {'enabled': True, 'crontab':crontab_time, 'name': 'solr', 'enabled': True, 'kwargs': '{}', 'task': 'Cronjob.tasks.full_update_solr','args': json.loads(url_list), 'description': ''}
-	data = {'enabled': True, 'crontab':crontab_time, 'name': 'solr', 'enabled': True, 'kwargs': json.loads(url_list), 'task': 'Cronjob.tasks.full_update_solr','args': [], 'description': ''}
+	data = {'enabled': True, 'crontab':crontab_time, 'name': 'solr', 'enabled': True, 'kwargs': {}, 'task': 'Cronjob.tasks.full_update_solr','args': [], 'description': ''}
 
 	crojob_models.PeriodicTask.objects.create(**data)
-	
+	obj = models.PeriodicTask.objects.filter(name="solr")
+	obj.update(kwargs=url_list)
 	return HttpResponse("")
 
 def setEventType(request):

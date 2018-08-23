@@ -25,12 +25,18 @@ def GenerateWordDocument(request, obj_id):
 	isExists = os.path.exists(ResumeTemplatePath)
 	if not isExists: os.makedirs(ResumeTemplatePath)
 
-	obj = models.PreferreResumeTemplate.objects.all().last()
-	if obj.resume_template:
-		ResumeTemplateUrl = os.path.join(conf.settings.NGINX_MIRROR_ADDRESS, obj.resume_template.url)
-		ResumeTemplateName = os.path.basename(ResumeTemplateUrl)
-		ResumeTemplateFilePath = os.path.join(ResumeTemplatePath, ResumeTemplateName)
-		urllib.request.urlretrieve(ResumeTemplateUrl, ResumeTemplateFilePath)
+	obj = models.PreferreResumeTemplate.objects.filter(name="default").last()
+	if obj:
+		if obj.resume_template:
+			ResumeTemplateUrl = os.path.join(conf.settings.NGINX_MIRROR_ADDRESS, obj.resume_template.url)
+			ResumeTemplateName = os.path.basename(ResumeTemplateUrl)
+			ResumeTemplateFilePath = os.path.join(ResumeTemplatePath, ResumeTemplateName)
+			urllib.request.urlretrieve(ResumeTemplateUrl, ResumeTemplateFilePath)
+		else:
+			ret["status"] = "failed"
+			ret["status_code"] = "404"
+			ret["describe"] = "不存在的简历模板,请联系管理员解决此问题!"
+			return JsonResponse(ret)
 	else:
 		ret["status"] = "failed"
 		ret["status_code"] = "404"

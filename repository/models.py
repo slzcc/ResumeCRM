@@ -559,7 +559,16 @@ class ResumeSubscription(models.Model):
         return force_text(self.resume)
 
 class Notification(models.Model):
+    notification_type_choices = (
+        (0, 'system'),
+        (1, 'user'),
+        (2, 'event'),
+        (3, 'email'),
+        (4, 'notification'),
+        (5, 'other'),
+    )
 
+    notification_type = models.SmallIntegerField(choices=notification_type_choices, default=0, verbose_name="类型")
     uuid = models.CharField(max_length=128, verbose_name="识别码")
     title = models.CharField(max_length=128, verbose_name="标题", null=True, blank=True)
     to_user = models.ForeignKey("UserProfile", related_name="nftouser", verbose_name="通知人员", on_delete=models.CASCADE, null=True, blank=True)

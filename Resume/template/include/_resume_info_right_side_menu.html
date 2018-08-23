@@ -7,23 +7,23 @@
                 <div class="tab-pane active show" id="Settings">
                     <div class="row custom-card-box">
                         {% MenuButtonAuthentication request "resume_candidate_info_origin_manage" as RETURN %}{% if RETURN %}
-                        <button type="button" class="btn btn-block btn-md btn-success waves-effect waves-light" id="btnAttachment" data-toggle="modal" data-target="#btnAttachment">原件管理</button>{% endif %}
+                        <button type="button" class="btn btn-block btn-md btn-dark waves-effect waves-light" id="btnAttachment" data-toggle="modal" data-target="#btnAttachment">原件管理</button>{% endif %}
                         {% MenuButtonAuthentication request "resume_candidate_info_collection" as RETURN %}{% if RETURN %}
                             {% if not subscribe_obj %}
                                 <button type="button" class="btn btn-block btn-md btn-primary waves-effect waves-light" status="subscribe" id="btnResumeSubscription">收藏简历</button>
                             {% else %}
-                                {# <button type="button" class="btn btn-block btn-md btn-warning waves-effect waves-light" id="btnResumeUnSubscription">取消收藏</button> #}
                                 <button type="button" class="btn btn-block btn-md btn-warning waves-effect waves-light" status="unsubscribe" id="btnResumeSubscription">取消收藏</button>
                             {% endif %}
                         {% endif %}
                         {% MenuButtonAuthentication request "resume_candidate_info_export_template" as RETURN %}{% if RETURN %}
-                        <button type="button" class="btn btn-block btn-md btn-success waves-effect waves-light" id="btnExportWord">导出简历</button>{% endif %}
-                        <button type="button" class="btn btn-block btn-md btn-success waves-effect waves-light" id="btnPageTop" >页面置顶</button>
+                        <button type="button" class="btn btn-block btn-md btn-success disabled waves-effect waves-light" id="btnExportWord">导出简历</button>{% endif %}
+                        <button type="button" class="btn btn-block btn-md btn-primary disabled waves-effect waves-light" id="btnPageTop" >页面置顶</button>
                         {% MenuButtonAuthentication request "resume_candidate_info_view_pdf" as RETURN %}{% if RETURN %}
                         <button type="button" class="btn btn-block btn-md btn-success waves-effect waves-light" id="btnViewsJS" data-toggle="modal" data-target="#ViewsJS">附件内容</button>{% endif %}
-                        {# <button type="button" class="btn btn-block btn-md btn-info waves-effect waves-light disabled" id="btnEdit">编辑简历</button> #}
-                        {# <button style="display: none;" type="button" class="btn btn-block btn-md btn-primary waves-effect waves-light" id="btnSave">保存</button> #}
-                        {# <button style="display: none;" type="button" class="btn btn-block btn-md btn-secondary waves-effect waves-light" id="btnCancel">取消</button> #}
+                        <button type="button" class="btn btn-block btn-md btn-info waves-effect waves-light" onclick="window.location.href='?view={{ obj.uuid }}'">编辑简历
+                        </button>
+                        <button type="button" class="btn btn-block btn-md btn-light waves-effect waves-light" onclick="window.location.reload()">刷新页面
+                        </button>
                         {% MenuButtonAuthentication request "resume_candidate_info_delete" as RETURN %}{% if RETURN %}
                         <button type="button" class="btn btn-block btn-md btn-danger waves-effect waves-light disabled" id="btnDelete">删除简历</button>{% endif %}
                     </div>
@@ -33,3 +33,4 @@
         </div>
     </div>
 </div>
+

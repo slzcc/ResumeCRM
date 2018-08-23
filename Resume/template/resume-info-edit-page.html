@@ -1,0 +1,397 @@
+{% extends 'base_templates/_page_layout.html' %}
+{% load staticfiles %}
+{% load authentication_tags %}
+{% block css %}
+    <link href="/static/plugins/minton/plugins/summernote/summernote-bs4.css" rel="stylesheet" />
+
+    <link href="/static/plugins/minton/plugins/switchery/switchery.min.css" rel="stylesheet" />
+    <link href="/static/plugins/minton/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+    <!--Footable-->
+    <link href="/static/plugins/minton/plugins/footable/css/footable.core.css" rel="stylesheet">
+    <!-- DataTables -->
+    <link href="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugins/minton/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Responsive datatable examples -->
+    <link href="/static/plugins/minton/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <style>
+
+        #textarea {
+            height: 200px;
+        }
+        #divAdvancedFeatures {
+            position: fixed;
+            /*width:10px;*/
+            /*height:10px;*/
+            /*border:1px solid red;*/
+            right:0px;
+            /*top:0px;*/
+            z-index:100;
+        }
+        .side-bar.right-bar {
+            float: right !important;
+            right: -266px;
+            top: 230px;
+            bottom: 0;
+            font-size: 0.9rem;
+        }
+        .right-bar {
+            background: #0000 !important;
+            z-index: 99 !important;
+        }
+        .cancel-border {
+            box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0);
+        }
+        
+        #lcons_label{
+            text-align: center; /*让div内部文字居中*/
+            /*background-color: #fff;*/
+            /*border-radius: 20px;*/
+            /*width: 300px;*/
+            /*height: 350px;*/
+            /*margin: auto;*/
+            /*position: absolute;*/
+            top: 19%;
+            /*left: 0;*/
+            /*right: 0;*/
+            /*bottom: 0;*/
+        }
+        .btn-sm {
+            text-align: center;
+            padding: .5rem .35rem;
+            font-size: 0.875rem;
+            line-height: 0.5;
+            border-radius: 0.2rem;
+        }
+    </style>
+    
+
+{% endblock %}
+
+{% block title %}
+
+    <!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">候选人信息</h4>
+            <ol class="breadcrumb float-right">
+                <li class="breadcrumb-item"><a href="/resume/candidate/{{obj.id}}/change">{{obj.username}}</a></li>
+                <li class="breadcrumb-item"><a href="/resume/list">侯选人列表</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block conent %}
+    {% include 'include/_resume_detailed_information_edit_page.html' %}
+
+{% endblock %}
+
+{% block sidebar %} 
+    {% include 'include/_resume_info_right_side_menu_edit_page.html' %}
+{% endblock %}
+
+{% block js %}
+<script src="/static/plugins/minton/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/plugins/minton/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!--form summernote-->
+<script src="/static/plugins/minton/plugins/summernote/summernote-bs4.min.js"></script>
+<script>
+    current_resume_info_id = "{{ uid }}"
+    update_file_type = "zh_filename"
+
+    $(function () {
+        bindCancel();
+        GetResumeAPI();
+        SetTextareaID();
+        SetSaveAlert();
+        SetBoxEditEnable();
+        PageTop();
+        RightSidebar();
+    });
+
+    // 自定义 右侧 菜单
+    function RightSidebar(){
+        $("#btnAdvancedFeatures").click(function(){
+            var wrapper = document.getElementById('wrapper');
+            if (wrapper.getAttribute("class")=='right-bar-enabled'){
+                $("#wrapper").removeClass("right-bar-enabled");
+            }else{
+                $("#wrapper").addClass("right-bar-enabled");
+            }
+        })
+    }
+
+    //  置顶
+    function PageTop(){
+        $("#btnPageTop").click(function(){
+            document.documentElement.scrollTop = 0;
+        })
+    }
+
+    function SetTextareaID() {
+        $('#infoModal').find('textarea').each(function () {
+             $(this).attr("id", "textarea");
+         });
+    }
+
+
+    // 初始化页面时，把部分元素添加属性，后续检测是对这类元素列为可编辑状态
+    function SetBoxEditEnable(){
+         $("#infoModal").find('input, select, textarea').each(function () {
+            $(this).attr("edit-enable", "true");
+         });
+    }
+
+    // 点击保存时，把所需数据汇总
+    function bindSave() {
+
+        $('#btnSave').click(function () {
+            var postData = {};
+            $('#infoModal').find('input, select').each(function () {
+                var v = $(this).val();
+                var k = $(this).attr('name');
+                var origin = $(this).attr("origin-data");
+
+                if ($(this).attr("id") == "edit-text") {
+                    if (v == "") {
+                        return
+                    }
+
+                    if ($(this).attr("type") == "radio") {
+                        if ($(this).prop("checked")) {
+                            if ($(this).attr("value") != origin) {
+                                postData[k] = v;
+                            }
+                        }
+                    }else if (v != origin) {
+                        postData[k] = v;
+                    }
+                }
+            });
+        });
+    }
+
+    function cancelEdit() {
+
+        $('#btnSave').hide();
+        $('#btnCancel').hide();
+        $('#btnEdit').show();
+        $('#infoModal').find('input, select').each(function () {
+            $(this).removeAttr("disabled");
+        });
+    }
+    function bindCancel() {
+
+        $('#btnCancel').click(function () {
+            window.location.reload()
+        });
+    }
+    function GetResumeAPI() {
+        $.ajax({
+            url: "/api/resume/candidate/{{ uid }}",
+            dataType: 'JSON',
+            type: "GET",
+            success: function (arg) {
+                var rel = null;
+                $.each(arg, function (k,v) {
+                    $("#infoModal").find("input").each(function () {
+
+                        if($(this).attr("name") == k){
+                            if($(this).attr("type") == "radio"){
+                                if($(this).attr("value") == 'true'){
+                                    if(v){
+                                        $(this).prop("checked", true);
+                                    }
+                                }
+                                else {
+                                    if(!v) {
+                                        $(this).prop("checked", true);
+                                    }
+                                }
+                                $(this).attr("origin-data", v);
+                            }else {
+                                if(typeof v == "object"){
+                                    
+                                    if(!jQuery.isEmptyObject(v)) {
+                                        $(this).val(v[0]["name"]);
+                                        $(this).attr("origin-data", v[0]["name"]);
+                                    }
+                                }else{
+                                    $(this).val(v);
+                                    $(this).attr("origin-data", v);
+                                }
+                            }
+                        }
+                    });
+                    $("#infoModal").find("textarea").each(function () {
+                        if($(this).attr("name") == k){
+                            if(!jQuery.isEmptyObject(v[0])) {
+                                $(this).val(v[0]["describe"]);
+                                $(this).attr("origin-data", v[0]["describe"]);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    }
+    function SetSaveAlert() {
+        //Parameter
+        $('#btnSave').click(function () {
+            var postData = {};
+            $('#infoModal').find('input, select').each(function () {
+                var v = $(this).val();
+                var k = $(this).attr('name');
+                var origin = $(this).attr("origin-data");
+                
+                if ($(this).attr("edit-enable") == "true") {
+                    if (v == "") {
+                        return
+                    }
+
+                    if ($(this).attr("type") == "radio") {
+                        if ($(this).prop("checked")) {
+                            if ($(this).attr("value") != origin) {
+                                if(v == "true"){
+                                    postData[k] = "True";
+                                }else {
+                                    postData[k] = "False";
+                                }
+                            }
+                        }
+                    }else if (v != origin) {
+                        postData[k] = v;
+                    }
+                }
+            });
+
+            $('#infoModal').find('textarea').each(function () {
+                if($(this).attr("edit-enable") == "true"){
+                    var v = $(this).val();
+                    var k = $(this).attr('name');
+                    var origin = $(this).attr("origin-data");
+                    if (v != origin) {
+                        postData[k] = v;
+                    }
+                }
+            });
+            if (!jQuery.isEmptyObject(postData)){
+                swal({
+                    title: '你确定要保存？',
+                    text: "点击确定后会进行修改！",
+                    type: 'warning', // warning
+                    showCancelButton: true,
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    confirmButtonClass: 'btn btn-success mt-2 slzcc',
+                    cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                    buttonsStyling: false
+                }).then(function () {
+                    swal({
+                        title: '已保存',
+                        text: "你的数据已提交成功!",
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }, function (dismiss) {
+                    if (dismiss === 'cancel') {
+                        swal({
+                            title: '已取消',
+                            text: "成功取消操作!",
+                            type: 'error',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }
+                });
+                $('.slzcc').click(function () {
+                    EditData(postData);
+                })
+            }else {
+                $.Notification.autoHideNotify('info', 'top right', '无效的保存','无效的操作，没有需要保存的数据，请查看后再次保存!')
+            }
+        });
+    }
+
+    function EditData(postData) {
+        if(postData){
+            $.ajax({
+                url: "/resume/candidate/update/{{ uid }}",
+                dataType: "JSON",
+                type: "POST",
+                data: postData,
+                success: function (arg) {
+                    if (arg.status_code != "200"){
+                        swal({
+                            title: '错误',
+                            text: "数据保存失败!",
+                            type: 'error',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        })
+                    }else{
+                        swal({
+                            title: '已保存',
+                            text: "数据保存成功!",
+                            type: 'success',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        }).then(function () {
+                            window.location.href = "/resume/candidate/{{ uid }}/change";
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+
+</script>
+<!-- Counter Up  -->
+<script src="/static/plugins/minton/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="/static/plugins/minton/plugins/counterup/jquery.counterup.min.js"></script>
+
+<!-- circliful Chart -->
+<script src="/static/plugins/minton/plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
+<script src="/static/plugins/minton/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+<!-- skycons -->
+<script src="/static/plugins/minton/plugins/skyicons/skycons.min.js" type="text/javascript"></script>
+
+<!-- Page js  -->
+<script src="/static/plugins/minton/pages/jquery.dashboard.js"></script>
+<!--FooTable-->
+<script src="/static/plugins/minton/plugins/footable/js/footable.all.min.js"></script>
+<!--FooTable Example-->
+<script src="/static/plugins/minton/pages/jquery.footable.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+        $('.counter').counterUp({
+            delay: 100,
+            time: 1200
+        });
+        $('.circliful-chart').circliful();
+    });
+
+    // BEGIN SVG WEATHER ICON
+    if (typeof Skycons !== 'undefined'){
+        var icons = new Skycons(
+                {"color": "#3bafda"},
+                {"resizeClear": true}
+                ),
+                list  = [
+                    "clear-day", "clear-night", "partly-cloudy-day",
+                    "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+                    "fog"
+                ],
+                i;
+
+        for(i = list.length; i--; )
+            icons.set(list[i], list[i]);
+        icons.play();
+    };
+
+</script>
+{% endblock %}

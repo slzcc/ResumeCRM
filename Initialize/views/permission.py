@@ -18,7 +18,7 @@ def AddPermission(request):
 
 	Permission.objects.all().delete()
 
-	# Resume
+	# ************************************ Resume ************************************************************
 	Permissions = Permission.objects.create(
 		codename="resume_uplaod_attachment",
 		name=u"简历-上传-附件",
@@ -244,8 +244,99 @@ def AddPermission(request):
 		"describe": u"允许对简历页面进行批量修改等操作.",
 	}
 	SystemPermissions = models.SystemPermission.objects.create(**data)
+	
+	Permissions = Permission.objects.create(
+		codename="resume_list_search",
+		name=u"简历-列表-搜索",
+		content_type=content_type,
+	)
+	data = {
+		"per_method": 3,
+		"argument_list": "*",
+		"permissions_id": Permissions.id,
+		"url_id": "",
+		"name": "resume_list_search",
+		"describe": u"允许在简历列表页面进行搜索.",
+	}
+	SystemPermissions = models.SystemPermission.objects.create(**data)
 
-	# Permissions
+	Permissions = Permission.objects.create(
+		codename="resume_candidate_info_collection",
+		name=u"简历-候选人-详情页-收藏简历",
+		content_type=content_type,
+	)
+	data = {
+		"per_method": 3,
+		"argument_list": "*",
+		"permissions_id": Permissions.id,
+		"url_id": "",
+		"name": "resume_candidate_info_collection",
+		"describe": u"允许在候选人页面进行收藏.",
+	}
+	SystemPermissions = models.SystemPermission.objects.create(**data)
+	
+	Permissions = Permission.objects.create(
+		codename="resume_related_tracking_list_manage",
+		name=u"简历-相关-我追踪的简历",
+		content_type=content_type,
+	)
+	data = {
+		"per_method": 3,
+		"argument_list": "*",
+		"permissions_id": Permissions.id,
+		"url_id": models.Menu.objects.get(url_name="resume-related-tracking-list-manage").id,
+		"name": "resume_related_tracking",
+		"describe": u"允许查看自己追踪的简历页面.",
+	}
+	SystemPermissions = models.SystemPermission.objects.create(**data)
+
+	Permissions = Permission.objects.create(
+		codename="resume_related_upload_list_manage",
+		name=u"简历-相关-我上传的简历",
+		content_type=content_type,
+	)
+	data = {
+		"per_method": 3,
+		"argument_list": "*",
+		"permissions_id": Permissions.id,
+		"url_id": models.Menu.objects.get(url_name="resume-related-upload-list-manage").id,
+		"name": "resume_related_upload_list_manage",
+		"describe": u"允许查看自己上传的简历页面.",
+	}
+	SystemPermissions = models.SystemPermission.objects.create(**data)
+
+	Permissions = Permission.objects.create(
+		codename="resume_related_download_list_manage",
+		name=u"简历-相关-我收藏的简历",
+		content_type=content_type,
+	)
+	data = {
+		"per_method": 3,
+		"argument_list": "*",
+		"permissions_id": Permissions.id,
+		"url_id": models.Menu.objects.get(url_name="resume-related-download-list-manage").id,
+		"name": "resume_related_download_list_manage",
+		"describe": u"允许查看自己下载的简历页面.",
+	}
+	SystemPermissions = models.SystemPermission.objects.create(**data)
+
+	Permissions = Permission.objects.create(
+		codename="resume_related_subscribe_list_manage",
+		name=u"简历-相关-我收藏的简历",
+		content_type=content_type,
+	)
+	data = {
+		"per_method": 3,
+		"argument_list": "*",
+		"permissions_id": Permissions.id,
+		"url_id": models.Menu.objects.get(url_name="resume-related-subscribe-list-manage").id,
+		"name": "resume_related_subscribe_list_manage",
+		"describe": u"允许查看自己收藏的简历页面.",
+	}
+	SystemPermissions = models.SystemPermission.objects.create(**data)
+
+
+	# ************************************ Permissions ************************************************************
 	Permissions = Permission.objects.create(
 		codename="permission_link_manage",
 		name=u"权限-分配-管理",
@@ -307,8 +398,7 @@ def AddPermission(request):
 	SystemPermissions = models.SystemPermission.objects.create(**data)
 
 
-
-	# System
+	# ************************************ System ************************************************************
 	Permissions = Permission.objects.create(
 		codename="system_user_list_manage",
 		name=u"系统-用户-列表-管理",
@@ -414,7 +504,7 @@ def AddPermission(request):
 	}
 	SystemPermissions = models.SystemPermission.objects.create(**data)
 
-	# User
+	# ************************************ User ************************************************************
 	Permissions = Permission.objects.create(
 		codename="user_profile",
 		name=u"用户-配置管理",
@@ -461,32 +551,18 @@ def AddPermission(request):
 	SystemPermissions = models.SystemPermission.objects.create(**data)
 	
 	Permissions = Permission.objects.create(
-		codename="resume_list_search",
-		name=u"简历-列表-搜索",
+		codename="user_notification",
+		name=u"用户-配置管理-修改密码",
 		content_type=content_type,
 	)
 	data = {
 		"per_method": 3,
 		"argument_list": "*",
 		"permissions_id": Permissions.id,
-		"url_id": "",
-		"name": "resume_list_search",
-		"describe": u"允许在简历列表页面进行搜索.",
+		"url_id": models.Menu.objects.get(url_name="user-notification").id,
+		"name": "user_notification",
+		"describe": u"允许用户查看通知.",
 	}
 	SystemPermissions = models.SystemPermission.objects.create(**data)
 
-	Permissions = Permission.objects.create(
-		codename="resume_candidate_info_collection",
-		name=u"简历-候选人-详情页-收藏简历",
-		content_type=content_type,
-	)
-	data = {
-		"per_method": 3,
-		"argument_list": "*",
-		"permissions_id": Permissions.id,
-		"url_id": "",
-		"name": "resume_candidate_info_collection",
-		"describe": u"允许在候选人页面进行收藏.",
-	}
-	SystemPermissions = models.SystemPermission.objects.create(**data)
 	return HttpResponse("")

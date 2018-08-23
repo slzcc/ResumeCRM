@@ -3,7 +3,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from django import conf
-
+from django.http import QueryDict
 from repository import models
 from django.contrib.auth.decorators import login_required
 from Permission.Authentication import check_permission
@@ -54,7 +54,7 @@ def SetManytoManyField_inHTMLs(objs, value):
     if objs.values(value)[0][value]:
         lists = list(objs.values(value))[0][value].split("\n")
         for item in lists:
-            data += """<p>{}</p>""".format(item)
+            data += """<p></p><p>{}</p>""".format(item)
     return data
 
 def SetManytoManyField_inStrs(objs, value):
@@ -65,11 +65,23 @@ def SetManytoManyField_inStrs(objs, value):
             data += """{}""".format(item)
     return data
 
-@login_required
-@check_permission(StatusCode["1407"])
+# @login_required
+# @check_permission(StatusCode["1407"])
 def GetResumeInfoView(request, obj_id):
-    if request.method == "GET":
+    _auth = request.GET.get("view", None)
+    if _auth:
+        obj = models.ResumeInfo.objects.get(id=obj_id)
+        objs= models.ResumeInfo.objects.filter(id=obj_id)
 
+        # 格式化数据到标头
+        objs_resume_source = list(objs.values("resume_source__name"))[0]["resume_source__name"]
+        objs_upload_user = list(objs.values("upload_user__name"))[0]["upload_user__name"]
+        objs_agent = list(objs.values("agent__name"))[0]["agent__name"]
+        
+        uid = obj_id
+        return render(request, "resume-info-edit-page.html", locals())
+
+    if request.method == "GET":
         # 对象数据
         obj = models.ResumeInfo.objects.get(id=obj_id)
         objs= models.ResumeInfo.objects.filter(id=obj_id)
@@ -207,25 +219,72 @@ def DeleteCandidate(request, uid):
 
     return JsonResponse(ret)
 
+# 修改详细简历
 def EditResumeView(request, uid):
-    _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
-
-    data = {}
-    MoreTable = {}
-    for i in request.POST:
-        if i == "comments":
-            MoreTable[i] = request.POST.get(i, None)
-        else:
-            data[i] = request.POST.get(i, None)
-    obj = models.ResumeInfo.objects.filter(id=uid)
-    obj.update(**data)
-    if 'comments' in MoreTable.keys():
-
-        ct = models.Comment.objects.create(describe=MoreTable["comments"])
-        obj.last().comments.clear()
-        obj.last().comments.add(ct)
-
     ret = {"status": "seccuss", "status_code": "200"}
+    _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
+    
+    data = QueryDict(request.POST.urlencode(), mutable=True)
+
+    # ManyToMany Field
+    AssociatedFields = [
+        "personal_assessment",
+        "work_info",
+        "education_info",
+        "project_info",
+        "raw_text",
+        "comprehensive_ability",
+        "upload_user",
+    ]
+
+    MoreTable = {}
+    obj = models.ResumeInfo.objects.filter(id=uid)
+
+    if request.method == "POST":
+        try:
+            for i in request.POST:
+                if i in AssociatedFields:
+                    MoreTable[i] = request.POST.get(i, None)
+                    data.pop(i)
+            if data:
+                obj.update(**data.dict())
+
+            if MoreTable:
+                for item in MoreTable:
+                    instance = getattr(obj[0], item)
+                    instance.update(describe=MoreTable[item])
+            _describe = EventCode.EventCode["Resume.Update.Info"]["zh"]["seccess"].format(request.user,  obj.last().id, obj.last().username)
+            _status = 1
+            _event_record = tasks.CommonRecordEventLog.delay(
+                uuid=obj.last().uuid, 
+                user_id=request.user.id, 
+                event_type=EventCode.EventCode["Resume.Update.Info"]["type"],
+                label=EventCode.EventCode["Resume.Update.Info"]["label"], 
+                request=None, 
+                response=None, 
+                describe=_describe, 
+                status=_status,
+                access=_access,
+                source=request.user.uuid,
+                target=obj.last().uuid,
+            )
+            obj.update(modify_time=datetime.datetime.now(tz))
+        except:
+            _describe = EventCode.EventCode["Resume.Update.Info"]["zh"]["failed"].format(request.user,  obj.last().id, obj.last().username)
+            _status = 2
+            _event_record = tasks.CommonRecordEventLog.delay(
+                uuid=obj.last().uuid, 
+                user_id=request.user.id, 
+                event_type=EventCode.EventCode["Resume.Update.Info"]["type"],
+                label=EventCode.EventCode["Resume.Update.Info"]["label"], 
+                request=None, 
+                response=None, 
+                describe=_describe, 
+                status=_status,
+                access=_access,
+                source=request.user.uuid,
+                target=obj.last().uuid,
+            )
     return JsonResponse(ret)
 
 # 评论
