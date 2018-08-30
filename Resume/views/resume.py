@@ -46,9 +46,19 @@ def ResumeView(request):
         for i in data:
 
             p = models.ResumeInfo.objects.filter(id=i['id'])
+            if p.exists():
+                models.ResumeName.objects.filter(fne__id=int(uid)).delete()
+                models.ResumeName.objects.filter(efne__id=int(uid)).delete()
+                models.PersonalAssessment.objects.filter(pa__id=int(uid)).delete()
+                models.EducationInfo.objects.filter(ei__id=int(uid)).delete()
+                models.ProjectInfo.objects.filter(pi__id=int(uid)).delete()
+                models.WorkInfo.objects.filter(wi__id=int(uid)).delete()
+                models.Comment.objects.filter(cts__id=int(uid)).delete()
+                models.ResumeSourceText.objects.filter(rt__id=int(uid)).delete()
+                models.ComprehensiveAbility.objects.filter(ceay__id=int(uid)).delete()
             i.pop("id")
             p.update(**i)
-        return HttpResponse("123")
+        return HttpResponse("")
 
 
 def GetUserProfileInfo_back(request, uid):

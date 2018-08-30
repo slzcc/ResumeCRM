@@ -67,3 +67,111 @@ def setEventType(request):
 		except:
 			pass
 	return HttpResponse("")
+
+
+def setResumeCustomLabel(requests):
+	try:
+		models.CustomLabel.objects.create(name="lock", priority=0, code="fa fa-lock", uuid=uuid.uuid1())
+		models.CustomLabel.objects.create(name="english", priority=1, code="mdi mdi-etsy", uuid=uuid.uuid1())
+		models.CustomLabel.objects.create(name="unlock", priority=2, code="fa fa-unlock", uuid=uuid.uuid1())
+	except:
+		pass
+		
+	return HttpResponse("")
+
+
+def setSettings(request):
+    _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
+
+    _user = models.UserProfile.objects.get(id=1)
+
+    # Unlock
+    AutoUnlockResume = models.SystemSetting.objects.filter(name="AutoUnlockResume").last()
+    if not AutoUnlockResume:
+        _set_uuid = uuid.uuid1()
+        obj = DownloadRN = models.SystemSetting.objects.create(name="AutoUnlockResume", num_value="180", uuid=_set_uuid)
+        _describe = EventCode.EventCode["System.General.Create"]["zh"]["seccess"].format(_user.name,  str(obj.id), obj.name)
+        _status = 1
+        _event_record = tasks.CommonRecordEventLog.delay(
+            uuid=_set_uuid, 
+            user_id=1, 
+            event_type=EventCode.EventCode["System.General.Create"]["type"],
+            label=EventCode.EventCode["System.General.Create"]["label"], 
+            request=None, 
+            response=None, 
+            describe=_describe, 
+            status=_status,
+            access=_access,
+            source=_user.uuid,
+            target=_set_uuid,
+        )
+
+    # Download Resume Number
+    DownloadRN = models.SystemSetting.objects.filter(name="DownloadRN").last()
+    if not DownloadRN:
+        _set_uuid = uuid.uuid1()
+        obj = DownloadRN = models.SystemSetting.objects.create(name="DownloadRN", num_value="10", uuid=_set_uuid)
+        _describe = EventCode.EventCode["System.General.Create"]["zh"]["seccess"].format(_user.name,  str(obj.id), obj.name)
+        _status = 1
+        _event_record = tasks.CommonRecordEventLog.delay(
+            uuid=_set_uuid, 
+            user_id=1, 
+            event_type=EventCode.EventCode["System.General.Create"]["type"],
+            label=EventCode.EventCode["System.General.Create"]["label"], 
+            request=None, 
+            response=None, 
+            describe=_describe, 
+            status=_status,
+            access=_access,
+            source=_user.uuid,
+            target=_set_uuid,
+        )
+
+    # SMTP
+    PreferreEmail = models.PreferreEmail.objects.all().last()
+    if not PreferreEmail:
+        _set_uuid = uuid.uuid1()
+
+        models.PreferreEmail.objects.all().delete()
+        obj = models.PreferreEmail.objects.create(name="default", uuid=_set_uuid)
+        _describe = EventCode.EventCode["System.General.Create"]["zh"]["seccess"].format(_user.name,  str(obj.id), obj.name)
+        _status = 1
+        
+        _event_record = tasks.CommonRecordEventLog.delay(
+            uuid=_set_uuid, 
+            user_id=1, 
+            event_type=EventCode.EventCode["System.General.Create"]["type"],
+            label=EventCode.EventCode["System.General.Create"]["label"], 
+            request=None, 
+            response=None, 
+            describe=_describe, 
+            status=_status,
+            access=_access,
+            source=_user.uuid,
+            target=_set_uuid,
+        )
+        
+    # Resume Template
+    PreferreResumeTemplate = models.PreferreResumeTemplate.objects.all().last()
+    if not PreferreResumeTemplate:
+        _set_uuid = uuid.uuid1()
+
+        models.PreferreResumeTemplate.objects.all().delete()
+        obj = models.PreferreResumeTemplate.objects.create(name="default", uuid=_set_uuid)
+        _describe = EventCode.EventCode["System.General.Create"]["zh"]["seccess"].format(_user.name,  str(obj.id), obj.name)
+        _status = 1
+        
+        _event_record = tasks.CommonRecordEventLog.delay(
+            uuid=_set_uuid, 
+            user_id=1, 
+            event_type=EventCode.EventCode["System.General.Create"]["type"],
+            label=EventCode.EventCode["System.General.Create"]["label"], 
+            request=None, 
+            response=None, 
+            describe=_describe, 
+            status=_status,
+            access=_access,
+            source=_user.uuid,
+            target=_set_uuid,
+        )
+    return HttpResponse("")

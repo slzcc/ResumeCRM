@@ -14,3 +14,5 @@ initialize_data:
 	@curl http://127.0.0.1:8088/initialize/set_default_user
 	@curl http://127.0.0.1:8088/initialize/set_event_type
 	@curl http://127.0.0.1:8088/initialize/set_solr_full_import_cronjob
+	@curl http://127.0.0.1:8088/initialize/set_resume_custom_label
+	@curl http://127.0.0.1:8088/initialize/set_system_setting

@@ -27,14 +27,17 @@ tz = pytz.timezone('Asia/Shanghai')
 @check_permission(StatusCode["1407"])
 def UserList(request):
 	status_code = 200
+	error_status = ""
 	_access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
 	AllUserProfileList = list(models.UserProfile.objects.all().values("email","name","phone","groups__name","id","is_active", "is_staff"))
+
 	if request.method == "GET":
 		obj = customUserCreationForm()
 
 	elif request.method == "POST":
 		obj = customUserCreationForm(data=request.POST)
 		if obj.is_valid():
+
 			_save_name = obj.save(commit=False)
 			_set_uuid = uuid.uuid1()
 			_save_name.uuid = _set_uuid
@@ -55,6 +58,9 @@ def UserList(request):
 				source=request.user.uuid,
 				target=_set_uuid,
 			)
+			error_status = 0
+			return redirect("/system/user/list")
+			
 		else:
 			status_code = 402
 			_save_name = dict(obj.data)["email"][0]
@@ -74,8 +80,8 @@ def UserList(request):
 				source=request.user.uuid,
 				target=_set_uuid,
 			)
-
-		return redirect("/system/user/list")
+			error_status = 1
+		# return redirect("/system/user/list")
 
 	return render(request, 'user.html', locals())
 

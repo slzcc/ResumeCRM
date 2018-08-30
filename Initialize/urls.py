@@ -17,4 +17,6 @@ urlpatterns = [
     re_path('^set_default_user$', models.setDefaultUser, name="initialize-default-user"),
     re_path('^set_event_type$', models.setEventType, name="initialize-event-type"),
     re_path('^set_solr_full_import_cronjob$', models.setCrojob_inSolrData, name="initialize-solr-cronjob"),
+    re_path('^set_resume_custom_label$', models.setResumeCustomLabel, name="initialize-resume-label"),
+    re_path('^set_system_setting$', models.setSettings, name="initialize-system-setting"),
 ]

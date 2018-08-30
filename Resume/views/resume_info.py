@@ -15,22 +15,25 @@ from Events import tasks, EventCode
 import pytz, uuid, datetime
 tz = pytz.timezone('Asia/Shanghai')
 
-def _TimeRange(now_time, old_time):
+def _TimeRange(old_time):
+    ## 当前时间
+    tz = pytz.timezone('Asia/Shanghai')
+    now_time = datetime.datetime.now(tz)
     CurrentTimeDifference = (now_time - old_time)
     CurrentTimeDifference = CurrentTimeDifference + datetime.timedelta(hours=+8)
-    if CurrentTimeDifference.seconds < 10:
+    if CurrentTimeDifference.seconds < 10 and CurrentTimeDifference.days <= 0:
         return "刚刚"
-    elif CurrentTimeDifference.seconds < 60:
+    elif CurrentTimeDifference.seconds < 60 and CurrentTimeDifference.days <= 0:
         return "1 分钟内"
-    elif CurrentTimeDifference.seconds < 180:
+    elif CurrentTimeDifference.seconds < 180 and CurrentTimeDifference.days <= 0:
         return "3 分内"
-    elif CurrentTimeDifference.seconds < 600:
+    elif CurrentTimeDifference.seconds < 600 and CurrentTimeDifference.days <= 0:
         return "10 分钟内"
-    elif CurrentTimeDifference.seconds < 1800:
+    elif CurrentTimeDifference.seconds < 1800 and CurrentTimeDifference.days <= 0:
         return "30 分钟内"
-    elif CurrentTimeDifference.seconds/60 <= 60:
+    elif CurrentTimeDifference.seconds/60 <= 60 and CurrentTimeDifference.days <= 0:
         return "1 小时内"
-    elif CurrentTimeDifference.seconds/60 <= 180:
+    elif CurrentTimeDifference.seconds/60 <= 180 and CurrentTimeDifference.days <= 0:
         return "3 小时内"
     elif CurrentTimeDifference.days < 0:
         return "今天"
@@ -46,7 +49,7 @@ def _TimeRange(now_time, old_time):
         return "半年内"
     elif CurrentTimeDifference.days <= 365:
         return "1 年内"
-    elif  CurrentTimeDifference.days >= 365:
+    elif CurrentTimeDifference.days >= 365:
         return "1 年前"
 
 def SetManytoManyField_inHTMLs(objs, value):
@@ -68,10 +71,23 @@ def SetManytoManyField_inStrs(objs, value):
 # @login_required
 # @check_permission(StatusCode["1407"])
 def GetResumeInfoView(request, obj_id):
+    ret = {"status": "seccuss", "status_code": "200"}
+
     _auth = request.GET.get("view", None)
+    mandatory = True if request.GET.get("force", False) == "True" or request.GET.get("force", False) == "true" else False
+    force = False
+
     if _auth:
         obj = models.ResumeInfo.objects.get(id=obj_id)
         objs= models.ResumeInfo.objects.filter(id=obj_id)
+
+        if not mandatory:
+            if objs.values_list("agent", flat=True)[0]:
+                owner = list(objs.values_list("agent__email", flat=True))[0]
+                if not request.user.email == owner:
+                    ret["status_code"] = "201"
+                    ret["event"] = "edit"
+                    force = True
 
         # 格式化数据到标头
         objs_resume_source = list(objs.values("resume_source__name"))[0]["resume_source__name"]
@@ -130,7 +146,13 @@ def GetResumeInfoView(request, obj_id):
                 <p class="inbox-item-text"><pre>{}</pre></p>
                 <p class="inbox-item-date">{}</p>
             </div>
-            <hr>""".format(os.path.join("/static", models.UserProfile.objects.filter(id=item["user"]).values_list("head_portrait", flat=True)[0]), models.UserProfile.objects.get(id=item["user"]).name, item["describe"].replace("<", "&lt;").replace(">", "&gt;"),item["create_time"])
+            <hr>""".format(
+                os.path.join("/static", 
+                models.UserProfile.objects.filter(id=item["user"]).values_list("head_portrait", flat=True)[0]), 
+                models.UserProfile.objects.get(id=item["user"]).name, 
+                item["describe"].replace("<", "&lt;").replace(">", "&gt;"),
+                (item["create_time"] + datetime.timedelta(hours=+8)).strftime('%y/%m/%d %H:%M:%S'),
+            )
         comments_ele = mark_safe(comments_ele)
 
         # 订阅
@@ -138,13 +160,8 @@ def GetResumeInfoView(request, obj_id):
 
         # 操作记录
         OperationRecords = models.EventLog.objects.filter(target_object=obj.uuid).order_by("-trigger_time").values("user__email", "trigger_time", "describe")
-        
-        ## 当前时间
-        tz = pytz.timezone('Asia/Shanghai')
-        _the_day_time = datetime.datetime.now(tz)
 
         ## Time 状态
-        time_status = ["今天", "昨天", "三天内", "一周内", "一个月内", "三个月内", "一年内", "古老的时间"]
         operation_records_ele = ''
         operation_records_ele_the_day_time_title = """<article class="timeline-item alt">
                 <div class="text-right">
@@ -177,7 +194,7 @@ def GetResumeInfoView(request, obj_id):
                 operation_records_ele += operation_records_ele_template.format(
                     "",
                     style_list[index],
-                    _TimeRange(_the_day_time, item["trigger_time"] + datetime.timedelta(hours=+8)), 
+                    _TimeRange(item["trigger_time"] + datetime.timedelta(hours=+8)), 
                     (item["trigger_time"] + datetime.timedelta(hours=+8)).strftime('%y/%m/%d %H:%M'),
                     item["describe"],
                 )
@@ -185,37 +202,76 @@ def GetResumeInfoView(request, obj_id):
                 operation_records_ele += operation_records_ele_template.format(
                     "alt", 
                     style_list[index],
-                    _TimeRange(_the_day_time, item["trigger_time"] + datetime.timedelta(hours=+8)), 
+                    _TimeRange(item["trigger_time"] + datetime.timedelta(hours=+8)), 
                     (item["trigger_time"] + datetime.timedelta(hours=+8)).strftime('%y/%m/%d %H:%M'),
                     item["describe"],
                 )
             style_list.append(style_list[index])
 
+        # lock iocn
+        lock_iocn =  models.CustomLabel.objects.get(name="unlock").code
+        protection = "info"
+        TrackStatus = "Track"
+
+        for item in list(objs.values("custom_label__name")):
+            if "lock" == item["custom_label__name"]:
+                lock_iocn =  models.CustomLabel.objects.get(name=item["custom_label__name"]).code
+        for i in list(objs.values("agent__email")):
+            agent_owner = i["agent__email"]
+            if agent_owner != None:
+                protection = "warning"
+                TrackStatus = "Cancel"
+
         return render(request, 'resume-info.html', locals())
 
+# 删除详细简历
 def DeleteCandidate(request, uid):
     ret = {"status": "seccuss", "status_code": "200"}
     _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
+    
+    # ManyToMany Field
+    AssociatedFields = [
+        "ResumeName",
+        "PersonalAssessment",
+        "EducationInfo",
+        "ProjectInfo",
+        "WorkInfo",
+        "Comment",
+        "ResumeSourceText",
+        "ComprehensiveAbility",
+    ]
 
     if request.method == "POST":
+        obj = models.ResumeInfo.objects.filter(id=int(uid))
 
-        obj = models.ResumeInfo.objects.filter(id=uid)
-        _describe = EventCode.EventCode["Resume.Delete"]["zh"]["seccess"].format(request.user, obj.last().id, obj.last().username)
-        _status = 1
-        _event_record = tasks.CommonRecordEventLog.delay(
-            uuid=obj.last().uuid, 
-            user_id=request.user.id, 
-            event_type=EventCode.EventCode["Resume.Delete"]["type"],
-            label=EventCode.EventCode["Resume.Delete"]["label"], 
-            request=None, 
-            response=None, 
-            describe=_describe, 
-            status=_status,
-            access=_access,
-            source=request.user.uuid,
-            target=obj.last().uuid,
-        )
-        obj.delete()
+        if obj.exists():
+            models.ResumeName.objects.filter(fne__id=int(uid)).delete()
+            models.ResumeName.objects.filter(efne__id=int(uid)).delete()
+            models.PersonalAssessment.objects.filter(pa__id=int(uid)).delete()
+            models.EducationInfo.objects.filter(ei__id=int(uid)).delete()
+            models.ProjectInfo.objects.filter(pi__id=int(uid)).delete()
+            models.WorkInfo.objects.filter(wi__id=int(uid)).delete()
+            models.Comment.objects.filter(cts__id=int(uid)).delete()
+            models.ResumeSourceText.objects.filter(rt__id=int(uid)).delete()
+            models.ComprehensiveAbility.objects.filter(ceay__id=int(uid)).delete()
+
+            _describe = EventCode.EventCode["Resume.Delete"]["zh"]["seccess"].format(request.user, obj.last().id, obj.last().username)
+            _status = 1
+            _event_record = tasks.CommonRecordEventLog.delay(
+                uuid=obj.last().uuid, 
+                user_id=request.user.id, 
+                event_type=EventCode.EventCode["Resume.Delete"]["type"],
+                label=EventCode.EventCode["Resume.Delete"]["label"], 
+                request=None, 
+                response=None, 
+                describe=_describe, 
+                status=_status,
+                access=_access,
+                source=request.user.uuid,
+                target=obj.last().uuid,
+            )
+
+            obj.delete()
 
     return JsonResponse(ret)
 
@@ -293,6 +349,7 @@ def SaveResumeCommands(request):
     _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
 
     data = {}
+    print(request.POST)
     if request.method == "POST":
         for i in request.POST:
             if i in ("resume_id"):
@@ -344,3 +401,73 @@ def ResumeSubscription(request):
             else:
                 obj.update(status=True, trigger_time=datetime.datetime.now(tz))
     return JsonResponse(ret)
+
+# Track Resume
+def TrackResume(request):
+    _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
+    ret = {"status": "seccuss", "status_code": "200", "event": "TrackResume", "describe": ""}
+
+    if request.method == "POST":
+        obj_id = request.POST.get("id", None)
+        CancelTrack =  True if request.POST.get("CancelTrack", False) == "True" else False
+        obj = models.ResumeInfo.objects.filter(id=obj_id)
+
+        for item in list(obj.values_list("custom_label__name", flat=True)):
+            if item == "lock":
+                if request.user.id != list(obj[0].upload_user.values_list("id", flat=True))[0]:
+                    ret["status_code"] = "403"
+                    ret["status"] = "failed"
+                    ret["describe"] = "此简历还在保护期,请稍后尝试!"
+                    return JsonResponse(ret)
+
+        if obj_id:
+            if not CancelTrack:
+                if not obj[0].agent.name:
+                    obj[0].agent.set(str(request.user.id))
+                    obj[0].custom_label.add(1)
+                    obj[0].custom_label.remove(3)
+                    ret["describe"] = "已成功追踪此份简历!"
+
+                    _describe = EventCode.EventCode["Resume.Track"]["zh"]["seccess"].format(request.user,  obj[0].id, obj[0].username, "追踪")
+                    _status = 1
+                    _event_record = tasks.CommonRecordEventLog.delay(
+                        uuid=obj[0].uuid, 
+                        user_id=request.user.id, 
+                        event_type=EventCode.EventCode["Resume.Track"]["type"],
+                        label=EventCode.EventCode["Resume.Track"]["label"], 
+                        request=None, 
+                        response=None, 
+                        describe=_describe, 
+                        status=_status,
+                        access=_access,
+                        source=request.user.uuid,
+                        target=obj[0].uuid,
+                    )
+                else:
+                    ret["status_code"] = 403
+                    ret["status"] = "failed"
+                    ret["describe"] = "此简历已经被 {} 跟踪，请联系后尝试进行追踪!"
+            else:
+                obj[0].agent.clear()
+                obj[0].custom_label.remove(1)
+                obj[0].custom_label.add(3)
+                ret["describe"] = "已经对此份简历取消追踪!"
+                _describe = EventCode.EventCode["Resume.Track"]["zh"]["seccess"].format(request.user,  obj[0].id, obj[0].username, "取消追踪")
+                _status = 1
+                _event_record = tasks.CommonRecordEventLog.delay(
+                    uuid=obj[0].uuid, 
+                    user_id=request.user.id, 
+                    event_type=EventCode.EventCode["Resume.Track"]["type"],
+                    label=EventCode.EventCode["Resume.Track"]["label"], 
+                    request=None, 
+                    response=None, 
+                    describe=_describe, 
+                    status=_status,
+                    access=_access,
+                    source=request.user.uuid,
+                    target=obj[0].uuid,
+                )
+
+
+    return JsonResponse(ret)
+

@@ -23,6 +23,15 @@ $(function(){
         inputclass: 'form-control-sm'
     });
 
+    $('#inline-AutoUnlockResume').editable({
+        type: 'text',
+        pk: 1,
+        name: 'upload-resume-unlock-time',
+        title: 'Enter Unlock Time',
+        mode: 'inline',
+        inputclass: 'form-control-sm'
+    });
+
     $('#inline-firstname').editable({
         validate: function(value) {
             if($.trim(value) == '') return 'This field is required';

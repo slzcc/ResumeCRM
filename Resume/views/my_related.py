@@ -19,7 +19,7 @@ tz = pytz.timezone('Asia/Shanghai')
 def IamTrackingResume(request):
 
     if request.method == "GET":
-        data = models.ResumeInfo.objects.filter(agent=request.user).order_by("-create_time")
+        data = models.ResumeInfo.objects.filter(agent=request.user, custom_label__id=1).order_by("-create_time")
     return render(request, 'IamTracking.html', locals())
 
 

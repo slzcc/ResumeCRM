@@ -376,6 +376,8 @@ class CustomLabel(models.Model):
 
     uuid = models.CharField(max_length=128, verbose_name="识别码")
     name = models.CharField(max_length=32, verbose_name="标签", null=True, blank=True)
+    code = models.CharField(max_length=32, verbose_name="icon Code", null=True, blank=True)
+    priority = models.IntegerField(verbose_name="优先级", unique=True)
 
     def __str__(self):
         return self.name
@@ -387,6 +389,7 @@ class ResumeName(models.Model):
     source = models.ForeignKey("ResumeSource", verbose_name="简历来源", blank=True, null=True, on_delete=models.CASCADE)
     create_time = models.DateTimeField(verbose_name="上传时间", null=True, blank=True, default=timezone.now)
     download_num = models.SmallIntegerField(verbose_name="下载次数", null=True, blank=True)
+    md5 = models.CharField(max_length=128, verbose_name="MD5")
 
     def __str__(self):
         return self.name
@@ -541,7 +544,7 @@ class EventLog(models.Model):
     target_object = models.CharField(max_length=128, verbose_name="目标对象", null=True, blank=True)
 
     def __str__(self):
-        return self.uuid
+        return self.describe
 
 class ResumeSubscription(models.Model):
 
@@ -578,4 +581,4 @@ class Notification(models.Model):
     read = models.BooleanField(default=False, verbose_name=_('Read'))
 
     def __str__(self):
-        return self.uuid
+        return self.title

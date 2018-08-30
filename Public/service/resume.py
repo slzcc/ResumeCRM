@@ -8,8 +8,8 @@ table_config = [
             },            
             {
                 'q': 'id',  # 用于数据库查询的字段，即Model.Tb.objects.filter(*[])
-                'title': "ID",  # 前段表格中显示的标题
-                'display': 0,  # 是否在前段显示，0表示在前端不显示, 1表示在前端隐藏, 2表示在前段显示
+                'title': "序号",  # 前段表格中显示的标题
+                'display': 1,  # 是否在前段显示，0表示在前端不显示, 1表示在前端隐藏, 2表示在前段显示
                 'text': {'content': "{id}", 'kwargs': {'id': '@id'}}, # 一个@符号表示取数据库内的数据，两个 @ 符号表示取全局变量中与自身相等的文本信息
                 'attr': {
                     "edit-enable": "true",
@@ -17,7 +17,14 @@ table_config = [
                     # "style": "display: none;"
                 }
             },            
-
+            {
+                'q': ['custom_label__name', 'custom_label__code', 'custom_label__priority', 'agent'],
+                'title': "",
+                'display': 1,
+                # 'text': {'content': "{n}{m}{o}", 'kwargs': {'n': '@custom_label__name', 'm': '@custom_label__code', 'o': '@custom_label__priority'}},
+                'text': {'content': "{n}", 'kwargs': {'n': '@custom_label'}},
+                'attr': {},
+            },   
             {
                 'q': 'username',
                 'title': "姓名",
@@ -136,11 +143,20 @@ table_config = [
                 'attr': {},
             },
             {
+                'q': ['user_comments__describe', 'user_comments__user', 'user_comments__create_time', 'user_comments__user__email', 'user_comments__user__head_portrait'],
+                'title': "",
+                'display': 1,
+                'text': {'content': '{n}', 'kwargs': {'n': '@user_comments'}},
+                'attr': {
+                    
+                },
+            },
+            {
                 'q': None,
                 'title': "选项",
                 'display': 1,
                 'text': {
-                    'content': '''<td class="actions"><a href="candidate/{uid}/change" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td>''',
+                    'content': '''<td class="actions"><a href="candidate/{uid}/change" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class=""></i>编辑</a></td>''',
                     'kwargs': {'device_type_id': '@device_type_id', 'uid': '@id'}},
                 'attr': {}
             },

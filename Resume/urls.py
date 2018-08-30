@@ -12,6 +12,8 @@ urlpatterns = [
     
     # 简历列表
     re_path('^list$', resume.ResumeView, name="resume-list-manage"),
+    re_path('^list/delete$', resume.DeleteResumeList, name="resume-delete-resume-list"),
+
     # re_path('^resume-config-json.html$', resume.ResumeJsonView, name="resume-config"),
     # # re_path('^resume/(?P<uid>\d+)-info.html$', resume_info.GetResumeInfoView, name="resume-user-info-view"),
     
@@ -29,11 +31,11 @@ urlpatterns = [
     # re_path('^sdkresume.html$', resume_info.interfaceResumeSDK),
     # re_path('^sklresume.html$', resume_info.interfaceSKLResume),
     # re_path('^k18resume.html$', resume_info.interfaceResumeK18, name="resume-k18parsing-storage"),
-    re_path('^list/delete$', resume.DeleteResumeList, name="resume-delete-resume-list"),
     re_path('^candidate/delete/(\d+)$', resume_info.DeleteCandidate, name="resume-candidate-info-delete"),
     re_path('^candidate/subscription$', resume_info.ResumeSubscription, name="resume-candidate-info-subscription"),
     # re_path('^delete-(?P<uid>\d+)-resume.html$', resume_info.DeleteResumeInfoView),
     re_path('^candidate/update/(\d+)$', resume_info.EditResumeView, name="resume-candidate-info-update"),
+    re_path('^candidate/track$', resume_info.TrackResume, name="resume-candidate-info-track"),
 
     # 评论
     re_path('^candidate/commands/save$', resume_info.SaveResumeCommands, name="resume-candidate-info-comment"),

@@ -30,6 +30,7 @@ tz = pytz.timezone('Asia/Shanghai')
 @check_permission(StatusCode["1407"])
 def RoleList(request):
 	status_code = 200
+	error_status = ""
 
 	obj = Group.objects.all()
 	GroupCountList = {}
@@ -64,10 +65,13 @@ def RoleList(request):
 				source=request.user.uuid,
 				target=_set_uuid,
 			)
+			error_status = 0
+			return redirect("/system/role/list")
 		else:
 			status_code = 402
+			error_status = 1
 
-		return redirect("/system/role/list")
+		# return redirect("/system/role/list")
 
 
 	return render(request, 'role.html', {
@@ -75,6 +79,7 @@ def RoleList(request):
         "status": "seccuss",
         "status_code": status_code,
         "GroupCountList": GroupCountList,
+        "error_status": error_status,
          })	
 
 @login_required

@@ -25,7 +25,7 @@ class RoleAdmin(admin.ModelAdmin):
 # admin.site.register(models.Role, RoleAdmin)
 admin.site.register(models.WorkPlace)
 admin.site.register(models.Company)
-admin.site.register(models.ResumeInfo, CustomerAdmin)
+admin.site.register(models.ResumeInfo)
 admin.site.register(models.EducationInfo)
 admin.site.register(models.Department)
 admin.site.register(models.Project)
@@ -53,6 +53,7 @@ admin.site.register(models.StoredEventType)
 admin.site.register(models.EventLog)
 admin.site.register(models.ResumeSubscription)
 admin.site.register(models.Notification)
+admin.site.register(models.Comment)
 
 # admin.site.register(models.Group)
 

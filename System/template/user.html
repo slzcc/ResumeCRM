@@ -132,12 +132,11 @@
             
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        
                     </div>
                     <div class="form-group col-md-6">
                         <div class="form-group mx-sm-3 text-right">
                             <button id="btnDeleteUser" class="btn btn-danger"><i class="fa fa-times"></i> <span>Delete User</span></button>
-                            <button id="btnAddRole" class="btn btn-primary" data-toggle="modal" data-target="#AddUser"><i class="fa fa-plus m-r-5"></i> <span>Add User</span></button>
+                            <button id="btnAddUser" class="btn btn-primary" data-toggle="modal" data-target="#AddUser"><i class="fa fa-plus m-r-5"></i> <span>Add User</span></button>
                         </div>
                     </div>
                 </div>
@@ -155,14 +154,10 @@
                     <th>所属角色</th>
                     <th>是管理员</th>
                     <th>活跃用户</th>
-
                 </tr>
                 </thead>
-
-
                 <tbody>
                     {% SetSystemUserTbody AllUserProfileList %}
-                
                 </tbody>
             </table>
         </div>
@@ -176,14 +171,20 @@
 <script>
     $(function() {
         bindDeleteUser();
-
+        if(error_status){
+            if(error_status == "0"){
+                $.Notification.autoHideNotify('info', 'top right', '注册成功', '已经成功添加新用户!')
+                // window.location.href = "/system/user/list";
+            }else if(error_status == "1") {
+                // sweetAlert("错误的注册", "请重新注册，填写正确的信息!", "error");
+                $.Notification.autoHideNotify('error', 'top right', '错误的注册', '请重新注册，填写正确的信息!')
+                $("#btnAddUser").click()
+            }
+        }
+        
     });
-    var status_code = "{{ status_code }}"
-    if (status_code == "402") {
-        sweetAlert("错误的注册", "请重新注册，填写正确的信息!", "error");
-        $("#btnAddUser").click()
-    }
-
+    var error_status = "{{ error_status }}"
+    
     function SelectAllObjs(ele) {
 
         if ($(ele).prop('checked')){

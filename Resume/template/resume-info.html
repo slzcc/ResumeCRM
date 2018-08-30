@@ -60,6 +60,29 @@
             line-height: 0.5;
             border-radius: 0.2rem;
         }
+
+        .widget-bg-color-icon .bg-icon {
+            height: 34px;
+            width: 34px;
+            /* text-align: center; */
+            border-radius: 50%;
+        }
+
+        .widget-bg-color-icon .bg-icon i {
+            font-size: 24px;
+            color: #ffffff !important;
+            line-height: 23px;
+        }
+
+        #TrackResume {
+            cursor:pointer;
+        }
+
+        .label_level {
+            margin-top: -3px;
+            margin-right: 10px;
+            margin-bottom: 15px;
+        }
     </style>
     <!-- Dropzone css -->
     <link href="/static/plugins/minton/plugins/dropzone/dropzone.css" rel="stylesheet">
@@ -90,19 +113,6 @@
     {% include 'include/_resume_detailed_information.html' %}
     {% include 'include/Models/_upload_resume_onefile_parsing.html' %}
 
-    <table class="table">
-        <thead><tr></tr></thead>
-        <tbody>
-            <tr>
-                <td>
-                    {# <button style="display: none;" class="btn btn-primary waves-effect waves-light m-l-5" id="btnSave">保存</button> #}
-                    {# <button style="display: none;" class="btn btn-secondary waves-effect m-l-5" id="btnCancel">取消</button> #}
-                    {# <button class="btn btn-info waves-effect disabled m-l-5" id="btnEdit">编辑</button> #}
-                    {# <button class="btn btn-danger waves-effect disabled m-l-5" id="btnDelete">删除</button> #}
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
 <div id="ViewsJS" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="full-width-modalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-full">
@@ -164,6 +174,7 @@
         PageTop();
         ExportWorkDocument();
         RightSidebar();
+        TrackResume();
     });
 
     // 自定义 右侧 菜单
@@ -213,32 +224,6 @@
         });
         $('#en_filename').click(function () {
             update_file_type = "en_filename";
-        });
-    }
-
-     function GetResumeAPI() {
-        $.ajax({
-            url: "/api/resume/candidate/{{ uid }}",
-            dataType: 'JSON',
-            type: "GET",
-            success: function (arg) {
-                var rel = null;
-                $.each(arg, function (k,v) {
-                    // 评论
-                    if(k == "user_comments"){
-                        $.each(v,function (j,l){
-                            var getURL = '/api/user/info/' + l["user_id"]
-                            $.ajax({
-                                url: getURL,
-                                type: 'POST',
-                                success: function(arg){
-                                    $('<div class="inbox-item"><div class="inbox-item-img"><img src="' + '/static/' + arg["head_portrait"] + '" class="rounded-circle" alt=""></div><p class="inbox-item-author">' + arg["name"] + '</p><p class="inbox-item-text">'+ JSON.stringify(l["describe"]) + '</p><p class="inbox-item-date">' + l["create_time"] + '</p></div><hr>').appendTo('.inbox-widget')
-                                } 
-                            })
-                        })
-                    }
-                });
-            }
         });
     }
 
@@ -349,7 +334,8 @@
         ChatApp.prototype.save = function() {
             var chatText = this.$chatInput.val();
             // var chatTime = moment().format("YYYY MMMM Do h:mm:ss");
-            var chatTime = moment().format('YYYY-MM-DD h:mm:ss');
+            // var chatTime = moment().format('YYYY-MM-DD h:mm:ss');
+            var chatTime = moment().format('YY/M/D hh:mm:ss');
             if (chatText == "") {
                 sweetAlert("Oops...", "You forgot to enter your chat message", "error");
                 this.$chatInput.focus();
@@ -360,9 +346,8 @@
                 var data = {};
                 data["user_id"] = "{{ request.user.id }}";
                 data["resume_id"] = "{{ uid }}";
-                // data["username"] = "{{ request.user.user }}";
                 data["describe"] = chatText;
-                data["create_time"] = chatTime;
+                // data["create_time"] = chatTime;
                 SaveResumeCommands(data);
             }
         },
@@ -402,7 +387,7 @@
             type: 'POST',
             dataType: 'JSON',
             success: function(arg){
-                console.log(arg)
+                // console.log(arg)
             }
         })
     }
@@ -449,21 +434,21 @@
 
 </script>
 <script>
-// 自适应 textarea
-$(function(){
-    $.fn.autoHeight = function(){    
-        function autoHeight(elem){
-            elem.style.height = 'auto';
-            elem.scrollTop = 0;
-            elem.style.height = elem.scrollHeight + 'px';
-        }this.each(function(){
-            autoHeight(this);
-            $(this).on('keyup', function(){
-                autoHeight(this);
-            });
-        }); 
-    }
-})
+// // 自适应 textarea
+// $(function(){
+//     $.fn.autoHeight = function(){    
+//         function autoHeight(elem){
+//             elem.style.height = 'auto';
+//             elem.scrollTop = 0;
+//             elem.style.height = elem.scrollHeight + 'px';
+//         }this.each(function(){
+//             autoHeight(this);
+//             $(this).on('keyup', function(){
+//                 autoHeight(this);
+//             });
+//         }); 
+//     }
+// })
 </script>
 <!-- Counter Up  -->
 <script src="/static/plugins/minton/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
@@ -509,5 +494,124 @@ $(function(){
         icons.play();
     };
 
+</script>
+<script>
+     // 关联
+    function TrackResume(){
+        $("#TrackResume").click(function(){
+            var status = $("#TrackResume").attr("status")
+            var location = $("#TrackResume").attr("location")
+            var owner = $("#TrackResume").attr("owner")
+            
+
+            if (status == "Cancel"){
+                if (location != owner){
+                    swal({
+                        title: '错误',
+                        text: "此简历已被 " + owner + " 追踪，请联系后进行解决!",
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }else{
+                    var postData = {"id": "{{ obj.id }}", "CancelTrack": "True", "location": location, "owner": owner}
+                    //Warning Message
+                    swal({
+                        title: '取消追踪',
+                        text: "确定取消追踪此份简历?",
+                        type: 'info',
+                        showCancelButton: true,
+                        confirmButtonClass: 'btn btn-confirm mt-2 track_resume',
+                        cancelButtonClass: 'btn btn-cancel ml-2 mt-2',
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消'
+                    }).then(function () {
+                        $.ajax({
+                            url: '/resume/candidate/track',
+                            data: postData,
+                            type: 'POST',
+                            dataType: "JSON",
+                            success: function(arg){
+                                if (arg.status_code != "200"){
+                                    swal({
+                                        title: '取消失败',
+                                        text: arg.describe,
+                                        type: 'error',
+                                        confirmButtonClass: 'btn btn-confirm mt-2'
+                                    })
+                                }else{
+                                    swal({
+                                        title: '取消追踪成功',
+                                        text: arg.describe,
+                                        type: 'success',
+                                        confirmButtonClass: 'btn btn-confirm mt-2'
+                                    }).then(function () {
+                                        window.location.reload()
+                                    });
+                                    
+                                }
+                            }
+                        })
+                    });
+                }
+
+            }else{
+                if (! location == owner || ! owner == "None"){
+                    swal({
+                        title: '错误',
+                        text: "此简历已被 " + owner + " 追踪，请联系后进行解决!",
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    })
+                }else{
+
+                    var postData = {"id": "{{ obj.id }}", "CancelTrack": "False", "location": location, "owner": owner}
+                    //Warning Message
+                    swal({
+                        title: '追踪简历',
+                        text: "确定追踪此份简历?",
+                        type: 'info',
+                        showCancelButton: true,
+                        confirmButtonClass: 'btn btn-confirm mt-2 track_resume',
+                        cancelButtonClass: 'btn btn-cancel ml-2 mt-2',
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消'
+                    }).then(function () {
+                        $.ajax({
+                            url: '/resume/candidate/track',
+                            data: postData,
+                            type: 'POST',
+                            dataType: "JSON",
+                            success: function(arg){
+                                if(arg.status_code == "403"){
+                                    swal({
+                                        title: '追踪失败',
+                                        text: arg.describe,
+                                        type: 'error',
+                                        confirmButtonClass: 'btn btn-confirm mt-2'
+                                    })
+                                }else if(arg.status_code != "200"){
+                                    swal({
+                                        title: '追踪失败',
+                                        text: arg.describe,
+                                        type: 'error',
+                                        confirmButtonClass: 'btn btn-confirm mt-2'
+                                    })
+                                }else{
+                                    swal({
+                                        title: '追踪成功',
+                                        text: arg.describe,
+                                        type: 'success',
+                                        confirmButtonClass: 'btn btn-confirm mt-2'
+                                    }).then(function () {
+                                        window.location.reload()
+                                    });
+                                }
+                            }
+                        })
+                    });
+                }
+            }
+        })
+    }
 </script>
 {% endblock %}

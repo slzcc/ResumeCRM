@@ -21,53 +21,12 @@ def GeneralList(request):
     ret = {"status": "seccuss", "status_code": "200"}
 
     _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
-    _user = models.UserProfile.objects.get(id=1)
-
-    # Download Resume Number
+    
     DownloadRN = models.SystemSetting.objects.filter(name="DownloadRN").last()
-    if not DownloadRN:
-        _set_uuid = uuid.uuid1()
-        obj = DownloadRN = models.SystemSetting.objects.create(name="DownloadRN", num_value="10", uuid=_set_uuid)
-        _describe = EventCode.EventCode["System.General.Create"]["zh"]["seccess"].format(_user.name,  str(obj.id), obj.name)
-        _status = 1
-        _event_record = tasks.CommonRecordEventLog.delay(
-            uuid=_set_uuid, 
-            user_id=1, 
-            event_type=EventCode.EventCode["System.General.Create"]["type"],
-            label=EventCode.EventCode["System.General.Create"]["label"], 
-            request=None, 
-            response=None, 
-            describe=_describe, 
-            status=_status,
-            access=_access,
-            source=_user.uuid,
-            target=_set_uuid,
-        )
 
-    # SMTP
+    AutoUnlockResume = models.SystemSetting.objects.filter(name="AutoUnlockResume").last()
+    
     PreferreEmail = models.PreferreEmail.objects.all().last()
-    if not PreferreEmail:
-        _set_uuid = uuid.uuid1()
-
-        models.PreferreEmail.objects.all().delete()
-        obj = models.PreferreEmail.objects.create(name="default", uuid=_set_uuid)
-        _describe = EventCode.EventCode["System.General.Create"]["zh"]["seccess"].format(_user.name,  str(obj.id), obj.name)
-        _status = 1
-        
-        _event_record = tasks.CommonRecordEventLog.delay(
-            uuid=_set_uuid, 
-            user_id=1, 
-            event_type=EventCode.EventCode["System.General.Create"]["type"],
-            label=EventCode.EventCode["System.General.Create"]["label"], 
-            request=None, 
-            response=None, 
-            describe=_describe, 
-            status=_status,
-            access=_access,
-            source=_user.uuid,
-            target=_set_uuid,
-        )
-        PreferreEmail = models.PreferreEmail.objects.all().last()
 
     AllEmail = models.Email.objects.all().values("id", "name")
 
@@ -78,30 +37,7 @@ def GeneralList(request):
         newAllEmail["text"] = i["name"]
         EmailList.append(newAllEmail)
 
-    # Resume Template
     PreferreResumeTemplate = models.PreferreResumeTemplate.objects.all().last()
-    if not PreferreResumeTemplate:
-        _set_uuid = uuid.uuid1()
-
-        models.PreferreResumeTemplate.objects.all().delete()
-        obj = models.PreferreResumeTemplate.objects.create(name="default", uuid=_set_uuid)
-        _describe = EventCode.EventCode["System.General.Create"]["zh"]["seccess"].format(_user.name,  str(obj.id), obj.name)
-        _status = 1
-        
-        _event_record = tasks.CommonRecordEventLog.delay(
-            uuid=_set_uuid, 
-            user_id=1, 
-            event_type=EventCode.EventCode["System.General.Create"]["type"],
-            label=EventCode.EventCode["System.General.Create"]["label"], 
-            request=None, 
-            response=None, 
-            describe=_describe, 
-            status=_status,
-            access=_access,
-            source=_user.uuid,
-            target=_set_uuid,
-        )
-        PreferreResumeTemplate = models.PreferreResumeTemplate.objects.all().last()
 
     AllResumeTemplate =  models.ResumeTemplate.objects.all().values("id", "name")
 
@@ -122,6 +58,31 @@ def GeneralList(request):
                     try:
                         if int(request.POST.get(i)):
                             obj = models.SystemSetting.objects.filter(name="DownloadRN")
+                            obj.update(num_value=int(request.POST.get(i)))
+                            _describe = EventCode.EventCode["System.General.Update.Info"]["zh"]["seccess"].format(request.user,  str(obj.last().id), obj.last().name)
+                            _status = 1
+                            _event_record = tasks.CommonRecordEventLog.delay(
+                                uuid=obj.last().uuid, 
+                                user_id=request.user.id, 
+                                event_type=EventCode.EventCode["System.General.Update.Info"]["type"],
+                                label=EventCode.EventCode["System.General.Update.Info"]["label"], 
+                                request=None, 
+                                response=None, 
+                                describe=_describe, 
+                                status=_status,
+                                access=_access,
+                                source=request.user.uuid,
+                                target=obj.last().uuid,
+                            )
+                    except:
+                        pass
+
+            # Upload Unlock Time
+            if i == "upload-resume-unlock-time":
+                if not request.POST.get(i) == "Empty":
+                    try:
+                        if int(request.POST.get(i)):
+                            obj = models.SystemSetting.objects.filter(name="AutoUnlockResume")
                             obj.update(num_value=int(request.POST.get(i)))
                             _describe = EventCode.EventCode["System.General.Update.Info"]["zh"]["seccess"].format(request.user,  str(obj.last().id), obj.last().name)
                             _status = 1

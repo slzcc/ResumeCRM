@@ -8,17 +8,36 @@
 <div class="row">
     <div class="col-12" id="infoModal">
         <div class="card-box">
-            <h3 class="text-purple">{{ obj.username }}&nbsp的简历</h3>
-            <p class="text-muted font-13">
-                {{ objs_personal_assessment_str }}
-            </p>
-            <p class="text-muted m-b-30 font-13">
-                创建时间: &nbsp<code class="highlighter-rouge">  {{ obj.create_time|date:"Y-m-d H:i:s" }}  </code>&nbsp&nbsp
-                修改时间: &nbsp<code class="highlighter-rouge">  {{ obj.modify_time|date:"Y-m-d H:i:s" }}  </code>&nbsp&nbsp
-                简历来自: &nbsp<code class="highlighter-rouge">  {{ objs_resume_source }}  </code>&nbsp&nbsp
-                上传人员: &nbsp<code class="highlighter-rouge">  {{ objs_upload_user }}  </code>&nbsp&nbsp
-                跟踪人员: &nbsp<code class="highlighter-rouge">  {{ objs_agent }}  </code>&nbsp&nbsp
-            </p>
+            <div class="row">
+                
+                <div style="display: inline" class="widget-bg-color-icon label_level">
+                    <div class="bg-icon bg-icon-{{ protection }} pull-left" id="TrackResume" status="{{ TrackStatus }}" location="{{ request.user.email }}" owner="{{ agent_owner }}">
+                        <i class="{{ lock_iocn }} text-seccess"></i>
+                    </div>
+                </div>
+                <div >
+                    <h3 style="display: inline" class="text-purple m-t-1">{{ obj.username }}&nbsp的简历</h3>
+                </div>
+            
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-muted font-13">
+                        {{ objs_personal_assessment_str }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-muted m-b-30 font-13">
+                        创建时间: &nbsp<code class="highlighter-rouge">  {{ obj.create_time|date:"Y-m-d H:i:s" }}  </code>&nbsp&nbsp
+                        修改时间: &nbsp<code class="highlighter-rouge">  {{ obj.modify_time|date:"Y-m-d H:i:s" }}  </code>&nbsp&nbsp
+                        简历来自: &nbsp<code class="highlighter-rouge">  {{ objs_resume_source }}  </code>&nbsp&nbsp
+                        上传人员: &nbsp<code class="highlighter-rouge">  {{ objs_upload_user }}  </code>&nbsp&nbsp
+                        跟踪人员: &nbsp<code class="highlighter-rouge">  {{ objs_agent }}  </code>&nbsp&nbsp
+                    </p>
+                </div>
+            </div>
             {% include 'include/Models/_view_cn_en_resume.html' %}
         </div>
         
@@ -388,6 +407,7 @@
                                 {% MenuButtonAuthentication request "resume_candidate_info_comment" as RETURN %}{% if RETURN %}
                                     <div class="col-lg-12 m-t-10">
                                         <div class="row">
+                                            {# {{ objs_user_comments_ele|safe }} #}
                                             {# "评论框" #}
                                             {# <div class="row"> #}
                                                 {# <div class="col-sm-12"> #}
@@ -415,7 +435,7 @@
                                         <div class="col-sm-12">
                                             <div class="timeline">
                                                 {{ operation_records_ele|safe }}
-                                                
+                                                    
                                             </div>
                                         </div>
                                     </div>

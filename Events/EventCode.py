@@ -95,6 +95,18 @@ EventCode = {
 		"label": "Command",
 		"type": "Resume"
 	},	
+	"Resume.Track": {
+		"en": {
+			"seccess": "",
+			"failed": "",
+		},
+		"zh": {
+			"seccess": "用户 {} 对 ID 为 {} 名为 {} 的简历，进行了 {}.",
+			"failed": "用户 {} 试图追踪 ID 为 {} 名为 {} 的简历.",
+		},
+		"label": "Track",
+		"type": "Resume"
+	},
 	"Resume.Update.Info": {
 		"en": {
 			"seccess": "",
@@ -106,7 +118,7 @@ EventCode = {
 		},
 		"label": "Update.Info",
 		"type": "Resume"
-	},		
+	},	
 	"Resume.Update.ZH.Attachment": {
 		"en": {
 			"seccess": "",

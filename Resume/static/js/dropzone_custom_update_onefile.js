@@ -22,17 +22,29 @@ var myDropzone = new Dropzone(document.body, { // 指定拖拽区为body
     autoQueue: false, // 当队列有文件，是否立刻自动上传到服务器
     previewsContainer: "#previews", // 指定存放文件队列区
     clickable: ".fileinput-button", // 点击某个按钮或区域后出现选择电脑中本地图片，默认是previewsContainer指定的区域
-    // init:function(){
-    //     this.on("addedfile", function(file) { 
-    //     //上传文件时触发的事件
-    //     });
-    //     this.on("queuecomplete",function(file) {
-    //         //上传完成后触发的方法
-    //     });
-    //     this.on("removedfile",function(file){
-    //         //删除文件时触发的方法
-    //     });
-    // }
+    init:function(){
+        // this.on("addedfile", function(file) { 
+        // //上传文件时触发的事件
+        // });
+        // this.on("queuecomplete",function(file, xhr) {
+        //     //上传完成后触发的方法
+        //     console.log(xhr);
+        // });
+        // this.on("removedfile",function(file){
+        //     //删除文件时触发的方法
+        // });
+        this.on("success",function(file, xhr) {
+            //上传成功后触发的方法
+            if(xhr.status_code == "201"){
+                swal({
+                    title: '错误的上传',
+                    text: xhr.describe,
+                    type: 'error',
+                    confirmButtonClass: 'btn btn-confirm mt-2'
+                })
+            }
+        });
+    }
 });
 
 myDropzone.on("addedfile", function(file) {

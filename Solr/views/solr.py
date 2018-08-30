@@ -22,7 +22,12 @@ def SearchResumeList(request):
     for i in table_config:
         if not i['q']:
             continue
-        q_list.append(i['q'])
+
+        if type(i['q']) == list:
+            for j in i['q']:
+                q_list.append(j)
+        else:
+            q_list.append(i['q'])
 
     if request.method == "GET":
         data_list = []
@@ -62,7 +67,55 @@ def SearchResumeList(request):
 
         dataList = list(datas.filter(**sqlData_dict))
 
-        paginator = Paginator(dataList, 20)
+        # heavy
+        _dataList = []
+        _checklist = []
+        for item in dataList:
+            _sub_custom_label = {
+                "name": item["custom_label__name"],
+                "code": item["custom_label__code"],
+                "priority": item["custom_label__priority"],
+                "agent": item["agent"],
+            }
+            _sub_user_comments = {
+                "describe": item["user_comments__describe"],
+                "user_id": item["user_comments__user"],
+                "user_name": item["user_comments__user__email"],
+                "create_time": item["user_comments__create_time"],
+                "portrait": item["user_comments__user__head_portrait"],
+            }
+            try:
+                _sub_user_comments["create_time"] = (_sub_user_comments["create_time"] + datetime.timedelta(hours=+8)).strftime('%y/%m/%d %H:%M:%S')
+            except:
+                pass
+            if not item["id"] in _checklist:
+                # custom_label
+                custom_label__name = item.pop("custom_label__name")
+                custom_label__code = item.pop("custom_label__code")
+                custom_label__priority = item.pop("custom_label__priority")
+                item["custom_label"] = {}
+                if custom_label__name:
+                    item["custom_label"][custom_label__name] = _sub_custom_label
+
+                # user_comments
+                item.pop("user_comments__describe")
+                item.pop("user_comments__user")
+                item.pop("user_comments__create_time")
+                item.pop("user_comments__user__email")
+                item.pop("user_comments__user__head_portrait")
+                item["user_comments"] = []
+                if custom_label__name:
+                    item["user_comments"].append(_sub_user_comments)
+
+                _dataList.append(item)
+                _checklist.append(item["id"])
+            else:
+                for items in _dataList:
+                    if items["id"] == item["id"]:
+                        items["custom_label"][item["custom_label__name"]] = _sub_custom_label
+                        items["user_comments"].append(_sub_user_comments)
+
+        paginator = Paginator(_dataList, 20)
 
         page = int(request.GET.get('_page', 1))
         contacts = paginator.get_page(page)
@@ -95,9 +148,12 @@ def SearchResumeList(request):
         ele += "</ul></nav>"
 
         for i in contacts:
-            i["create_time"] = i["create_time"] + datetime.timedelta(hours=+8)
-            i["create_time"] = i["create_time"].strftime('%y/%m/%d %H:%M')
-            data_list.append(i)
+            try:
+                i["create_time"] = i["create_time"] + datetime.timedelta(hours=+8)
+                i["create_time"] = i["create_time"].strftime('%y/%m/%d %H:%M')
+                data_list.append(i)
+            except:
+                pass
 
         result = {
             'ele': ele,

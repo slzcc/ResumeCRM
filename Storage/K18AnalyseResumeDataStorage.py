@@ -9,7 +9,12 @@ def K18DataStorage(SourceData):
 
     data = {}
     data["language"] = ""
-    data["uuid"] = uuid.uuid1()
+    if "update_resume_id" in SourceData.keys():
+        base = models.ResumeInfo.objects.filter(id=SourceData["update_resume_id"])
+        data["uuid"] = base[0].uuid
+    else:
+        data["uuid"] = uuid.uuid1()
+    
 
     MoreTable = {}
     MoreTable["raw_text"] = ""
@@ -196,10 +201,10 @@ def K18DataStorage(SourceData):
                     
         if "upload_user" in SourceData.keys():
             MoreTable["upload_user"] = SourceData["upload_user"]
-            print("MoreTable", MoreTable["upload_user"])
+            # print("MoreTable", MoreTable["upload_user"])
 
         if "update_resume_id" in SourceData.keys():
-            base = models.ResumeInfo.objects.filter(id=SourceData["update_resume_id"])
+            
             base.update(**data)
             base = base.last()
 
@@ -264,6 +269,8 @@ def K18DataStorage(SourceData):
                 if "upload_user" in MoreTable.keys():
                     upload_user = models.UserProfile.objects.get(id=MoreTable["upload_user"])
                     base.upload_user.add(upload_user)
-                    # base.agent.add(upload_user)
+                    # base.agent.add(upload_user) 
+
+                base.custom_label.set([1])
 
     return base

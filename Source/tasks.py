@@ -58,9 +58,14 @@ def AnalyseResumeStorageDatabase(data):
 				"to_user_id": int(data["upload_user"]),
 				"from_user_id": 1,
 				"title": "上传简历 {} 成功!".format(base.username),
-				"describe": "简历 {} 上传成功，点击链接 /resume/candidate/{}/change 进入阅读页面!".format(base.username, base.id)
+				"describe": "简历 {} 上传成功，<a href='/resume/candidate/{}/change' target='_blank'>点击链接</a> 进入详细页面!".format(base.username, base.id)
 			}
 			PushMessage.PushMessage(to_user_id=_PushMessageData["to_user_id"], from_user_id=_PushMessageData["from_user_id"], title=_PushMessageData["title"], describe=_PushMessageData["describe"])
+		
+			# 默认简历有锁定期，则在一定时间内对简历进行默认解锁。
+			run_time = models.SystemSetting.objects.get(name="AutoUnlockResume").num_value
+			ResumeUnlock.apply_async((base.id,), countdown=run_time)
+
 		else:
 			_describe = EventCode.EventCode["Resume.Update.ZH.Attachment"]["zh"]["seccess"].format(models.UserProfile.objects.get(id=int(data["upload_user"])),  base.id, base.username)
 			_status = 1
@@ -106,6 +111,7 @@ def AnalyseResumeStorageDatabase(data):
 	# 上传文件
 	session = upload_nginx.UploadNginx(url=conf.settings.NGINX_UPLOAD_ADDRESS, fileName=targetFileName, filePath=targetFilePath, storagePath=storagePath)
 	_url = "/".join(json.loads(session)["account_url"].split("/")[3:])
+	_file_md5 = json.loads(session)["md5"]
 
 	# 回写上传地址到数据库
 	if "content" in data.keys():
@@ -113,14 +119,14 @@ def AnalyseResumeStorageDatabase(data):
 			_data = []
 			_data.append(data["resume_source"])
 			a = models.ResumeSource.objects.filter(name__in=_data)[0]
-			b = models.ResumeName.objects.create(name=_url, create_time=datetime.datetime.now(), source=a)
+			b = models.ResumeName.objects.create(name=_url, create_time=datetime.datetime.now(), source=a, uuid=base.uuid, md5=_file_md5)
 			base.zh_filename.add(b)
 			base.resume_source.add(a)
 		else:
 			_data = []
 			_data.append(data["resume_source"])
 			a = models.ResumeSource.objects.filter(name__in=_data)[0]
-			b = models.ResumeName.objects.create(name=_url, create_time=datetime.datetime.now(), source=a)
+			b = models.ResumeName.objects.create(name=_url, create_time=datetime.datetime.now(), source=a, uuid=base.uuid, md5=_file_md5)
 
 			base.resume_source.clear()
 			base.zh_filename.clear()
@@ -137,6 +143,8 @@ def AnalyseResumeStorageDatabase(data):
 		base.en_filename.clear()
 		base.en_filename.add(b)
 
+		base.custom_label.add(2)
+
 		_describe = EventCode.EventCode["Resume.Update.EN.Attachment"]["zh"]["seccess"].format(models.UserProfile.objects.get(id=int(data["upload_user"])),  base.id, base.username)
 		_status = 1
 		_event_record = tasks.CommonRecordEventLog.delay(
@@ -152,3 +160,13 @@ def AnalyseResumeStorageDatabase(data):
 			source=models.UserProfile.objects.get(id=data["upload_user"]).uuid,
 			target=base.uuid,
 		)
+
+@shared_task
+def ResumeUnlock(resume_id):
+	
+	objs = models.ResumeInfo.objects.filter(id=resume_id)
+	for i in list(objs.values("agent__email")):
+		if i["agent__email"] == None:
+			objs[0].custom_label.remove(1)
+			objs[0].custom_label.add(3)
+

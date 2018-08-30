@@ -120,13 +120,19 @@
 
     $(function(){
         bindDeleteRole();
+        if(error_status){
+            if(error_status == "0"){
+                $.Notification.autoHideNotify('info', 'top right', '注册成功', '已经成功添加新角色!')
+                // window.location.href = "/system/user/list";
+            }else if(error_status == "1") {
+                // sweetAlert("错误的注册", "请重新注册，填写正确的信息!", "error");
+                $.Notification.autoHideNotify('error', 'top right', '错误的注册', '请重新注册，填写正确的信息!')
+                $("#btnAddRole").click()
+            }
+        }
     })
 
-    var status_code = "{{ status_code }}"
-    if (status_code == "402") {
-        sweetAlert("错误的注册", "请重新注册，填写正确的信息!", "error");
-        $("#btnAddRole").click()
-    }
+    var error_status = "{{ error_status }}"
 
     function SelectAllObjs(ele) {
 
