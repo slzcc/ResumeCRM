@@ -9,7 +9,9 @@ services:
             MYSQL_DATABASE: resume
             MYSQL_USER: resume
             MYSQL_PASSWORD: resume
-            MYSQL_HOST: "mysql"
+            MYSQL_ROOT_USER: root
+            MYSQL_ROOT_PASSWORD: example.org
+            MYSQL_HOST: mysql
             MYSQL_PORT: 3306
             SOLR_SERVER_URL: "http://solr:8983/"
             NGINX_MIRROR_ADDRESS: "http://upload_frontend"
@@ -17,38 +19,51 @@ services:
         volumes:
           - /Users/shilei/Documents/PyCharm/Django/ResumeCRM:/ResumeCRM
         hostname: "resumecrm.shileizcc.com"
-        command: "sleep 1234567890"
+        depends_on:
+           - mysql
+           - solr
+           - results
+           - broker
 
     transcode:
-        image: slzcc/django:transcode-pdf-uwsgi-v3
+        image: slzcc/django:transcode-pdf-uwsgi-v5
         container_name: resume_transcode
         ports:
           - 8089:8089
         environment:
-            MYSQL_DATABASE: check_md5
-            MYSQL_USER: check_md5
-            MYSQL_PASSWORD: check_md5
-            MYSQL_HOST: "mysql"
+            MYSQL_DATABASE: resumec
+            MYSQL_USER: resumec
+            MYSQL_PASSWORD: resumec
+            MYSQL_ROOT_USER: root
+            MYSQL_ROOT_PASSWORD: example.org
+            MYSQL_HOST: mysql
             MYSQL_PORT: 3306
-            NGINX_MIRROR_ADDRESS: "http://10.30.0.41/"
+            NGINX_MIRROR_ADDRESS: "http://upload_frontend/"
             TZ: Asia/Shanghai
+        depends_on:
+           - mysql
+
     mysql:
         image: slzcc/mysql:5.6-custom
         environment:
             MYSQL_ROOT_PASSWORD: example.org
+            # MYSQL_DATABASE: resume
+            # MYSQL_USER: resume
+            # MYSQL_PASSWORD: resume
             TZ: Asia/Shanghai
         container_name: resume_mysql
         volumes:
           - mysql:/var/lib/mysql
 
     upload_backend:
-        image: slzcc/django:upload-uwsgi-v4
+        image: slzcc/django:upload-uwsgi-v5
         container_name: resume_upload_backend
         ports:
           - 8878:8878
         environment:
+            TZ: Asia/Shanghai
             UPLOAD_FILE_PATH: "/storage/"
-            NGINX_MIRROR_URL: "http://10.30.0.41/"
+            NGINX_MIRROR_URL: "http://upload_frontend/"
             NGINX_MIRROR_STORAGE_PATH: "firmware/resume"
             REMOVE_SOURCE_FILE_SETUP: "False"
             USE_TIEM_SUB_DIRECTORY: "False"
@@ -63,6 +78,7 @@ services:
         ports:
           - 80:80
         environment:
+            TZ: Asia/Shanghai
             UPLOAD_BACKEND_ADDRESS: http://upload_backend:8878
             NGINX_MIRROR_HOME: /mirror
         volumes:
@@ -75,6 +91,7 @@ services:
         ports:
           - 8983:8983
         environment:
+            TZ: Asia/Shanghai
             MYSQL_HOST: 'mysql'
             MYSQL_PORT: 3306
             MYSQL_USERNAME: resume
@@ -82,20 +99,25 @@ services:
             MYSQL_DATABASE: resume
         volumes:
           - solr:/opt/solr/server/solr/gettingstarted/data
+        depends_on:
+           - mysql
 
     broker:
         container_name: resume_celery_broker
         image: rabbitmq
         environment:
-          RABBITMQ_DEFAULT_USER: resume
-          RABBITMQ_DEFAULT_PASS: resume
-          RABBITMQ_DEFAULT_VHOST: resume
+            TZ: Asia/Shanghai
+            RABBITMQ_DEFAULT_USER: resume
+            RABBITMQ_DEFAULT_PASS: resume
+            RABBITMQ_DEFAULT_VHOST: resume
         volumes:
           - broker:/var/lib/rabbitmq
 
     results:
         container_name: resume_celery_results
         image: redis
+        environment:
+            TZ: Asia/Shanghai
         volumes:
           - results:/data
 volumes:

@@ -1,0 +1,198 @@
+2018-08-31 03:45:20,310 CRIT Supervisor running as root (no user in config file)
+2018-08-31 03:45:20,318 INFO supervisord started with pid 6
+2018-08-31 03:45:21,300 INFO spawned: 'celery-worker' with pid 15
+2018-08-31 03:45:21,303 INFO spawned: 'celery-beat' with pid 16
+2018-08-31 03:45:21,306 INFO spawned: 'resume' with pid 17
+2018-08-31 03:45:22,309 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 03:45:22,314 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 03:45:22,339 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 04:59:24,731 CRIT Supervisor running as root (no user in config file)
+2018-08-31 04:59:24,742 INFO supervisord started with pid 6
+2018-08-31 04:59:25,745 INFO spawned: 'celery-worker' with pid 60
+2018-08-31 04:59:25,747 INFO spawned: 'celery-beat' with pid 61
+2018-08-31 04:59:25,750 INFO spawned: 'resume' with pid 62
+2018-08-31 04:59:26,753 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 04:59:26,754 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 04:59:26,755 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:08:37,937 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:08:38,009 INFO supervisord started with pid 6
+2018-08-31 05:08:39,013 INFO spawned: 'celery-worker' with pid 65
+2018-08-31 05:08:39,021 INFO spawned: 'celery-beat' with pid 66
+2018-08-31 05:08:39,030 INFO spawned: 'resume' with pid 67
+2018-08-31 05:08:40,039 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:08:40,040 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:08:40,092 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:29:00,702 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:29:00,741 INFO supervisord started with pid 6
+2018-08-31 05:29:01,747 INFO spawned: 'celery-worker' with pid 45
+2018-08-31 05:29:01,752 INFO spawned: 'celery-beat' with pid 46
+2018-08-31 05:29:01,756 INFO spawned: 'resume' with pid 47
+2018-08-31 05:29:02,761 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:29:02,762 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:29:02,764 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:30:35,857 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:30:35,863 INFO supervisord started with pid 7
+2018-08-31 05:30:36,868 INFO spawned: 'celery-worker' with pid 46
+2018-08-31 05:30:36,872 INFO spawned: 'celery-beat' with pid 47
+2018-08-31 05:30:36,876 INFO spawned: 'resume' with pid 48
+2018-08-31 05:30:37,880 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:30:37,881 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:30:37,883 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:30:40,103 INFO exited: celery-beat (exit status 73; not expected)
+2018-08-31 05:37:39,146 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:37:39,157 INFO supervisord started with pid 6
+2018-08-31 05:37:40,162 INFO spawned: 'celery-worker' with pid 45
+2018-08-31 05:37:40,165 INFO spawned: 'celery-beat' with pid 46
+2018-08-31 05:37:40,171 INFO spawned: 'resume' with pid 47
+2018-08-31 05:37:41,177 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:37:41,177 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:37:41,181 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:37:43,832 INFO exited: celery-beat (exit status 73; not expected)
+2018-08-31 05:39:17,731 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:39:17,737 INFO supervisord started with pid 6
+2018-08-31 05:39:18,741 INFO spawned: 'celery-worker' with pid 47
+2018-08-31 05:39:18,744 INFO spawned: 'celery-beat' with pid 48
+2018-08-31 05:39:18,746 INFO spawned: 'resume' with pid 49
+2018-08-31 05:39:19,750 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:39:19,750 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:39:19,752 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:43:07,930 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:43:07,936 INFO supervisord started with pid 6
+2018-08-31 05:43:08,941 INFO spawned: 'celery-worker' with pid 43
+2018-08-31 05:43:08,944 INFO spawned: 'celery-beat' with pid 44
+2018-08-31 05:43:08,948 INFO spawned: 'resume' with pid 45
+2018-08-31 05:43:09,953 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:43:09,955 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:43:09,958 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:44:24,843 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:44:24,849 INFO supervisord started with pid 6
+2018-08-31 05:44:25,853 INFO spawned: 'celery-worker' with pid 47
+2018-08-31 05:44:25,857 INFO spawned: 'celery-beat' with pid 48
+2018-08-31 05:44:25,862 INFO spawned: 'resume' with pid 49
+2018-08-31 05:44:26,850 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:44:26,852 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:44:26,853 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:46:12,499 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:46:12,505 INFO supervisord started with pid 6
+2018-08-31 05:46:13,510 INFO spawned: 'celery-worker' with pid 43
+2018-08-31 05:46:13,513 INFO spawned: 'celery-beat' with pid 44
+2018-08-31 05:46:13,515 INFO spawned: 'resume' with pid 45
+2018-08-31 05:46:14,517 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:46:14,518 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:46:14,519 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:47:32,509 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:47:32,513 INFO supervisord started with pid 6
+2018-08-31 05:47:33,516 INFO spawned: 'celery-worker' with pid 43
+2018-08-31 05:47:33,519 INFO spawned: 'celery-beat' with pid 44
+2018-08-31 05:47:33,523 INFO spawned: 'resume' with pid 45
+2018-08-31 05:47:34,526 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:47:34,537 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:47:34,543 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:47:37,130 INFO exited: celery-beat (exit status 73; not expected)
+2018-08-31 05:48:34,807 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:48:34,813 INFO supervisord started with pid 6
+2018-08-31 05:48:35,817 INFO spawned: 'celery-worker' with pid 45
+2018-08-31 05:48:35,822 INFO spawned: 'celery-beat' with pid 46
+2018-08-31 05:48:35,829 INFO spawned: 'resume' with pid 47
+2018-08-31 05:48:36,832 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:48:36,833 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:48:36,834 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:49:22,012 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:49:22,027 INFO supervisord started with pid 6
+2018-08-31 05:49:23,031 INFO spawned: 'celery-worker' with pid 43
+2018-08-31 05:49:23,033 INFO spawned: 'celery-beat' with pid 44
+2018-08-31 05:49:23,035 INFO spawned: 'resume' with pid 45
+2018-08-31 05:49:24,039 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:49:24,039 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:49:24,040 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:55:17,239 CRIT Supervisor running as root (no user in config file)
+2018-08-31 05:55:17,245 INFO supervisord started with pid 6
+2018-08-31 05:55:18,251 INFO spawned: 'celery-worker' with pid 43
+2018-08-31 05:55:18,254 INFO spawned: 'celery-beat' with pid 44
+2018-08-31 05:55:18,257 INFO spawned: 'resume' with pid 45
+2018-08-31 05:55:19,262 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:55:19,270 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:55:19,273 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 05:55:21,452 INFO exited: celery-beat (exit status 73; not expected)
+2018-08-31 06:26:44,404 CRIT Supervisor running as root (no user in config file)
+2018-08-31 06:26:44,414 INFO supervisord started with pid 6
+2018-08-31 06:26:45,422 INFO spawned: 'celery-worker' with pid 74
+2018-08-31 06:26:45,426 INFO spawned: 'celery-beat' with pid 75
+2018-08-31 06:26:45,431 INFO spawned: 'resume' with pid 76
+2018-08-31 06:26:46,435 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:26:46,435 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:26:46,439 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:31:35,285 CRIT Supervisor running as root (no user in config file)
+2018-08-31 06:31:35,291 INFO supervisord started with pid 6
+2018-08-31 06:31:36,294 INFO spawned: 'celery-worker' with pid 53
+2018-08-31 06:31:36,297 INFO spawned: 'celery-beat' with pid 54
+2018-08-31 06:31:36,303 INFO spawned: 'resume' with pid 55
+2018-08-31 06:31:37,322 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:31:37,322 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:31:37,331 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:33:42,677 CRIT Supervisor running as root (no user in config file)
+2018-08-31 06:33:42,689 INFO supervisord started with pid 6
+2018-08-31 06:33:43,693 INFO spawned: 'celery-worker' with pid 65
+2018-08-31 06:33:43,696 INFO spawned: 'celery-beat' with pid 66
+2018-08-31 06:33:43,699 INFO spawned: 'resume' with pid 67
+2018-08-31 06:33:44,721 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:33:44,721 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:33:44,722 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:39:50,468 CRIT Supervisor running as root (no user in config file)
+2018-08-31 06:39:50,482 INFO supervisord started with pid 6
+2018-08-31 06:39:51,491 INFO spawned: 'celery-worker' with pid 56
+2018-08-31 06:39:51,494 INFO spawned: 'celery-beat' with pid 57
+2018-08-31 06:39:51,497 INFO spawned: 'resume' with pid 58
+2018-08-31 06:39:51,501 INFO reaped unknown pid 20
+2018-08-31 06:39:52,519 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:39:52,520 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 06:39:52,521 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:01:53,898 CRIT Supervisor running as root (no user in config file)
+2018-08-31 07:01:53,970 INFO supervisord started with pid 6
+2018-08-31 07:01:54,974 INFO spawned: 'celery-worker' with pid 83
+2018-08-31 07:01:55,016 INFO spawned: 'celery-beat' with pid 84
+2018-08-31 07:01:55,057 INFO spawned: 'resume' with pid 85
+2018-08-31 07:01:56,065 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:01:56,067 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:01:56,069 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:24:00,027 CRIT Supervisor running as root (no user in config file)
+2018-08-31 07:24:00,036 INFO supervisord started with pid 6
+2018-08-31 07:24:01,040 INFO spawned: 'celery-worker' with pid 56
+2018-08-31 07:24:01,058 INFO spawned: 'celery-beat' with pid 57
+2018-08-31 07:24:01,061 INFO spawned: 'resume' with pid 58
+2018-08-31 07:24:02,112 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:24:02,166 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:24:02,217 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:30:07,332 CRIT Supervisor running as root (no user in config file)
+2018-08-31 07:30:07,349 INFO supervisord started with pid 11
+2018-08-31 07:30:08,353 INFO spawned: 'celery-worker' with pid 74
+2018-08-31 07:30:08,357 INFO spawned: 'celery-beat' with pid 75
+2018-08-31 07:30:08,361 INFO spawned: 'resume' with pid 76
+2018-08-31 07:30:09,365 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:30:09,368 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:30:09,371 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:33:35,781 CRIT Supervisor running as root (no user in config file)
+2018-08-31 07:33:35,820 INFO supervisord started with pid 7
+2018-08-31 07:33:36,844 INFO spawned: 'celery-worker' with pid 24
+2018-08-31 07:33:36,858 INFO spawned: 'celery-beat' with pid 25
+2018-08-31 07:33:36,870 INFO spawned: 'resume' with pid 26
+2018-08-31 07:33:37,888 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:33:37,889 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:33:37,892 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:37:33,700 CRIT Supervisor running as root (no user in config file)
+2018-08-31 07:37:33,730 INFO supervisord started with pid 7
+2018-08-31 07:37:34,734 INFO spawned: 'celery-worker' with pid 24
+2018-08-31 07:37:34,737 INFO spawned: 'celery-beat' with pid 25
+2018-08-31 07:37:34,741 INFO spawned: 'resume' with pid 26
+2018-08-31 07:37:35,776 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:37:35,783 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:37:35,786 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:37:41,544 INFO exited: celery-beat (exit status 73; not expected)
+2018-08-31 07:42:58,474 CRIT Supervisor running as root (no user in config file)
+2018-08-31 07:42:58,483 INFO supervisord started with pid 6
+2018-08-31 07:42:59,488 INFO spawned: 'celery-worker' with pid 69
+2018-08-31 07:42:59,495 INFO spawned: 'celery-beat' with pid 70
+2018-08-31 07:42:59,499 INFO spawned: 'resume' with pid 71
+2018-08-31 07:43:00,505 INFO success: celery-worker entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:43:00,507 INFO success: celery-beat entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2018-08-31 07:43:00,510 INFO success: resume entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
