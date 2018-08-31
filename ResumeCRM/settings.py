@@ -188,12 +188,14 @@ CHANNEL_LAYERS = {
 LOGIN_URL = "/user/login"
 # ******************************************************************************************************************************
 # Nginx_Upload
-NGINX_MIRROR_ADDRESS = "http://10.30.0.41"
+NGINX_MIRROR_ADDRESS = os.getenv('NGINX_MIRROR_ADDRESS')
+# NGINX_MIRROR_ADDRESS = "http://10.30.0.41"
 # NGINX_MIRROR_ADDRESS = "http://192.168.1.6"
 NGINX_UPLOAD_ADDRESS = os.path.join(NGINX_MIRROR_ADDRESS, "upload")
 # ******************************************************************************************************************************
 # Transcode PDF
-TRANSCODE_PDF_ADDRESS = "http://10.30.0.41:8089/api/v1/file/pdf"
+TRANSCODE_PDF_ADDRESS = os.getenv('TRANSCODE_PDF_ADDRESS')
+# TRANSCODE_PDF_ADDRESS = "http://10.30.0.41:8089/api/v1/file/pdf"
 # TRANSCODE_PDF_ADDRESS = "http://192.168.1.6:8089/api/v1/file/pdf"
 # ******************************************************************************************************************************
 
