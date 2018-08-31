@@ -2,6 +2,8 @@
 
 set -e
 
+python3 manage.py migrate
+
 cat <<EOT > /etc/supervisord.conf
 
 [supervisord]
