@@ -1,13 +1,6 @@
 #!/bin/bash
 
-set -x 
-
-#sed -i "s/'%s\*\=%s' % (name,\ value)/'%s\="%s"'\ % (name,\ value.encode('utf-8'))/" /usr/local/lib/python3.5/dist-packages/urllib3/fields.py
-
-python3 manage.py migrate
-python3 manage.py runserver 0.0.0.0:8088 &
-curl http://127.0.0.1:8088/initialize/set_main
-pkill python3
+set -e
 
 cat <<EOT > /etc/supervisord.conf
 
@@ -43,4 +36,3 @@ stdout_logfile_maxbytes=0
 EOT
 
 exec /usr/bin/supervisord
-

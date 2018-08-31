@@ -14,7 +14,10 @@ services:
             SOLR_SERVER_URL: "http://solr:8983/"
             NGINX_MIRROR_ADDRESS: "http://upload_frontend"
             TRANSCODE_PDF_ADDRESS: "http://upload_backend:8089/api/v1/file/pdf"
+        volumes:
+          - /Users/shilei/Documents/PyCharm/Django/ResumeCRM:/ResumeCRM
         hostname: "resumecrm.shileizcc.com"
+        command: "sleep 1234567890"
 
     transcode:
         image: slzcc/django:transcode-pdf-uwsgi-v3

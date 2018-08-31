@@ -17,7 +17,9 @@ ENV MYSQL_DATABASE=resume \
     MYSQL_PASSWORD=resume \
     MYSQL_HOST="mysql" \
     MYSQL_PORT=3306 \
-    SOLR_SERVER_URL="http://solr:8983/"
+    SOLR_SERVER_URL="http://solr:8983/" \
+    NGINX_MIRROR_ADDRESS="http://upload_frontend" \
+    TRANSCODE_PDF_ADDRESS="http://upload_backend:8089/api/v1/file/pdf"
 
 COPY . /ResumeCRM/
 WORKDIR /ResumeCRM
