@@ -3,7 +3,9 @@
 set -e
 
 # https://docs.docker.com/compose/startup-order/
-until mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -h mysql -e 'use resume;'; do
+host=$MYSQL_HOST
+
+until MYSQL_USER=$MYSQL_USER MYSQL_PASSWORD=$MYSQL_PASSWORD mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -h "$host" -e 'use resume;'; do
   >&2 echo "MySQL is unavailable - sleeping"
   sleep 1
 done
