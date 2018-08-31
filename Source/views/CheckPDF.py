@@ -18,8 +18,17 @@ def isExistPDF(request):
 
 	currentTime = str(int(time.time()))
 	if os.path.basename(attachmentName).split(".")[1] != "pdf":
+		
 		data = {"type": "url", "url": os.path.join(conf.settings.NGINX_MIRROR_ADDRESS, attachmentName), "mandatory_parsing": mandatory_parsing}
-		session = requests.post(url=conf.settings.TRANSCODE_PDF_ADDRESS, data=data)
+
+		url = conf.settings.TRANSCODE_PDF_ADDRESS
+		domain = url.split("/")[2].split(":")[0]
+		domain_ip = ""
+		if not isIP(domain):
+			domain_ip = getIP(domain)
+			url = url.replace(domain, domain_ip)
+
+		session = requests.post(url=url, data=data)
 		url = "/".join(json.loads(session.text)["account_url"].split("/")[3:])
 	else:
 		url = attachmentName

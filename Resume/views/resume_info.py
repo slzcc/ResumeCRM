@@ -349,7 +349,6 @@ def SaveResumeCommands(request):
     _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
 
     data = {}
-    print(request.POST)
     if request.method == "POST":
         for i in request.POST:
             if i in ("resume_id"):
