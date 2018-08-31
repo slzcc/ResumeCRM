@@ -15,6 +15,15 @@ services:
             NGINX_MIRROR_ADDRESS: "http://upload_frontend"
             TRANSCODE_PDF_ADDRESS: "http://upload_backend:8089/api/v1/file/pdf"
         hostname: "resumecrm.shileizcc.com"
+        depends_on:
+            mysql:
+                condition: service_healthy
+            solr:
+                condition: service_healthy
+            results:
+                condition: service_healthy
+            broker:
+                condition: service_healthy
 
     transcode:
         image: slzcc/django:transcode-pdf-uwsgi-v3
