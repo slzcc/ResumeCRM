@@ -16,13 +16,13 @@ services:
             TRANSCODE_PDF_ADDRESS: "http://upload_backend:8089/api/v1/file/pdf"
         hostname: "resumecrm.shileizcc.com"
         depends_on:
-            mysql:
+           - mysql:
                 condition: service_healthy
-            solr:
+           - solr:
                 condition: service_healthy
-            results:
+           - results:
                 condition: service_healthy
-            broker:
+           - broker:
                 condition: service_healthy
 
     transcode:
