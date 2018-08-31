@@ -1,3 +1,6 @@
+SHELL := /bin/bash
+VERSION := "4"
+
 set_data:
 	@docker exec -t resume_mysql mysql -uroot -pexample.org -e "create database resume character set 'UTF8';"
 	@docker exec -t resume_mysql mysql -uroot -pexample.org -e "grant all on resume.* to resume@'%' identified by 'resume';"
@@ -16,3 +19,6 @@ initialize_data:
 	@curl http://127.0.0.1:8088/initialize/set_solr_full_import_cronjob
 	@curl http://127.0.0.1:8088/initialize/set_resume_custom_label
 	@curl http://127.0.0.1:8088/initialize/set_system_setting
+
+build:
+	@docker build -t slzcc/resumecrm:v$(VERSION) -f /Resume/Docker/Dockerfile . --no-cache

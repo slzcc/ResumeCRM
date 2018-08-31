@@ -92,6 +92,7 @@ def test(request):
     # # a.get()                   # 直接获取数据，如果数据执行过程中较慢，则会阻塞
     # ret = AsyncResult(id=a.id)  # 间接获取数据，则需要首先获取这个任务的 id，然后通过 id 获取执行结果
     # print(ret.get())
-
+    location = request.get_host().split(":")[0]
+    print(location)
     
     return render(request, 'test.html')

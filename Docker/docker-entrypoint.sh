@@ -2,7 +2,12 @@
 
 set -x 
 
-sed -i "s/'%s\*\=%s' % (name,\ value)/'%s\="%s"'\ % (name,\ value.encode('utf-8'))/" /usr/local/lib/python3.5/dist-packages/urllib3/fields.py
+#sed -i "s/'%s\*\=%s' % (name,\ value)/'%s\="%s"'\ % (name,\ value.encode('utf-8'))/" /usr/local/lib/python3.5/dist-packages/urllib3/fields.py
+
+python3 manage.py migrate
+python3 manage.py runserver 0.0.0.0:8088 &
+curl http://127.0.0.1:8088/initialize/set_main
+pkill python3
 
 cat <<EOT > /etc/supervisord.conf
 
@@ -10,7 +15,7 @@ cat <<EOT > /etc/supervisord.conf
 nodaemon=true
 
 [program:resume]
-command=/bin/bash -c ""
+command=/bin/bash -c "python3 manage.py runserver 0.0.0.0:8088"
 autorestart=true
 startsecs=0
 stderr_logfile=/dev/stderr

@@ -30,7 +30,11 @@ def UserLogin(request):
         authentication_user = authenticate(username=username, password=password)
 
         _access = request.META.get('HTTP_X_REAL_IP') or request.META.get('HTTP_REMOTE_ADD') or request.META.get('REMOTE_ADDR')
-        _user = models.UserProfile.objects.get(email=username)
+        obj = models.UserProfile.objects.filter(email=username)
+        if obj.exists():
+          _user = obj[0]
+        else:
+          return render(request, '500.html')
         if authentication_user:
             login(request, authentication_user)
             _describe = EventCode.EventCode["User.Login"]["zh"]["seccess"].format(username, )

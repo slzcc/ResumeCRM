@@ -15,7 +15,7 @@ from django.contrib.contenttypes.models import ContentType
 
 def AddPermission(request):
 	content_type = ContentType.objects.get_for_model(models.SystemPermission)
-
+	
 	Permission.objects.all().delete()
 
 	# ************************************ Resume ************************************************************
