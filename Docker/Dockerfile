@@ -2,7 +2,8 @@ FROM slzcc/supervisor:apt
 
 RUN apt update && \
 	apt install -y language-pack-zh-hans fonts-wqy-microhei fonts-wqy-zenhei xfonts-75dpi xfonts-base libfontenc1 libxfont1 xfonts-encodings xfonts-utils && \
-	apt-get autoremove --purge --yes && \
+	apt install -y mysql-client-core-5.7 && \
+    apt-get autoremove --purge --yes && \
     rm --force --recursive \
         /tmp/* \
         /var/lib/apt/lists/*

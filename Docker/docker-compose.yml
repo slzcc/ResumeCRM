@@ -52,6 +52,7 @@ services:
         ports:
           - 8878:8878
         environment:
+            TZ: Asia/Shanghai
             UPLOAD_FILE_PATH: "/storage/"
             NGINX_MIRROR_URL: "http://10.30.0.41/"
             NGINX_MIRROR_STORAGE_PATH: "firmware/resume"
@@ -68,6 +69,7 @@ services:
         ports:
           - 80:80
         environment:
+            TZ: Asia/Shanghai
             UPLOAD_BACKEND_ADDRESS: http://upload_backend:8878
             NGINX_MIRROR_HOME: /mirror
         volumes:
@@ -80,6 +82,7 @@ services:
         ports:
           - 8983:8983
         environment:
+            TZ: Asia/Shanghai
             MYSQL_HOST: 'mysql'
             MYSQL_PORT: 3306
             MYSQL_USERNAME: resume
@@ -92,15 +95,18 @@ services:
         container_name: resume_celery_broker
         image: rabbitmq
         environment:
-          RABBITMQ_DEFAULT_USER: resume
-          RABBITMQ_DEFAULT_PASS: resume
-          RABBITMQ_DEFAULT_VHOST: resume
+            TZ: Asia/Shanghai
+            RABBITMQ_DEFAULT_USER: resume
+            RABBITMQ_DEFAULT_PASS: resume
+            RABBITMQ_DEFAULT_VHOST: resume
         volumes:
           - broker:/var/lib/rabbitmq
 
     results:
         container_name: resume_celery_results
         image: redis
+        environment:
+            TZ: Asia/Shanghai
         volumes:
           - results:/data
 volumes:

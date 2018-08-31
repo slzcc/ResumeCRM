@@ -2,6 +2,14 @@
 
 set -e
 
+# https://docs.docker.com/compose/startup-order/
+until mysql -u "$MYSQL_USER" -p "$MYSQL_PASSWORD" -e 'use resume'; do
+  >&2 echo "MySQL is unavailable - sleeping"
+  sleep 1
+done
+
+>&2 echo "MySQL is up - executing command"
+
 python3 manage.py migrate
 
 cat <<EOT > /etc/supervisord.conf
