@@ -11,13 +11,11 @@ services:
             MYSQL_PASSWORD: resume
             MYSQL_ROOT_USER: root
             MYSQL_ROOT_PASSWORD: example.org
-            MYSQL_HOST: "mysql"
+            MYSQL_HOST: mysql
             MYSQL_PORT: 3306
             SOLR_SERVER_URL: "http://solr:8983/"
             NGINX_MIRROR_ADDRESS: "http://upload_frontend"
             TRANSCODE_PDF_ADDRESS: "http://upload_backend:8089/api/v1/file/pdf"
-        volumes:
-          - /Users/shilei/Documents/PyCharm/Django/ResumeCRM:/ResumeCRM
         hostname: "resumecrm.shileizcc.com"
         depends_on:
            - mysql
@@ -26,7 +24,7 @@ services:
            - broker
 
     transcode:
-        image: slzcc/django:transcode-pdf-uwsgi-v4
+        image: slzcc/django:transcode-pdf-uwsgi-v5
         container_name: resume_transcode
         ports:
           - 8089:8089
@@ -36,12 +34,12 @@ services:
             MYSQL_PASSWORD: resumec
             MYSQL_ROOT_USER: root
             MYSQL_ROOT_PASSWORD: example.org
-            MYSQL_HOST: "mysql"
+            MYSQL_HOST: mysql
             MYSQL_PORT: 3306
             NGINX_MIRROR_ADDRESS: "http://upload_frontend/"
             TZ: Asia/Shanghai
-        volumes:
-          - /Users/shilei/Documents/PyCharm/Django/TranscodePDF:/TranscodePDF
+        depends_on:
+           - mysql
 
     mysql:
         image: slzcc/mysql:5.6-custom
@@ -56,14 +54,14 @@ services:
           - mysql:/var/lib/mysql
 
     upload_backend:
-        image: slzcc/django:upload-uwsgi-v4
+        image: slzcc/django:upload-uwsgi-v5
         container_name: resume_upload_backend
         ports:
           - 8878:8878
         environment:
             TZ: Asia/Shanghai
             UPLOAD_FILE_PATH: "/storage/"
-            NGINX_MIRROR_URL: "http://1upload_frontend/"
+            NGINX_MIRROR_URL: "http://upload_frontend/"
             NGINX_MIRROR_STORAGE_PATH: "firmware/resume"
             REMOVE_SOURCE_FILE_SETUP: "False"
             USE_TIEM_SUB_DIRECTORY: "False"
@@ -99,6 +97,8 @@ services:
             MYSQL_DATABASE: resume
         volumes:
           - solr:/opt/solr/server/solr/gettingstarted/data
+        depends_on:
+           - mysql
 
     broker:
         container_name: resume_celery_broker
