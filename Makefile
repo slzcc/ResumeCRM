@@ -6,3 +6,6 @@ initialize_data:
 
 build:
 	@docker build -t slzcc/resumecrm:v$(VERSION) -f ./Docker/Dockerfile . --no-cache
+
+push:
+	@docker push slzcc/resumecrm:v$(VERSION)

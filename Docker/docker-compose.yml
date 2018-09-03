@@ -15,13 +15,15 @@ services:
             MYSQL_PORT: 3306
             SOLR_SERVER_URL: "http://solr:8983/"
             NGINX_MIRROR_ADDRESS: "http://upload_frontend"
-            TRANSCODE_PDF_ADDRESS: "http://upload_backend:8089/api/v1/file/pdf"
+            TRANSCODE_PDF_ADDRESS: "http://transcode:8089/api/v1/file/pdf"
         hostname: "resumecrm.shileizcc.com"
         depends_on:
            - mysql
            - solr
            - results
            - broker
+        networks:
+           - resume
 
     transcode:
         image: slzcc/django:transcode-pdf-uwsgi-v5
@@ -40,18 +42,22 @@ services:
             TZ: Asia/Shanghai
         depends_on:
            - mysql
+        networks:
+           - resume
 
     mysql:
         image: slzcc/mysql:5.6-custom
         environment:
             MYSQL_ROOT_PASSWORD: example.org
-            # MYSQL_DATABASE: resume
-            # MYSQL_USER: resume
-            # MYSQL_PASSWORD: resume
+            MYSQL_DATABASE: resume
+            MYSQL_USER: resume
+            MYSQL_PASSWORD: resume
             TZ: Asia/Shanghai
         container_name: resume_mysql
         volumes:
           - mysql:/var/lib/mysql
+        networks:
+           - resume
 
     upload_backend:
         image: slzcc/django:upload-uwsgi-v5
@@ -65,7 +71,8 @@ services:
             NGINX_MIRROR_STORAGE_PATH: "firmware/resume"
             REMOVE_SOURCE_FILE_SETUP: "False"
             USE_TIEM_SUB_DIRECTORY: "False"
- 
+        networks:
+           - resume
         volumes:
           - nginx-upload:/tmp/nginx_upload
           - mirror:/storage
@@ -82,7 +89,8 @@ services:
         volumes:
           - nginx-upload:/tmp/nginx_upload
           - mirror:/mirror
- 
+        networks:
+           - resume
     solr:
         image: slzcc/solr:ik
         container_name: resume_solr
@@ -99,7 +107,8 @@ services:
           - solr:/opt/solr/server/solr/gettingstarted/data
         depends_on:
            - mysql
-
+        networks:
+           - resume
     broker:
         container_name: resume_celery_broker
         image: rabbitmq
@@ -110,7 +119,8 @@ services:
             RABBITMQ_DEFAULT_VHOST: resume
         volumes:
           - broker:/var/lib/rabbitmq
-
+        networks:
+           - resume
     results:
         container_name: resume_celery_results
         image: redis
@@ -118,6 +128,9 @@ services:
             TZ: Asia/Shanghai
         volumes:
           - results:/data
+        networks:
+           - resume
+           
 volumes:
     nginx-upload:
     mirror:
@@ -125,3 +138,7 @@ volumes:
     solr:
     broker:
     results:
+
+networks:
+  resume:
+    driver: bridge

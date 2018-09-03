@@ -9,6 +9,7 @@ from django.utils.safestring import mark_safe
 
 from CustomException import userException
 from utils import FileFormatToPDF, encryption
+from Storage import upload_nginx
 
 def isExistPDF(request):
 	ret = {"status": "seccuss", "status_code": "200"}
@@ -18,16 +19,17 @@ def isExistPDF(request):
 
 	currentTime = str(int(time.time()))
 	if os.path.basename(attachmentName).split(".")[1] != "pdf":
-		
+
 		data = {"type": "url", "url": os.path.join(conf.settings.NGINX_MIRROR_ADDRESS, attachmentName), "mandatory_parsing": mandatory_parsing}
 
 		url = conf.settings.TRANSCODE_PDF_ADDRESS
+		print("Ourlls_",url)
 		domain = url.split("/")[2].split(":")[0]
 		domain_ip = ""
-		if not isIP(domain):
-			domain_ip = getIP(domain)
+		if not upload_nginx.isIP(domain):
+			domain_ip = upload_nginx.getIP(domain)
 			url = url.replace(domain, domain_ip)
-
+		print("urlls_", url)
 		session = requests.post(url=url, data=data)
 		url = "/".join(json.loads(session.text)["account_url"].split("/")[3:])
 	else:
