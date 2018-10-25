@@ -1,7 +1,7 @@
 version: '3'
 services:
     resume:
-        image: slzcc/resumecrm:v4
+        image: slzcc/resumecrm:v5
         container_name: resume_server
         ports:
           - 8088:8088
@@ -16,6 +16,9 @@ services:
             SOLR_SERVER_URL: "http://solr:8983/"
             NGINX_MIRROR_ADDRESS: "http://upload_frontend"
             TRANSCODE_PDF_ADDRESS: "http://transcode:8089/api/v1/file/pdf"
+            LANGUAGE: zh_CN:zh:en_US:en
+            LANG: zh_CN.UTF-8
+            LC_NUMBERIC: zh_CN.UTF-8
         hostname: "resumecrm.shileizcc.com"
         depends_on:
            - mysql
@@ -26,7 +29,7 @@ services:
            - resume
 
     transcode:
-        image: slzcc/django:transcode-pdf-uwsgi-v5
+        image: slzcc/django:transcode-pdf-uwsgi-v8
         container_name: resume_transcode
         ports:
           - 8089:8089

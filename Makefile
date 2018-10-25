@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-VERSION := "4"
+VERSION := "5"
 
 initialize_data:
 	@docker exec -t resume_server curl http://127.0.0.1:8088/initialize/set_main
