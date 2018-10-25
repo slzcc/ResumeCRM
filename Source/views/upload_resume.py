@@ -45,10 +45,13 @@ def UploadResume(request):
             dataDir[i] = request.POST.get(i, None)
 
         file_data = request.FILES.get("file", None)
-        path = os.path.join(conf.settings.BASE_DIR, 'static', 'firmware', "temporary")
+        path = os.path.join(conf.settings.BASE_DIR, 'static', 'firmware', "temporary", "resume", "source")
 
         # 如果目录不存在则创建
         if not os.path.exists(path): os.makedirs(path)
+        print("*******************************************************************************************")
+        print(dir(file_data))
+        print("*******************************************************************************************")
 
         # 把文件内容保存到本地
         f = open(os.path.join(path, file_data.name), 'wb')

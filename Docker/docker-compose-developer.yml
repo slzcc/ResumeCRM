@@ -1,7 +1,7 @@
 version: '3'
 services:
     resume:
-        image: slzcc/resumecrm:v4
+        image: slzcc/resumecrm:v3
         container_name: resume_server
         ports:
           - 8088:8088
@@ -16,6 +16,10 @@ services:
             SOLR_SERVER_URL: "http://solr:8983/"
             NGINX_MIRROR_ADDRESS: "http://upload_frontend"
             TRANSCODE_PDF_ADDRESS: "http://transcode:8089/api/v1/file/pdf"
+            LANGUAGE: zh_CN:zh:en_US:en
+            LANG: zh_CN.UTF-8
+            LC_NUMBERIC: zh_CN.UTF-8
+        command: "sleep 1234567890"
         volumes:
           - /Users/shilei/Documents/PyCharm/Django/ResumeCRM:/ResumeCRM
         hostname: "resumecrm.shileizcc.com"
